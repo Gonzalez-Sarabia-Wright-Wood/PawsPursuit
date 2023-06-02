@@ -3,6 +3,8 @@ package com.codeup.pawspursuit.models;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "post")
@@ -27,6 +29,9 @@ public class Post {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pet_id")
     private Pet pet;
+
+    @ManyToMany(mappedBy = "posts")
+    private Set<User> users = new HashSet<>();
 
     public Post() {
     }
@@ -77,5 +82,13 @@ public class Post {
 
     public void setPet(Pet pet) {
         this.pet = pet;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

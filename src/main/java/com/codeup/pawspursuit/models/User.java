@@ -2,7 +2,9 @@ package com.codeup.pawspursuit.models;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -36,6 +38,13 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Pet> petList;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_post",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "post_id"))
+    private Set<Post> posts = new HashSet<>();
 
 
     public User() {
@@ -103,5 +112,21 @@ public class User {
 
     public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public List<Pet> getPetList() {
+        return petList;
+    }
+
+    public void setPetList(List<Pet> petList) {
+        this.petList = petList;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
     }
 }
