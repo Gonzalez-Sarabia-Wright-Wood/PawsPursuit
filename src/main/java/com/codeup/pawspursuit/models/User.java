@@ -2,6 +2,8 @@ package com.codeup.pawspursuit.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -32,6 +34,12 @@ public class User {
     @Column(name = "zip_code")
     private Integer zipCode;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Pet> petList;
+
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
