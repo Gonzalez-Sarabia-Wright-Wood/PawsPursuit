@@ -35,6 +35,9 @@ public class Pet {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToOne(mappedBy = "pet")
+    private Post post;
+
     public Pet() {
     }
 
