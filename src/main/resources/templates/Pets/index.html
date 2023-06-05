@@ -25,7 +25,7 @@
                     <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
                 </div>
                 <p class="card-text" th:text="${pet.getId()}"></p>
-                <a href="/pets/1" class="btn btn-primary">Show</a>
+                <a th:href="@{/pets/{id} (id=${pet.id})}" class="btn btn-primary">Show</a>
             </div>
         </div>
     </div>
