@@ -16,6 +16,18 @@ public class UserController{
         this.userDao = userDao;
     }
 
+    @GetMapping("/login")
+    public String userLoginGet(){
+        return "/login";
+    }
+    @PostMapping("login")
+    public String userLoginPost(@PathVariable Long id, Model model){
+        User user = userDao.findById(id).get();
+        user.getId();
+        model.addAttribute("user", user);
+        return "/User/profile";
+    }
+
     @GetMapping("/register")
     public String showRegisterForm(Model model){
         model.addAttribute("user", new User());
