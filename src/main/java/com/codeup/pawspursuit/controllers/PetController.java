@@ -43,18 +43,18 @@ public class PetController {
         return "redirect:/Users/profile";
     }
 
-    @GetMapping("/pets/delete_pet")
+    @GetMapping("/pets/{id}/delete")
     public String deletePetGet() {
         return "redirect:/Users/profile";
     }
 
-    @PostMapping("/pets/delete_pet")
+    @PostMapping("/pets/{id}/delete")
     public String deletePetPost(@RequestParam Long id) {
         petDao.deleteById(id);
         return "redirect:/Users/profile";
     }
 
-    @GetMapping(path = "/pets/{id}/edit")
+    @GetMapping("/pets/{id}/edit")
     public String editPet(Model model, @PathVariable Long id) {
         Pet pet = petDao.findById(id).get();
         model.addAttribute("pet", pet);
