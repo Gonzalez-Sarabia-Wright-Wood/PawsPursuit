@@ -20,12 +20,11 @@ public class UserController{
     public String userLoginGet(){
         return "/login";
     }
-    @PostMapping("login")
-    public String userLoginPost(@PathVariable Long id, Model model){
-        User user = userDao.findById(id).get();
-        user.getId();
+    @PostMapping("/login")
+    public String userLoginPost(@RequestParam String username, Model model){
+        User user = userDao.findUserByUsername(username);
         model.addAttribute("user", user);
-        return "/User/profile";
+        return "redirect:/profile/" + user.getId();
     }
 
     @GetMapping("/register")
@@ -41,7 +40,7 @@ public class UserController{
     }
 
     @GetMapping("/profile/{id}")
-    public String viewProfile(Model model, @PathVariable Long id){
+    public String viewProfile(Model model,@PathVariable Long id){
         User user = userDao.findById(id).get();
         model.addAttribute("user", user);
         return "User/profile";
@@ -60,4 +59,18 @@ public class UserController{
         return "redirect:/login";
     }
 
+    @GetMapping("/User/chat")
+    public String showChat(Model model, @PathVariable Long id){
+        return "User/chat";
+    }
+
+    @PostMapping("/User/chat")
+    public String sendChat(){
+        return "User/chat";
+    }
+
+    @GetMapping("/User/messages")
+    public String showAllMessages(){
+        return "User/messages";
+    }
 }
