@@ -1,5 +1,6 @@
 package com.codeup.pawspursuit.controllers;
 
+import com.codeup.pawspursuit.models.User;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,19 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-
 
 @Controller
 public class UserController {
 
     private UserRepository userDao;
-    private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder){
+    public UserController(UserRepository userDao){
         this.userDao = userDao;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/register")
@@ -30,8 +26,6 @@ public class UserController {
 
     @PostMapping("/register")
     public String saveUser(@ModelAttribute User user){
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
     }
@@ -42,7 +36,5 @@ public class UserController {
         model.addAttribute("user", user);
         return "Users/profile";
     }
-
-
 
 }
