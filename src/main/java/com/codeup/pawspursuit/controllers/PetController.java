@@ -58,7 +58,7 @@ public class PetController {
 
         model.addAttribute("pet", pet);
 
-        return "Pets/create_pet";
+        return "Pets/edit";
     }
 
 

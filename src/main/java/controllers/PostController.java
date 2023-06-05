@@ -10,7 +10,7 @@ public class PostController {
 
     @GetMapping("/{id}")
     public String viewPost(@PathVariable long id) {
-        return "Posts/show_case" + id;
+        return "show" + id;
     }
 
     @PostMapping("/create")
