@@ -3,8 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:replace="partials/header.html :: link">
 </head>
 <body>
-this is the register form page
+<nav th:replace="partials/navbar.html :: nav"></nav>
+<section>
+<form>
+    <div>
+        <div>
+            <label for="firstname">First Name</label>
+        </div>
+        <div>
+            <input id="firstname" type="text">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="lastname">Last Name</label>
+        </div>
+        <div>
+            <input id="lastname" type="text">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="username">Username</label>
+        </div>
+        <div>
+            <input id="username" type="text">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="email">Email</label>
+        </div>
+        <div>
+            <input id="email" type="text">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="password">Password</label>
+        </div>
+        <div>
+            <input id="password" type="text">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="confirm">Confirm Password</label>
+        </div>
+        <div>
+            <input id="confirm" type="text">
+        </div>
+    </div>
+    <button type="submit">Register</button>
+</form>
+</section>
+<footer th:replace="partials/footer.html :: footer"></footer>
 </body>
 </html>

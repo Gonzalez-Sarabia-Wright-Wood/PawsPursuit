@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:replace="partials/header.html :: link">
 </head>
 <body>
+<nav th:replace="partials/navbar.html :: nav"></nav>
 <section>
     <form>
         <div>
@@ -25,5 +27,6 @@
         <button type="submit">Login</button>
     </form>
 </section>
+<footer th:replace="partials/footer.html :: footer"></footer>
 </body>
 </html>

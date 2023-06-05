@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:replace="~{partials/header.html :: link}">
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<label id="toggler" class="switch">
+    <input type="checkbox">
+    <span class="slider round"></span>
+</label>
+this is the form for creating a post
+<section>
+<div id="toReplace" th:insert="~{partials/pet_post_form.html:: form}"></div>
+</section>
+<footer th:replace="~{partials/footer.html :: footer}"></footer>
+<script th:src="@{/js/main.js}"></script>
+
+</body>
+</html>
