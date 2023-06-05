@@ -3,18 +3,22 @@
 <head th:replace="~{partials/header.html :: head('Pets')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
-<body>
-<div class="card" style="width: 18rem;">
+<div th:each="pet: ${pets}">
+    <div class="card" style="width: 18rem;">
 
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <div class="card-body">
+            <h5 th:text="${pet.isLost()}" class="card-title"></h5>
 
-        <img class="card-img" src="..." alt="Card image cap">
+            <img class="card-img" src="..." alt="Card image cap">
 
-        <h6 class="card-subtitle">Card title</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div><h6>Species</h6><h6  th:text="${pet.getSpecies()}" class="card-subtitle"></h6><div>
+            <h6 th:text="${pet.getName()}" class="card-subtitle"></h6>
+            <h6 th:text="${pet.getSize()}" class="card-subtitle"></h6>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
 </div>
+
 </body>
 </html>
