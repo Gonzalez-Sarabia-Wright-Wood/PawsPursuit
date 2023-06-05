@@ -1,5 +1,6 @@
 package com.codeup.pawspursuit.controllers;
 
+import com.codeup.pawspursuit.models.Pet;
 import com.codeup.pawspursuit.models.User;
 import com.codeup.pawspursuit.repositories.PetRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
@@ -26,7 +27,6 @@ public class PetController {
     @GetMapping(path = "/Pets/{id}")
     public String onePet(@PathVariable Long id, Model model) {
         Pet onePet = petDao.findById(id).get();
-        onePet.getPet();
         model.addAttribute("onePet", onePet);
         return "/Pets/show";
     }
