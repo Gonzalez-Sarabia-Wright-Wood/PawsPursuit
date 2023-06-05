@@ -28,7 +28,7 @@ public class PetController {
     public String onePet(@PathVariable Long id, Model model) {
         Pet onePet = petDao.findById(id).get();
         model.addAttribute("onePet", onePet);
-        return "/Pets/show_case";
+        return "/Pets/show";
     }
 
     @GetMapping("/pets/create")
