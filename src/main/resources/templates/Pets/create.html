@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials/header.html :: head('Create')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
@@ -9,11 +9,59 @@
 </label>
 this is the form for creating a post
 <section>
-    <div id="post" hidden="hidden" th:insert="~{partials/reg_post_form.html :: form}"></div>
-    <div id="pet" hidden="hidden" th:insert="~{partials/pet_post_form.html:: form}"></div>
+    <div id="post" hidden="hidden">
+        <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+            <label>Title:
+                <input type="text" th:field="*{title}">
+            </label>
+            <label>Body:
+                <input type="text" th:field="*{body}">
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="pet" hidden="hidden">
+        <form th:action="@{/pets/create}" th:method="post" id="postForm" th:object="${post}">
+            <label>Title:
+                <input type="text" th:field="*{title}">
+            </label>
+            <label>Body:
+                <input type="text" th:field="*{body}">
+            </label>
+        </form>
+        <form th:action="@{/pets/create}" th:method="post" id="petForm" th:object="${pet}">
+            <label>Name:
+                <input type="text" th:field="*{name}">
+            </label>
+            <label>Species
+                <input type="text" th:field="*{species}">
+            </label>
+            <label>Breed
+                <input type="text" th:field="*{breed}">
+            </label>
+            <label>Size
+                <input type="text" th:field="*{size}">
+            </label>
+            <label>Description
+                <input type="text" th:field="*{description}">
+            </label>
+        </form>
+        <button onclick="submitForms()">Click me</button>
+    </div>
+
+
 </section>
 <footer th:replace="~{partials/footer.html :: footer}"></footer>
 <script th:src="@{/js/main.js}"></script>
+<script>
+    submitForms = function () {
+        document.getElementById("petForm").submit();
+        document.getElementById("postForm").submit();
+        console.log(document.getElementById("petForm"));
+        console.log(document.getElementById("postForm"));
+    }
+</script>
 
 </body>
 </html>

@@ -1,8 +1,10 @@
 package com.codeup.pawspursuit.controllers;
 
 import com.codeup.pawspursuit.models.Pet;
+import com.codeup.pawspursuit.models.Post;
 import com.codeup.pawspursuit.models.User;
 import com.codeup.pawspursuit.repositories.PetRepository;
+import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,9 +15,14 @@ import org.springframework.web.bind.annotation.*;
 public class PetController {
 
     private PetRepository petDao;
+    private PostRepository postDao;
+    private final UserRepository userDao;
 
-    public PetController(PetRepository petDao) {
+    public PetController(PetRepository petDao, PostRepository postDao,
+                         UserRepository userDao) {
         this.petDao = petDao;
+        this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @GetMapping(path = "/pets")
@@ -34,13 +41,17 @@ public class PetController {
     @GetMapping("/pets/create")
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
+        model.addAttribute("post", new Post());
         return "/Pets/create";
     }
 
     @PostMapping("/pets/create")
-    public String savePet(@ModelAttribute Pet pet) {
+    public String savePet(@ModelAttribute Pet pet, @ModelAttribute Post post) {
+        pet.setUser(userDao.findById(1L).get());
         petDao.save(pet);
-        return "redirect:/Users/profile";
+        post.setPet(pet);
+        postDao.save(post);
+        return "redirect:/profile/1";
     }
 
     @GetMapping("/pets/{id}/delete")
