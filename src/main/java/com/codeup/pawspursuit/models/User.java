@@ -1,10 +1,7 @@
 package com.codeup.pawspursuit.models;
 
 import jakarta.persistence.*;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -53,7 +50,7 @@ public class User {
             name = "user_post",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "post_id"))
-    private Set<Post> posts = new HashSet<>();
+    private List<Post> posts;
 
 
     public User() {
@@ -131,11 +128,11 @@ public class User {
         this.petList = petList;
     }
 
-    public Set<Post> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(Set<Post> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
 }
