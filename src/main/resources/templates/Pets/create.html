@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link th:replace="~{partials/header.html :: link}">
-    <link th:href="@{/css/main.css}" rel="stylesheet"/>
-</head>
+<head th:replace="~{partials/header.html :: head('Create')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
 <label id="toggler" class="switch">

@@ -51,7 +51,7 @@ public class UserController{
     public String editUser(Model model, @PathVariable Long id) {
         User user = userDao.findById(id).get();
         model.addAttribute("user", user);
-        return "User/profile";
+        return "User/edit";
     }
 
     @PostMapping("/User/{id}/delete")
