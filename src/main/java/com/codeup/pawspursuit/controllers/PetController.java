@@ -34,7 +34,7 @@ public class PetController {
     @GetMapping("/pets/create")
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
-        return "/Pets/edit";
+        return "/Pets/create";
     }
 
     @PostMapping("/pets/create")
@@ -60,6 +60,4 @@ public class PetController {
         model.addAttribute("pet", pet);
         return "/Pets/edit";
     }
-
-
 }

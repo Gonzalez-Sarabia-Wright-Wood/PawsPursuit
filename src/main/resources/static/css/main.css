@@ -1,6 +1,8 @@
-*{
-    text-decoration: aqua;!important;
+* {
+    text-decoration: aqua;
+!important;
 }
+
 .switch {
     position: relative;
     display: inline-block;
@@ -61,4 +63,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+label:hover {
+    cursor: pointer;
 }
