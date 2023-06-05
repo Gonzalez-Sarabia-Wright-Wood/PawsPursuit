@@ -20,7 +20,7 @@ public class PostController {
         this.userDao = userRepository;
     }
 
-    @GetMapping
+    @GetMapping("/posts")
     public String getPosts(Model model) {
         List<Post> posts = postDao.findAll();
         model.addAttribute("posts", posts);
