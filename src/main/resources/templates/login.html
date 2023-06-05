@@ -3,8 +3,6 @@
 <head th:replace="~{partials/header.html :: head('Login')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
-<body>
-<nav th:replace="partials/navbar.html :: nav"></nav>
 <section>
     <form>
         <div>
@@ -14,7 +12,8 @@
             <div>
                 <input id="username" type="text">
             </div>
-        </div> <div>
+        </div>
+        <div>
             <div>
                 <label for="password">Password</label>
             </div>

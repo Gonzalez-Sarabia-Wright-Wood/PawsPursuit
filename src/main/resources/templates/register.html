@@ -3,60 +3,58 @@
 <head th:replace="~{partials/header.html :: head('Register')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
-<body>
-<nav th:replace="partials/navbar.html :: nav"></nav>
 <section>
-<form>
-    <div>
+    <form>
         <div>
-            <label for="firstname">First Name</label>
+            <div>
+                <label for="firstname">First Name</label>
+            </div>
+            <div>
+                <input id="firstname" type="text">
+            </div>
         </div>
         <div>
-            <input id="firstname" type="text">
-        </div>
-    </div>
-    <div>
-        <div>
-            <label for="lastname">Last Name</label>
-        </div>
-        <div>
-            <input id="lastname" type="text">
-        </div>
-    </div>
-    <div>
-        <div>
-            <label for="username">Username</label>
+            <div>
+                <label for="lastname">Last Name</label>
+            </div>
+            <div>
+                <input id="lastname" type="text">
+            </div>
         </div>
         <div>
-            <input id="username" type="text">
-        </div>
-    </div>
-    <div>
-        <div>
-            <label for="email">Email</label>
-        </div>
-        <div>
-            <input id="email" type="text">
-        </div>
-    </div>
-    <div>
-        <div>
-            <label for="password">Password</label>
+            <div>
+                <label for="username">Username</label>
+            </div>
+            <div>
+                <input id="username" type="text">
+            </div>
         </div>
         <div>
-            <input id="password" type="text">
+            <div>
+                <label for="email">Email</label>
+            </div>
+            <div>
+                <input id="email" type="text">
+            </div>
         </div>
-    </div>
-    <div>
         <div>
-            <label for="confirm">Confirm Password</label>
+            <div>
+                <label for="password">Password</label>
+            </div>
+            <div>
+                <input id="password" type="text">
+            </div>
         </div>
         <div>
-            <input id="confirm" type="text">
+            <div>
+                <label for="confirm">Confirm Password</label>
+            </div>
+            <div>
+                <input id="confirm" type="text">
+            </div>
         </div>
-    </div>
-    <button type="submit">Register</button>
-</form>
+        <button type="submit">Register</button>
+    </form>
 </section>
 <footer th:replace="partials/footer.html :: footer"></footer>
 </body>
