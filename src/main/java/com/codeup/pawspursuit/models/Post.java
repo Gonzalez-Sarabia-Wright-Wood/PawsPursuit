@@ -3,8 +3,7 @@ package com.codeup.pawspursuit.models;
 import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "post")
@@ -31,7 +30,7 @@ public class Post {
     private Pet pet;
 
     @ManyToMany(mappedBy = "posts")
-    private Set<User> users = new HashSet<>();
+    private List<User> users;
 
     public Post() {
     }
@@ -84,11 +83,11 @@ public class Post {
         this.pet = pet;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }
