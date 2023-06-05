@@ -3,22 +3,32 @@
 <head th:replace="~{partials/header.html :: head('Pets')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
-<div th:each="pet: ${pets}">
-    <div class="card" style="width: 18rem;">
+<section class="d-flex">
+    <div th:each="pet: ${pets}">
+        <div class="card" style="width: 18rem;">
 
-        <div class="card-body">
-            <h5 th:text="${pet.isLost()}" class="card-title"></h5>
+            <div class="card-body ">
+                <h5 th:text="${pet.isLost()}" class="card-title"></h5>
 
-            <img class="card-img" src="..." alt="Card image cap">
+                <img class="card-img" src="..." alt="Card image cap">
 
-            <div><h6>Species</h6><h6  th:text="${pet.getSpecies()}" class="card-subtitle"></h6><div>
-            <h6 th:text="${pet.getName()}" class="card-subtitle"></h6>
-            <h6 th:text="${pet.getSize()}" class="card-subtitle"></h6>
-            <p class="card-text"></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div>
+                    <h6 class="card-subtitle d-inline-block">Species : </h6>
+                    <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <div>
+                    <h6 class="card-subtitle d-inline-block">Name : </h6>
+                    <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <div>
+                    <h6 class="card-subtitle d-inline-block">Size : </h6>
+                    <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <p class="card-text" th:text="${pet.getId()}"></p>
+                <a href="/pets/1" class="btn btn-primary">Show</a>
+            </div>
         </div>
     </div>
-</div>
-
+</section>
 </body>
 </html>
