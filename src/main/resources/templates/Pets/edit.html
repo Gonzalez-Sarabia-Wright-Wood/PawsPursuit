@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:replace="~{partials/header.html :: link}">
+
 </head>
 <body>
+<div th:insert="~{partials/pet_post_form.html:: form}"></div>
+<footer th:replace="~{partials/footer.html :: footer}"></footer>
 
 </body>
 </html>
