@@ -1,6 +1,6 @@
 <nav th:fragment="navbar" class="navbar navbar-expand-md sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">PawsPursuit</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,6 +21,9 @@
                         <a class="nav-link" th:href="@{/register}">Register</a>
                     </li>
                     <li class="navbar-item">
+                        <a th:href="@{/login}" class="nav-link">Login</a>
+                    </li>
+                    <li class="navbar-item">
                         <a class="nav-link" th:href="@{/pets}">Pets</a>
                     </li>
                     <li class="navbar-item">
@@ -30,9 +33,20 @@
                         <a class="nav-link" th:href="@{/profile/1}">Profile</a>
                     </li>
                     <li class="navbar-item">
-                        <a class="nav-link" th:href="@{/User/1/edit}">Edit Profile</a>
+                        <a class="nav-link" th:href="@{/profile/1/edit}">Edit Profile</a>
                     </li>
-
+                    <li class="navbar-item">
+                        <a th:href="@{/chat}" class="nav-link">Chat</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a th:href="@{/profile/messages}" class="nav-link">Messages</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a th:href="@{/posts}" class="nav-link">Posts</a>
+                    </li>
+                    <li class="navbar-item">
+                        <a th:href="@{/posts/create}" class="nav-link">Create Post</a>
+                    </li>
                 </ul>
             </div>
         </div>
