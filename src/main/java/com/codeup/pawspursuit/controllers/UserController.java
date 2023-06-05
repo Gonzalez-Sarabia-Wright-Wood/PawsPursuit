@@ -1,13 +1,11 @@
 package com.codeup.pawspursuit.controllers;
 
+import com.codeup.pawspursuit.models.Pet;
 import com.codeup.pawspursuit.models.User;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController{
@@ -34,7 +32,20 @@ public class UserController{
     public String viewProfile(Model model, @PathVariable Long id){
         User user = userDao.findById(id).get();
         model.addAttribute("user", user);
-        return "Users/profile";
+        return "User/profile";
+    }
+
+    @GetMapping(path = "/User/{id}/edit")
+    public String editUser(Model model, @PathVariable Long id) {
+        User user = userDao.findById(id).get();
+        model.addAttribute("user", user);
+        return "User/profile";
+    }
+
+    @PostMapping("/User/{id}/delete")
+    public String deleteUserPost(@RequestParam Long id){
+        userDao.deleteById(id);
+        return "redirect:/login";
     }
 
 }
