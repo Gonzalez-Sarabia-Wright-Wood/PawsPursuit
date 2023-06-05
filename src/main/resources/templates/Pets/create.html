@@ -9,7 +9,8 @@
 </label>
 this is the form for creating a post
 <section>
-<div id="toReplace" th:insert="~{partials/pet_post_form.html:: form}"></div>
+    <div id="post" hidden="hidden" th:insert="~{partials/reg_post_form.html :: form}"></div>
+    <div id="pet" hidden="hidden" th:insert="~{partials/pet_post_form.html:: form}"></div>
 </section>
 <footer th:replace="~{partials/footer.html :: footer}"></footer>
 <script th:src="@{/js/main.js}"></script>

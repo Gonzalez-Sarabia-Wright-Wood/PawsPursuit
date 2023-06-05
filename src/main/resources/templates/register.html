@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials/header.html :: head('Register')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
 <section>
-    <form>
+    <form th:method="post" th:action="@{/register}" th:object="${user}">
         <div>
             <div>
-                <label for="firstname">First Name</label>
+                <label for="firstName" >First Name</label>
             </div>
             <div>
-                <input id="firstname" type="text">
+                <input id="firstName" type="text" th:field="*{firstName}">
             </div>
         </div>
         <div>
@@ -18,7 +18,7 @@
                 <label for="lastname">Last Name</label>
             </div>
             <div>
-                <input id="lastname" type="text">
+                <input id="lastname" type="text" th:field="*{lastName}">
             </div>
         </div>
         <div>
@@ -26,7 +26,7 @@
                 <label for="username">Username</label>
             </div>
             <div>
-                <input id="username" type="text">
+                <input id="username" type="text" th:field="*{username}">
             </div>
         </div>
         <div>
@@ -34,7 +34,7 @@
                 <label for="email">Email</label>
             </div>
             <div>
-                <input id="email" type="text">
+                <input id="email" type="text" th:field="*{email}">
             </div>
         </div>
         <div>
@@ -42,17 +42,17 @@
                 <label for="password">Password</label>
             </div>
             <div>
-                <input id="password" type="text">
+                <input id="password" type="text" th:field="*{password}">
             </div>
         </div>
-        <div>
-            <div>
-                <label for="confirm">Confirm Password</label>
-            </div>
-            <div>
-                <input id="confirm" type="text">
-            </div>
-        </div>
+<!--        <div>-->
+<!--            <div>-->
+<!--                <label for="confirm">Confirm Password</label>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <input id="confirm" type="text" th:field="*{password}">-->
+<!--            </div>-->
+<!--        </div>-->
         <button type="submit">Register</button>
     </form>
 </section>
