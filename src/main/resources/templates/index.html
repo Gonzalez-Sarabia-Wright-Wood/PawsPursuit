@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link th:replace="partials/header.html :: link">
-</head>
+<head th:replace="~{partials/header.html :: head('Index')}"></head>
 <body>
 <nav th:replace="partials/navbar.html :: nav"></nav>
 this is the landing page

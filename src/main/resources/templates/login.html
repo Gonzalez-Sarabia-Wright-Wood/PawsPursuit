@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link th:replace="partials/header.html :: link">
-</head>
+<head th:replace="~{partials/header.html :: head('Login')}"></head>
 <body>
-<nav th:replace="partials/navbar.html :: nav"></nav>
+<nav th:replace="~{partials/navbar.html :: nav}"></nav>
 <section>
     <form>
         <div>
@@ -16,7 +12,8 @@
             <div>
                 <input id="username" type="text">
             </div>
-        </div> <div>
+        </div>
+        <div>
             <div>
                 <label for="password">Password</label>
             </div>
