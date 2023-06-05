@@ -40,6 +40,12 @@ public class PostController {
         return "Pets/create";
     }
 
+    @PostMapping("/posts/create")
+    public String submitPost(@ModelAttribute Post post){
+        postDao.save(post);
+        return "redirect:/profile/1";
+    }
+
     @GetMapping("/posts/{id}/edit")
     public String editPost(@PathVariable Long id, Model model){
         Post post = postDao.findById(id).get();

@@ -1,4 +1,4 @@
-<form>
+<form th:action="@{/posts/create}" th:method="post" id="postForm" th:object="${post}">
     <div>
         <div>
             <label for="title">Title</label>
