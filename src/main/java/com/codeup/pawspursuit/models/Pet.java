@@ -41,6 +41,31 @@ public class Pet {
     public Pet() {
     }
 
+    public Pet(String name, String species, String breed, String size, String description, User user) {
+        this.name = name;
+        this.species = species;
+        this.breed = breed;
+        this.size = size;
+        this.description = description;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,42 +1,30 @@
-<form>
+<!--<form th:action="@{/pets/create}" th:method="post" id="petForm" th:object="${pet}">-->
+<!--    <label>Name:-->
+<!--        <input type="text" th:field="*{name}">-->
+<!--    </label>-->
+<!--    <label>Species-->
+<!--        <input type="text" th:field="*{species}">-->
+<!--    </label>-->
+<!--    <label>Breed-->
+<!--        <input type="text" th:field="*{breed}">-->
+<!--    </label>-->
+<!--    <label>Size-->
+<!--        <input type="text" th:field="*{size}">-->
+<!--    </label>-->
+<!--    <label>Description-->
+<!--        <input type="text" th:field="*{description}">-->
+<!--    </label>-->
+<!--</form>-->
+
+
+
+<form th:action="@{/pets/create}" th:method="post" id="postForm" th:object="${post}">
     <div>
         <div>
             <label for="title">Title</label>
         </div>
         <div>
             <input id="title" type="text">
-        </div>
-    </div>
-    <div>
-        <div>
-            <label for="species">Species</label>
-        </div>
-        <div>
-            <input id="species" type="text">
-        </div>
-    </div>
-    <div>
-        <div>
-            <label for="name">Name</label>
-        </div>
-        <div>
-            <input id="name" type="text">
-        </div>
-    </div>
-    <div>
-        <div>
-            <label for="breed">Breed</label>
-        </div>
-        <div>
-            <input id="breed" type="text">
-        </div>
-    </div>
-    <div>
-        <div>
-            <label for="size">Size</label>
-        </div>
-        <div>
-            <input id="size" type="text">
         </div>
     </div>
     <div>
