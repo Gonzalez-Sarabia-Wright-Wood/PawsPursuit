@@ -1,6 +1,8 @@
 package com.codeup.pawspursuit.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "pets")
@@ -31,11 +33,12 @@ public class Pet {
     @Column(name = "is_lost")
     private boolean isLost;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "pet")
+    @OneToOne(mappedBy = "pet", cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Post post;
 
     public Pet() {

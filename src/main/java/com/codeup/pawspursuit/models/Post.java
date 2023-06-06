@@ -1,6 +1,8 @@
 package com.codeup.pawspursuit.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Date;
 import java.util.List;
@@ -26,10 +28,12 @@ public class Post {
     private String location;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
     @ManyToMany(mappedBy = "posts")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<User> users;
 
     public Post() {

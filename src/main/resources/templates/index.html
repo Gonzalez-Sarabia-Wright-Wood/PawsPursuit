@@ -4,6 +4,11 @@
 <body>
 <nav th:replace="partials/navbar.html :: nav"></nav>
 this is the landing page
+
+<form th:action="@{/profile/1/delete}" th:method="post">
+    <input  type="hidden" value="1" name="id">
+    <button type="submit">DELETE PROFILE</button>
+</form>
 <footer th:replace="partials/footer.html :: footer"></footer>
 </body>
 </html>

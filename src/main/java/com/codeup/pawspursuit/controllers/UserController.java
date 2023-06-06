@@ -24,6 +24,9 @@ public class UserController {
     @PostMapping("/login")
     public String userLoginPost(@RequestParam String username, Model model) {
         User user = userDao.findUserByUsername(username);
+        if(user == null){
+            return "redirect:/login";
+        }
         model.addAttribute("user", user);
         return "redirect:/profile/" + user.getId();
     }
@@ -61,7 +64,7 @@ public class UserController {
     }
 
     @GetMapping("/chat")
-    public String showChat(Model model, @PathVariable Long id) {
+    public String showChat(Model model) {
         return "User/chat";
     }
 
