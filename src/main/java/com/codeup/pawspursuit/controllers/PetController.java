@@ -34,7 +34,9 @@ public class PetController {
     @GetMapping(path = "/pets/{id}")
     public String onePet(@PathVariable Long id, Model model) {
         Pet onePet = petDao.findById(id).get();
+        Post onePost = postDao.findByPetId(id);
         model.addAttribute("onePet", onePet);
+        model.addAttribute("onePost", onePost);
         return "/Pets/show";
     }
 
