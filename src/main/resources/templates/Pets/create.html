@@ -22,32 +22,56 @@ this is the form for creating a post
     </div>
 
     <div id="pet" hidden="hidden">
-        <form th:action="@{/pets/create}" th:method="post" id="postForm" th:object="${post}">
+        <form th:action="@{/pets/create}" th:method="post" id="postForm">
             <label>Title:
-                <input type="text" th:field="*{title}">
+                <input type="text" name="title">
             </label>
             <label>Body:
-                <input type="text" th:field="*{body}">
+                <input type="text" name="body">
             </label>
-        </form>
-        <form th:action="@{/pets/create}" th:method="post" id="petForm" th:object="${pet}">
             <label>Name:
-                <input type="text" th:field="*{name}">
+                <input type="text" name="name">
             </label>
             <label>Species
-                <input type="text" th:field="*{species}">
+                <input type="text" name="species">
             </label>
             <label>Breed
-                <input type="text" th:field="*{breed}">
+                <input type="text" name="breed">
             </label>
             <label>Size
-                <input type="text" th:field="*{size}">
+                <input type="text" name="size">
             </label>
             <label>Description
-                <input type="text" th:field="*{description}">
+                <input type="text" name="description">
             </label>
+            <button type="submit">Submit</button>
         </form>
-        <button onclick="submitForms()">Click me</button>
+<!--        <form th:action="@{/pets/create}" th:method="post" id="postForm" th:object="${post}">-->
+<!--            <label>Title:-->
+<!--                <input type="text" th:field="*{title}">-->
+<!--            </label>-->
+<!--            <label>Body:-->
+<!--                <input type="text" th:field="*{body}">-->
+<!--            </label>-->
+<!--        </form>-->
+<!--        <form th:action="@{/pets/create}" th:method="post" id="petForm" th:object="${pet}">-->
+<!--            <label>Name:-->
+<!--                <input type="text" th:field="*{name}"> -->
+<!--            </label>-->
+<!--            <label>Species-->
+<!--                <input type="text" th:field="*{species}">-->
+<!--            </label>-->
+<!--            <label>Breed-->
+<!--                <input type="text" th:field="*{breed}">-->
+<!--            </label>-->
+<!--            <label>Size-->
+<!--                <input type="text" th:field="*{size}">-->
+<!--            </label>-->
+<!--            <label>Description-->
+<!--                <input type="text" th:field="*{description}">-->
+<!--            </label>-->
+<!--        </form>-->
+<!--        <button type="button" onclick="submitForms()">Click me</button>-->
     </div>
 
 
