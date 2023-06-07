@@ -6,6 +6,12 @@
 
 <h2>this is the profile landing page</h2>
 
+<div>
+    <a th:href="@{/chat/{id}(id=${id})/{id2}(id2=${id2})}" >
+    <input value="Chat With This User" type="button">
+    </a>
+</div>
+
 <input value="make a post">
 
 <div th:each="post : ${posts}">
@@ -13,8 +19,6 @@
     <a th:href="@{/posts/{id}(id=${post.getId()})}" >
         <h4 th:text="${post.title}"></h4></a>
         <p th:text="${post.body}"></p>
-
-
 </div>
 
 

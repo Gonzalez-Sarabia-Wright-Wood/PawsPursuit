@@ -63,9 +63,13 @@ public class UserController {
 
 
     @GetMapping("/profile/{id}")
-    public String viewProfile(Model model, @PathVariable Long id) {
+    public String viewProfile(Model model, @PathVariable Long id, @PathVariable Long id2) {
         User user = userDao.findById(id).get();
+        User user2 = userDao.getReferenceById(id2);
         model.addAttribute("user", user);
+        model.addAttribute("id", user.getId());
+        model.addAttribute("id2", user2.getId());
+
         return "User/profile";
     }
 
