@@ -1,14 +1,11 @@
 *{
-    color: #394140;
+    color: #394140!important;
 }
 body{
     background-color: #A4CB9E;
 }
 div.label{
-    background-color: #4C6763;
-}
-label{
-    color: aliceblue;
+    background-color: #7FADA7;
 }
 
 div.input,div.label{
@@ -26,6 +23,13 @@ input,textarea{
     word-break: break-word;
     padding-bottom: 8rem;
     padding-left: 0.5rem;
+}
+.button-main{
+    padding: 1px;
+    height: 25px;
+    width:75px;
+    background-color: #C39BCA !important;
+    border-radius: 30px !important;
 }
 
 
@@ -68,11 +72,11 @@ input,textarea{
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #7FADA7;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #7FADA7;
 }
 
 input:checked + .slider:before {
