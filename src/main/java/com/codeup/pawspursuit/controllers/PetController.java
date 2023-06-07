@@ -50,7 +50,7 @@ public class PetController {
     @PostMapping("/pets/create")
     public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description) {
         Post post = new Post();
-        Pet pet  = new Pet();
+        Pet pet = new Pet();
         pet.setUser(userDao.findById(1L).get());
         pet.setName(name);
         pet.setSpecies(species);
@@ -73,13 +73,32 @@ public class PetController {
     @PostMapping("/pets/{id}/delete")
     public String deletePetPost(@RequestParam Long id) {
         petDao.deleteById(id);
-        return "redirect:/Users/profile";
+        return "redirect:/profile/1";
     }
 
     @GetMapping("/pets/{id}/edit")
     public String editPet(Model model, @PathVariable Long id) {
         Pet pet = petDao.findById(id).get();
+        Post post = postDao.findByPetId(id);
         model.addAttribute("pet", pet);
+        model.addAttribute("post", post);
         return "/Pets/edit";
     }
+
+    @PostMapping("/pets/{id}/edit")
+    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id) {
+        Pet pet = petDao.findById(pet_id).get();
+        pet.setName(name);
+        pet.setSpecies(species);
+        pet.setBreed(breed);
+        pet.setSize(size);
+        pet.setDescription(description);
+        petDao.save(pet);
+        Post post = postDao.findById(post_id).get();
+        post.setTitle(title);
+        post.setBody(body);
+        postDao.save(post);
+        return "redirect:/pets";
+    }
+
 }
