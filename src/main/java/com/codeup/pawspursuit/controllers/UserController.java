@@ -82,15 +82,17 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/chat/{id}")
-    public String showChat(Model model, @PathVariable Long id) {
+    @GetMapping("/chat/{id}/{id2}")
+    public String showChat(Model model, @PathVariable Long id, @PathVariable Long id2) {
         User user = userDao.getReferenceById(id);
+        User user2 = userDao.getReferenceById(id2);
         model.addAttribute("testAppId", testAppId);
         model.addAttribute("id", user.getId());
         model.addAttribute("name", user.getName());
         model.addAttribute("email", user.getEmail());
-
-
+        model.addAttribute("id2", user2.getId());
+        model.addAttribute("name2", user2.getName());
+        model.addAttribute("email2", user2.getEmail());
         return "User/chat";
     }
 
