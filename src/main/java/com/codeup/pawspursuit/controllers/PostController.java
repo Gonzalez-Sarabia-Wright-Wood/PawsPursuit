@@ -52,4 +52,8 @@ public class PostController {
         model.addAttribute("post", post);
         return "Pets/create";
     }
+    @GetMapping("/aboutUs")
+    public String aboutUs(){
+        return "aboutUs";
+    }
 }
