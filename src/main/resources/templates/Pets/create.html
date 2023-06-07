@@ -23,14 +23,16 @@
             </div>
             <div class="label">
                 <label>Body:
-                    <div class="  input">
+
+                    <div class="input">
                         <input type="text" th:field="*{body}">
                     </div>
                 </label>
             </div>
             <div class="label">
                 <label>Location:
-                    <div class="  input">
+
+                    <div class="input">
                         <input type="text" th:field="*{location}">
                     </div>
                 </label>
@@ -44,7 +46,6 @@
             <div  class=" label">
                 <label>Title:
                     <div class="input">
-
                         <input type="text" name="title">
                     </div>
                 </label>
@@ -63,7 +64,8 @@
                     </div>
                 </label>
             </div>
-            <div class=" label">
+
+            <div class="label">
                 <label>Species:
                     <div class="input">
                         <input type="text" name="species">
@@ -73,19 +75,19 @@
             <div class=" label">
                 <label>Breed:
                     <div class="input">
-
                         <input type="text" name="breed">
                     </div>
                 </label>
             </div>
-            <div class=" label">
+
+            <div class="label">
                 <label>Size:
                     <div class="input">
-
                         <input type="text" name="size">
                     </div>
                 </label>
             </div>
+
             <div class="d-flex">
                 <div class=" label">
                     <label>Description:
@@ -103,14 +105,14 @@
 </section>
 <footer th:replace="~{partials/footer.html :: footer}"></footer>
 <script th:src="@{/js/main.js}"></script>
-<script>
-    submitForms = function () {
-        document.getElementById("petForm").submit();
-        document.getElementById("postForm").submit();
-        console.log(document.getElementById("petForm"));
-        console.log(document.getElementById("postForm"));
-    }
-</script>
+<!--<script>-->
+<!--    submitForms = function () {-->
+<!--        document.getElementById("petForm").submit();-->
+<!--        document.getElementById("postForm").submit();-->
+<!--        console.log(document.getElementById("petForm"));-->
+<!--        console.log(document.getElementById("postForm"));-->
+<!--    }-->
+<!--</script>-->
 
 </body>
 </html>

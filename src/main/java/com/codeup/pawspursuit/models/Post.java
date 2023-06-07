@@ -29,6 +29,7 @@ public class Post {
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
+
     @ManyToMany(mappedBy = "posts")
     private List<User> users;
 

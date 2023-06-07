@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class PetController {
 
@@ -40,7 +42,7 @@ public class PetController {
         return "/Pets/show";
     }
 
-    @GetMapping("/pets/create")
+    @GetMapping("/create")
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
         model.addAttribute("post", new Post());
@@ -61,7 +63,10 @@ public class PetController {
         post.setTitle(title);
         post.setBody(body);
         post.setPet(petDao.findFirstByOrderByIdDesc());
-        postDao.save(post);
+        User user = userDao.findById(1L).get();
+        List<Post> postList = user.getPosts();
+        postList.add(post);
+        userDao.save(user);
         return "redirect:/profile/1";
     }
 
@@ -72,6 +77,14 @@ public class PetController {
 
     @PostMapping("/pets/{id}/delete")
     public String deletePetPost(@RequestParam Long id) {
+        Post post = postDao.findByPetId(id);
+        User user = userDao.findById(1L).get();
+        user.getPosts().remove(post);
+        post.getUsers().remove(user);
+        userDao.save(user);
+        postDao.save(post);
+
+        postDao.deleteById(id);
         petDao.deleteById(id);
         return "redirect:/profile/1";
     }
