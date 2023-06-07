@@ -82,6 +82,7 @@ public class UserController {
         return "redirect:/login";
     }
 
+
     @GetMapping("/chat/{s_id}/{r_id}")
     public String showChat(Model model, @PathVariable Long s_id, @PathVariable Long r_id) {
         User user = userDao.findById(s_id).get();
@@ -93,6 +94,7 @@ public class UserController {
         model.addAttribute("id2", r_user.getId());
         model.addAttribute("name2", r_user.getName());
         model.addAttribute("email2", r_user.getEmail());
+
         return "User/chat";
     }
 
