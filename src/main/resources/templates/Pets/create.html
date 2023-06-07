@@ -11,18 +11,23 @@ this is the form for creating a post
 <section>
     <div id="post" hidden="hidden">
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
-            <div>
+            <div class="label">
                 <label>Title:
+                    <div class="input">
                         <input type="text" th:field="*{title}">
                 </label>
             </div>
-            <div>
+            <div class="label">
                 <label>Body:
+
+                    <div class="input">
                         <input type="text" th:field="*{body}">
                 </label>
             </div>
-            <div>
+            <div class="label">
                 <label>Location:
+
+                    <div class="input">
                         <input type="text" th:field="*{location}">
                 </label>
             </div>
@@ -32,40 +37,53 @@ this is the form for creating a post
 
     <div id="pet" hidden="hidden">
         <form th:action="@{/pets/create}" th:method="post" id="postForm">
-            <div>
+            <div class="label">
                 <label>Title:
+                    <div class="input">
                         <input type="text" name="title">
                 </label>
             </div>
-            <div>
+            <div class="label">
                 <label>Body:
+                    <div class="input">
                         <input type="text" name="body">
                 </label>
             </div>
-            <div>
+            <div class="label">
                 <label>Name:
+                    <div class="input">
                         <input type="text" name="name">
                 </label>
             </div>
-            <div>
+
+            <div class="label">
                 <label>Species:
+                    <div class="input">
                         <input type="text" name="species">
                 </label>
             </div>
-            <div>
+            <div class="label">
                 <label>Breed:
+                    <div class="input">
                         <input type="text" name="breed">
                 </label>
             </div>
-            <div>
+
+            <div class="label">
                 <label>Size:
+                    <div class="input">
                         <input type="text" name="size">
                 </label>
             </div>
-            <div>
-                <label>Description:
-                        <input type="text" name="description">
-                </label>
+
+            <div class="d-flex">
+                <div class="label">
+                    <label>Description:
+                        <div class="input ta-hold">
+                            <input class="text-area" type="text" name="description">
+                        </div>
+                    </label>
+                </div>
             </div>
             <button type="submit">Submit</button>
         </form>
