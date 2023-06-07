@@ -3,8 +3,26 @@
 <head th:replace="~{partials/header.html :: head('Post Edit')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
-THIS IS THE EDIT POST
-<div th:insert="~{partials/reg_post_form.html:: form}"></div>
+<form th:action="@{/posts/create}" th:method="post" id="postForm" th:object="${post}">
+    <input type="hidden" id="id" th:field="*{id}">
+    <div>
+        <div>
+            <label for="title">Title</label>
+        </div>
+        <div>
+            <input id="title" type="text" th:field="*{title}">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="description">Description</label>
+        </div>
+        <div>
+            <input id="description" type="text" th:field="*{body}">
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
 <footer th:replace="~{partials/footer.html :: footer}"></footer>
 
 </body>

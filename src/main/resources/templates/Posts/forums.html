@@ -4,5 +4,25 @@
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
 This is the index for posts not about lost pets
+
+<div th:each="post: ${posts}">
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body ">
+            <h5 th:text="${post.title}" class="card-title"></h5>
+            <p class="card-text" th:text="${post.body}"></p>
+            <a th:href="@{/posts/{id} (id=${post.id})}" class="btn btn-primary">Show</a>
+
+            <a th:href="@{/posts/{id}/edit (id=${post.id})}" class="btn btn-primary">Edit</a>
+
+
+
+            <form th:action="@{/posts/{id}/delete (id=${post.id})}" th:method="post">
+                <input type="hidden" name="id" th:value="${post.id}">
+                <button type="submit">DELETE</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

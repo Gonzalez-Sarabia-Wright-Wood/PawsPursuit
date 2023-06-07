@@ -27,6 +27,13 @@ This is the index for pets
                 </div>
                 <p class="card-text" th:text="${pet.getId()}"></p>
                 <a th:href="@{/pets/{id} (id=${pet.id})}" class="btn btn-primary">Show</a>
+
+                <a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="btn btn-primary">Edit</a>
+
+                <form th:action="@{/pets/{id}/delete (id=${pet.id})}" th:method="post">
+                    <input type="hidden" name="id" th:value="${pet.id}">
+                    <button type="submit">DELETE</button>
+                </form>
             </div>
         </div>
     </div>

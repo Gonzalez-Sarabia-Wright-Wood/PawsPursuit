@@ -1,8 +1,6 @@
 package com.codeup.pawspursuit.models;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 
@@ -37,11 +35,9 @@ public class User {
     private String zipCode;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Pet> petList;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(
             name = "user_post",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -139,5 +135,9 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public String getName(){
+        return firstName+ " " +lastName;
     }
 }
