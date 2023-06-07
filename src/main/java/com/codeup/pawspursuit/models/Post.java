@@ -29,7 +29,7 @@ public class Post {
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
-    @ManyToMany(mappedBy = "posts")
+    @ManyToMany(mappedBy = "posts", cascade = CascadeType.ALL)
     private List<User> users;
 
     public Post() {

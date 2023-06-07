@@ -2,6 +2,7 @@ package com.codeup.pawspursuit.controllers;
 
 import com.codeup.pawspursuit.models.Pet;
 import com.codeup.pawspursuit.models.Post;
+import com.codeup.pawspursuit.models.User;
 import com.codeup.pawspursuit.repositories.PetRepository;
 import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -47,6 +49,9 @@ public class PostController {
     @PostMapping("/posts/create")
     public String submitPost(@ModelAttribute Post post) {
         postDao.save(post);
+        User user = userDao.findById(1L).get();
+        List<Post> postList = user.getPosts();
+        userDao.save(user);
         return "redirect:/profile/1";
     }
 
