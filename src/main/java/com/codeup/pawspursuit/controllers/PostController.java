@@ -1,6 +1,8 @@
 package com.codeup.pawspursuit.controllers;
 
+import com.codeup.pawspursuit.models.Pet;
 import com.codeup.pawspursuit.models.Post;
+import com.codeup.pawspursuit.repositories.PetRepository;
 import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -13,11 +15,13 @@ import java.util.List;
 public class PostController {
 
     private PostRepository postDao;
+    private PetRepository petDao;
     private UserRepository userDao;
 
-    public PostController(PostRepository postRepository, UserRepository userRepository) {
+    public PostController(PostRepository postRepository, UserRepository userRepository, PetRepository petRepository) {
         this.postDao = postRepository;
         this.userDao = userRepository;
+        this.petDao = petRepository;
     }
 
     @GetMapping("/posts")
@@ -41,16 +45,31 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String submitPost(@ModelAttribute Post post){
+    public String submitPost(@ModelAttribute Post post) {
         postDao.save(post);
         return "redirect:/profile/1";
     }
 
     @GetMapping("/posts/{id}/edit")
-    public String editPost(@PathVariable Long id, Model model){
+    public String editPost(@PathVariable Long id, Model model) {
         Post post = postDao.findById(id).get();
         model.addAttribute("post", post);
-        return "Pets/create";
+        return "Posts/edit";
+
+
+    }
+
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@RequestParam Long id){
+        postDao.deleteById(id);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/")
+    public String index(Model model) {
+        List<Pet> pet = petDao.findAll();
+        model.addAttribute("post", pet);
+        return "/index";
     }
     @GetMapping("/aboutUs")
     public String aboutUs(){

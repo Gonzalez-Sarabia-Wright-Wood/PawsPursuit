@@ -4,6 +4,23 @@
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
 
-this is the profile landing page
+<h2>this is the profile landing page</h2>
+
+<input value="make a post">
+
+<div th:each="post : ${posts}">
+
+    <a th:href="@{/posts/{id}(id=${post.getId()})}" >
+        <h4 th:text="${post.title}"></h4></a>
+        <p th:text="${post.body}"></p>
+
+
+</div>
+
+
+<form th:action="@{/profile/1/delete}" th:method="post">
+    <input  type="hidden" value="1" name="id">
+    <button type="submit">DELETE PROFILE</button>
+</form>
 </body>
 </html>

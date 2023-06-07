@@ -4,7 +4,7 @@
             <label for="title">Title</label>
         </div>
         <div>
-            <input id="title" type="text">
+            <input id="title" type="text" th:field="*{title}">
         </div>
     </div>
     <div>
@@ -12,7 +12,7 @@
             <label for="description">Description</label>
         </div>
         <div>
-            <input id="description" type="text">
+            <input id="description" type="text" th:field="*{body}">
         </div>
     </div>
     <button type="submit">Submit</button>

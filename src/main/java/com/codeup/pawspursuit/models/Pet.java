@@ -35,7 +35,7 @@ public class Pet {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "pet")
+    @OneToOne(mappedBy = "pet", cascade = CascadeType.ALL)
     private Post post;
 
     public Pet() {

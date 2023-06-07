@@ -1,6 +1,7 @@
 package com.codeup.pawspursuit.models;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
@@ -24,15 +25,6 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
 
-    public User(String username, String password, String email, String firstName, String lastName) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-
-    }
-
     @Column(name = "last_name")
     private String lastName;
 
@@ -40,7 +32,7 @@ public class User {
     private Integer phoneNumber;
 
     @Column(name = "zip_code")
-    private Integer zipCode;
+    private String zipCode;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Pet> petList;
@@ -54,6 +46,15 @@ public class User {
 
 
     public User() {
+    }
+
+    public User(String username, String password, String email, String firstName, String lastName) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+
     }
 
     public Long getId() {
@@ -112,11 +113,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(Integer zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
@@ -134,5 +135,9 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public String getName(){
+        return firstName+ " " +lastName;
     }
 }

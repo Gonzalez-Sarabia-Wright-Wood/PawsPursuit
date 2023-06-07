@@ -3,7 +3,56 @@
 <head th:replace="~{partials/header.html :: head('Index')}"></head>
 <body>
 <nav th:replace="partials/navbar.html :: nav"></nav>
-this is the landing page
+
+<img src="path_to_your_image.jpg" alt="Description of the image">
+<h1>Help Reunite Best Friends</h1>
+
+<p>information goes here </p>
+
+<input type="button" value="View all pet posts">
+<input type="button" value="Sign up">
+
+<div th:each="pet: ${post}">
+<div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body ">
+        <h5 th:text="${pet.isLost()}" class="card-title"></h5>
+
+        <img class="card-img" src="..." alt="Card image cap">
+
+        <div>
+            <h6 class="card-subtitle d-inline-block">Species : </h6>
+            <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+        </div>
+        <div>
+            <h6 class="card-subtitle d-inline-block">Name : </h6>
+            <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
+        </div>
+        <div>
+            <h6 class="card-subtitle d-inline-block">Size : </h6>
+            <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
+        </div>
+        <p class="card-text" th:text="${pet.getId()}"></p>
+    </div>
+</div>
+</div>
+
+
+<h2>Ready to get started?</h2>
+<h3>Sign up or contact us</h3>
+
+<input type="button" value="Sign Up?">
+<input type="button" value="Contact Us">
+
+
+<img src="path_to_your_image.jpg" alt="Description of the image">
+
+<img src="path_to_your_image.jpg" alt="Description of the image">
+
+<img src="path_to_your_image.jpg" alt="Description of the image">
+
+<img src="path_to_your_image.jpg" alt="Description of the image">
+
 <footer th:replace="partials/footer.html :: footer"></footer>
 </body>
 </html>
