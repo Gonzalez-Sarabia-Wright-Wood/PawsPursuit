@@ -1,3 +1,19 @@
+*{
+    text-decoration: #394140;
+}
+body{
+    background-color: #A4CB9E;
+}
+
+div.input{
+    display: inline-block;
+}
+input, textarea{
+    border-radius: 30px ;
+}
+
+
+
 
 .switch {
     position: relative;
@@ -6,14 +22,12 @@
     height: 25px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -52,7 +66,6 @@ input:checked + .slider:before {
     transform: translateX(25px);
 }
 
-/* Rounded sliders */
 .slider.round {
     border-radius: 30px;
 }
