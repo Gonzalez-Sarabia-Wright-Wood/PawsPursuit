@@ -28,7 +28,7 @@ public class PostController {
 
     @GetMapping("/posts")
     public String getPosts(Model model) {
-        List<Post> posts = postDao.findAll();
+        List<Post> posts = postDao.findPostsByPetNull();
         model.addAttribute("posts", posts);
         return "Posts/forums";
     }
@@ -40,11 +40,11 @@ public class PostController {
         return "Posts/show";
     }
 
-    @GetMapping("/posts/create")
-    public String createPost(Model model) {
-        model.addAttribute("post", new Post());
-        return "Pets/create";
-    }
+//    @GetMapping("/create")
+//    public String createPost(Model model) {
+//        model.addAttribute("post", new Post());
+//        return "Pets/create";
+//    }
 
     @PostMapping("/posts/create")
     public String submitPost(@ModelAttribute Post post) {
