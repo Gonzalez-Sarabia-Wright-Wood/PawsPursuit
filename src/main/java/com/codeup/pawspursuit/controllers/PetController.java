@@ -34,7 +34,9 @@ public class PetController {
     @GetMapping(path = "/pets/{id}")
     public String onePet(@PathVariable Long id, Model model) {
         Pet onePet = petDao.findById(id).get();
+        Post onePost = postDao.findByPetId(id);
         model.addAttribute("onePet", onePet);
+        model.addAttribute("onePost", onePost);
         return "/Pets/show";
     }
 
@@ -46,10 +48,19 @@ public class PetController {
     }
 
     @PostMapping("/pets/create")
-    public String savePet(@ModelAttribute Pet pet, @ModelAttribute Post post) {
+    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description) {
+        Post post = new Post();
+        Pet pet  = new Pet();
         pet.setUser(userDao.findById(1L).get());
+        pet.setName(name);
+        pet.setSpecies(species);
+        pet.setBreed(breed);
+        pet.setSize(size);
+        pet.setDescription(description);
         petDao.save(pet);
-        post.setPet(pet);
+        post.setTitle(title);
+        post.setBody(body);
+        post.setPet(petDao.findFirstByOrderByIdDesc());
         postDao.save(post);
         return "redirect:/profile/1";
     }

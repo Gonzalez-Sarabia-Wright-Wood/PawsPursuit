@@ -65,4 +65,8 @@ public class PostController {
         model.addAttribute("post", pet);
         return "/index";
     }
+    @GetMapping("/aboutUs")
+    public String aboutUs(){
+        return "aboutUs";
+    }
 }

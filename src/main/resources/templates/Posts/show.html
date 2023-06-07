@@ -2,6 +2,9 @@
 <html lang="en">
 <head th:replace="~{partials/header.html :: head('Post')}"></head>
 <body>
-This is the post splash page
+<div th:each="post :${post}">
+    <h2 th:text="${post.getTitle()}"></h2>
+    <h2 th:text="${post.getBody()}"></h2>
+</div>
 </body>
 </html>
