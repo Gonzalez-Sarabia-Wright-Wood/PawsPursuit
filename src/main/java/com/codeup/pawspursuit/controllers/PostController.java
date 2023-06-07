@@ -60,8 +60,6 @@ public class PostController {
         Post post = postDao.findById(id).get();
         model.addAttribute("post", post);
         return "Posts/edit";
-
-
     }
 
     @PostMapping("/posts/{id}/delete")
