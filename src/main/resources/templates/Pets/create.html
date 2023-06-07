@@ -3,17 +3,20 @@
 <head th:replace="~{partials/header.html :: head('Create')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
-<label id="toggler" class="switch">
-    <input type="checkbox">
-    <span class="slider round"></span>
-</label>
-this is the form for creating a post
-<section>
-    <div id="post" hidden="hidden">
+<div class="container">
+<h6 class="d-inline-flex">Is this a lost pet post?</h6>
+    <label id="toggler" class="switch">
+
+        <input type="checkbox">
+        <span class="slider round"> <h6>yes</h6></span>
+    </label>
+</div>
+<section class="d-flex">
+    <div class="container" id="post" hidden="hidden">
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
             <div class="label">
                 <label>Title:
-                    <div class="input">
+                    <div class=" input">
                         <input type="text" th:field="*{title}">
                 </label>
             </div>
@@ -31,25 +34,25 @@ this is the form for creating a post
                         <input type="text" th:field="*{location}">
                 </label>
             </div>
-            <button type="submit">Submit</button>
+            <button class="btn button-main" type="submit">Submit</button>
         </form>
     </div>
 
-    <div id="pet" hidden="hidden">
+    <div class="container" id="pet" hidden="hidden">
         <form th:action="@{/pets/create}" th:method="post" id="postForm">
-            <div class="label">
+            <div  class=" label">
                 <label>Title:
                     <div class="input">
                         <input type="text" name="title">
                 </label>
             </div>
-            <div class="label">
+            <div class=" label">
                 <label>Body:
                     <div class="input">
                         <input type="text" name="body">
                 </label>
             </div>
-            <div class="label">
+            <div class=" label">
                 <label>Name:
                     <div class="input">
                         <input type="text" name="name">
@@ -62,7 +65,7 @@ this is the form for creating a post
                         <input type="text" name="species">
                 </label>
             </div>
-            <div class="label">
+            <div class=" label">
                 <label>Breed:
                     <div class="input">
                         <input type="text" name="breed">
@@ -77,7 +80,7 @@ this is the form for creating a post
             </div>
 
             <div class="d-flex">
-                <div class="label">
+                <div class=" label">
                     <label>Description:
                         <div class="input ta-hold">
                             <input class="text-area" type="text" name="description">
@@ -85,7 +88,7 @@ this is the form for creating a post
                     </label>
                 </div>
             </div>
-            <button type="submit">Submit</button>
+            <button class="btn button-main" type="submit">Submit</button>
         </form>
     </div>
 
