@@ -135,4 +135,8 @@ public class User {
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
+
+    public String getName(){
+        return firstName+ " " +lastName;
+    }
 }
