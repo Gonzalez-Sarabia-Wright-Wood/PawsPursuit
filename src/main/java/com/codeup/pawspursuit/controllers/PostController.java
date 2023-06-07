@@ -48,9 +48,9 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String submitPost(@ModelAttribute Post post) {
-        postDao.save(post);
         User user = userDao.findById(1L).get();
         List<Post> postList = user.getPosts();
+        postList.add(post);
         userDao.save(user);
         return "redirect:/profile/1";
     }
@@ -64,6 +64,13 @@ public class PostController {
 
     @PostMapping("/posts/{id}/delete")
     public String deletePost(@RequestParam Long id){
+        Post post = postDao.findById(id).get();
+        User user = userDao.findById(1L).get();
+        user.getPosts().remove(post);
+        post.getUsers().remove(user);
+        userDao.save(user);
+        postDao.save(post);
+
         postDao.deleteById(id);
         return "redirect:/posts";
     }

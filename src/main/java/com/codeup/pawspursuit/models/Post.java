@@ -30,7 +30,7 @@ public class Post {
     private Pet pet;
 
 
-    @ManyToMany(mappedBy = "posts", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "posts")
     private List<User> users;
 
     public Post() {
