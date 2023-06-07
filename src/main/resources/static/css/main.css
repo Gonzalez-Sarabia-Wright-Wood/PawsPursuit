@@ -1,17 +1,32 @@
 *{
-    text-decoration: #394140;
+    color: #394140;
 }
 body{
     background-color: #A4CB9E;
 }
-
-div.input{
-    display: inline-block;
+div.label{
+    background-color: #4C6763;
 }
-input, textarea{
+label{
+    color: aliceblue;
+}
+
+div.input,div.label{
+    display: inline-block;
+    border-radius: 30px ;
+
+}
+input,textarea{
+    padding-left: 5px;
     border-radius: 30px ;
 }
-
+.text-area{
+    height: 10rem;
+    width: 20rem;
+    word-break: break-word;
+    padding-bottom: 8rem;
+    padding-left: 0.5rem;
+}
 
 
 
