@@ -3,6 +3,7 @@
 <head th:replace="~{partials/header.html :: head('Pets')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
+This is the index for pets
 <section class="d-flex">
     <div th:each="pet: ${pets}">
         <div class="card" style="width: 18rem;">

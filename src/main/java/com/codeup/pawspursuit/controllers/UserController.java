@@ -21,14 +21,20 @@ public class UserController {
 
     @GetMapping("/login")
     public String userLoginGet() {
-        return "/login";
+        return "login";
     }
 
     @PostMapping("/login")
-    public String userLoginPost(@RequestParam String username, Model model) {
+    public String userLoginPost(@RequestParam String username, @RequestParam String password, Model model) {
         User user = userDao.findUserByUsername(username);
-        model.addAttribute("user", user);
-        return "redirect:/profile/" + user.getId();
+        if (user == null) {
+            return "redirect:/login";
+        } else if (user.getPassword().equals(password)) {
+            model.addAttribute("user", user);
+            return "redirect:/profile/" + user.getId();
+        }
+        model.addAttribute("error", "Invalid username or password");
+        return "login";
     }
 
     @GetMapping("/register")
@@ -38,10 +44,23 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user) {
-        userDao.save(user);
-        return "redirect:/login";
+    public String saveUser(@ModelAttribute User user, Model model) {
+        User existingUser = userDao.findUserByUsername(user.getUsername());
+
+        if (existingUser != null) {
+            model.addAttribute("error", "Username already exists");
+            return "register";
+        }
+
+        try {
+            userDao.save(user);
+            return "redirect:/login";
+        } catch (Exception e) {
+            model.addAttribute("error", "An error occurred during registration");
+            return "register";
+        }
     }
+
 
     @GetMapping("/profile/{id}")
     public String viewProfile(Model model, @PathVariable Long id) {
@@ -70,6 +89,7 @@ public class UserController {
         model.addAttribute("id", user.getId());
         model.addAttribute("name", user.getName());
         model.addAttribute("email", user.getEmail());
+
 
         return "User/chat";
     }

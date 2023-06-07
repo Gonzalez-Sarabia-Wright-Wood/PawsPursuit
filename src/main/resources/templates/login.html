@@ -6,22 +6,19 @@
 <section>
     <form th:method="post" th:action="@{/login}">
         <div>
-            <div>
-                <label for="username">Username</label>
-            </div>
-            <div>
-                <input id="username" type="text" name="username" >
-            </div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
         </div>
         <div>
-            <div>
-                <label for="password">Password</label>
-            </div>
-            <div>
-                <input id="password" type="text" name="password">
-            </div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Login</button>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+        <div th:if="${error}" style="color: red;">
+            <p th:text="${error}"></p>
+        </div>
     </form>
 </section>
 <footer th:replace="partials/footer.html :: footer"></footer>

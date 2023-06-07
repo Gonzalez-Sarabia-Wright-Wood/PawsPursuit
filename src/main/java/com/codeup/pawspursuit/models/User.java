@@ -1,6 +1,9 @@
 package com.codeup.pawspursuit.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.util.List;
 
 @Entity
@@ -24,15 +27,6 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
 
-    public User(String username, String password, String email, String firstName, String lastName) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-
-    }
-
     @Column(name = "last_name")
     private String lastName;
 
@@ -40,12 +34,14 @@ public class User {
     private Integer phoneNumber;
 
     @Column(name = "zip_code")
-    private Integer zipCode;
+    private String zipCode;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Pet> petList;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(
             name = "user_post",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -54,6 +50,15 @@ public class User {
 
 
     public User() {
+    }
+
+    public User(String username, String password, String email, String firstName, String lastName) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+
     }
 
     public Long getId() {
@@ -112,11 +117,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(Integer zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
