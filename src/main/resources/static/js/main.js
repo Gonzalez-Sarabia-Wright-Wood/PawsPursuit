@@ -5,14 +5,13 @@ let hiddenPost = post.getAttribute("hidden");
 let hiddenPet = pet.getAttribute("hidden");
 let toggled = true;
 let n =0;
+post.removeAttribute("hidden")
 
 toggle.addEventListener("click", function () {
     n++
     if (n===2){
         toggled = !toggled
         n=0;
-        console.log(toggled)
-
     }
     if (toggled === true) {
         post.removeAttribute("hidden")
