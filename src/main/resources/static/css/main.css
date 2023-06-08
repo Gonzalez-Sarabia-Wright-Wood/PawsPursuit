@@ -6,32 +6,82 @@ body{
 }
 div.label{
     background-color: #7FADA7;
+    padding:1px;
+    margin: 5px;
 }
 
-div.input,div.label{
+div.input{
     display: inline-block;
     border-radius: 30px ;
 
 }
-input,textarea{
+
+
+input, textarea{
     padding-left: 5px;
     border-radius: 30px ;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
 }
+
+.text-input{
+    width: 15rem;
+}
+
 .text-area{
     height: 10rem;
-    width: 20rem;
-    word-break: break-word;
-    padding-bottom: 8rem;
+    width: 15rem;
     padding-left: 0.5rem;
 }
+
 .button-main{
     padding: 1px;
-    height: 25px;
     width:75px;
     background-color: #C39BCA !important;
     border-radius: 30px !important;
 }
 
+.button-secondary{
+    padding: 1px;
+    height: 25px;
+    width:75px;
+    background-color: #7FADA7 !important;
+    border-radius: 30px !important;
+}
+.label-holder{
+    display:flex;
+}
+.label{
+    display: flex;
+    padding: 5px;
+    padding-top: 0;
+    background-color: #7FADA7;
+    border-radius: 30px;
+    padding-bottom: 1rem;
+    margin-bottom: -20px;
+}
+
+.ta-holder{
+    display: flex;
+}
+
+.ta{
+    display: flex;
+    padding: 7px;
+    background-color: #7FADA7;
+    border-radius: 30px;
+    padding-bottom: 3rem;
+    margin-bottom: -3rem;
+}
+.form-box {
+    background-color: #4C6763;
+    border-radius: 30px;
+}
 
 
 .switch {

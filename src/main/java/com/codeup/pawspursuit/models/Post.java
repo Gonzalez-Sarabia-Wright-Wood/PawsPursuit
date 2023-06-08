@@ -29,6 +29,8 @@ public class Post {
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    List<Comment> comments;
 
     @ManyToMany(mappedBy = "posts")
     private List<User> users;
@@ -90,5 +92,13 @@ public class Post {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

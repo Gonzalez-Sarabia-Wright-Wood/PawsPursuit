@@ -1,8 +1,10 @@
 package com.codeup.pawspursuit.controllers;
 
+import com.codeup.pawspursuit.models.Comment;
 import com.codeup.pawspursuit.models.Pet;
 import com.codeup.pawspursuit.models.Post;
 import com.codeup.pawspursuit.models.User;
+import com.codeup.pawspursuit.repositories.CommentRepository;
 import com.codeup.pawspursuit.repositories.PetRepository;
 import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
@@ -18,13 +20,15 @@ public class PetController {
 
     private PetRepository petDao;
     private PostRepository postDao;
-    private final UserRepository userDao;
+    private UserRepository userDao;
+    private CommentRepository commentDao;
 
     public PetController(PetRepository petDao, PostRepository postDao,
-                         UserRepository userDao) {
+                         UserRepository userDao, CommentRepository commentDao){
         this.petDao = petDao;
         this.postDao = postDao;
         this.userDao = userDao;
+        this.commentDao = commentDao;
     }
 
     @GetMapping(path = "/pets")
@@ -39,6 +43,10 @@ public class PetController {
         Post onePost = postDao.findByPetId(id);
         model.addAttribute("onePet", onePet);
         model.addAttribute("onePost", onePost);
+        Comment comment = new Comment();
+        List<Comment> commentList = commentDao.findAllByPostId(onePost.getId());
+        model.addAttribute("comment", comment);
+        model.addAttribute("commentList", commentList);
         return "/Pets/show";
     }
 

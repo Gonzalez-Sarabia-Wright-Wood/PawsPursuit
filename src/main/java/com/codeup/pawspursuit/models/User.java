@@ -44,6 +44,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "post_id"))
     private List<Post> posts;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Comment> comments;
+
 
     public User() {
     }
@@ -145,5 +148,13 @@ public class User {
 
     public String getName(){
         return firstName+ " " +lastName;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
