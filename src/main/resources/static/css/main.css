@@ -10,7 +10,7 @@ div.label{
     margin: 5px;
 }
 
-div.input,div.label{
+div.input{
     display: inline-block;
     border-radius: 30px ;
 
@@ -29,9 +29,13 @@ input, textarea{
     resize: none;
 }
 
+.text-input{
+    width: 15rem;
+}
+
 .text-area{
     height: 10rem;
-    width: 20rem;
+    width: 15rem;
     padding-left: 0.5rem;
 }
 
@@ -50,12 +54,24 @@ input, textarea{
     background-color: #7FADA7 !important;
     border-radius: 30px !important;
 }
-
-.ta{
+.label-holder{
+    display:flex;
+}
+.label{
     display: flex;
+    padding: 5px;
+    padding-top: 0;
+    background-color: #7FADA7;
+    border-radius: 30px;
+    padding-bottom: 1rem;
+    margin-bottom: -20px;
 }
 
 .ta-holder{
+    display: flex;
+}
+
+.ta{
     display: flex;
     padding: 7px;
     background-color: #7FADA7;

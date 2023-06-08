@@ -14,100 +14,134 @@
 <section class="d-flex">
     <div class="container" id="post" hidden="hidden">
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
-            <div class="label">
-                <label>Title:
-                    <div class=" input">
-                        <input type="text" th:field="*{title}">
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Title:</span>
                     </div>
-                </label>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" th:field="*{title}">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="label">
-                <label>Body:
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Location:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" th:field="*{location}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="ta-holder">
+                        <span class="ta">Post-Body:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <textarea class="text-area" th:field="*{body}"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="input">
-                        <input type="text" th:field="*{body}">
-                    </div>
-                </label>
-            </div>
-            <div class="label">
-                <label>Location:
-
-                    <div class="input">
-                        <input type="text" th:field="*{location}">
-                    </div>
-                </label>
-            </div>
             <button class="btn button-main" type="submit">Submit</button>
         </form>
     </div>
 
     <div class="container" id="pet" hidden="hidden">
         <form th:action="@{/pets/create}" th:method="post" id="postForm">
-            <div>
-                <div class="col label">
-                    <label>Title:
-                        <div class=" input">
-                            <input type="text" name="title">
-                        </div>
-                    </label>
-                </div>
-                <div class="col label">
-                    <label>Body:
-                        <div class="input">
-                            <input type="text" name="body">
-                        </div>
-                    </label>
-                </div>
-            </div>
-            <div>
-                <div class="col label">
-                    <label>Location:
-                        <div class="input">
-                            <input type="text" name="location">
-                        </div>
-                    </label>
-                </div>
-                <div class=" col label">
-                    <label>Name:
-                        <div class="input">
-                            <input type="text" name="name">
-                        </div>
-                    </label>
-                </div>
-            </div>
-            <div>
-                <div class=" col label">
-                    <label>Species:
-                        <div class="input">
-                            <input type="text" name="species">
-                        </div>
-                    </label>
-                </div>
-                <div class=" col label">
-                    <label>Breed:
-                        <div class="input">
-                            <input type="text" name="breed">
-                        </div>
-                    </label>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="col label">
-                    <label>Size:
-                        <div class="input">
-                            <input type="text" name="size">
-                        </div>
-                    </label>
-                </div>
-                <div class="col">
-                    <div class="ta">
-                        <span class="ta-holder">
-                            <label for="desc">Description:</label>
-                        </span>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Title:</span>
                     </div>
                     <div>
                         <div class="input">
-                            <textarea id="desc" class="text-area" name="description"></textarea>
+                            <input class="text-input" type="text" name="title">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Location:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="location">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Name:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Size:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="size">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Species:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="species">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Breed:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="breed">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="ta-holder">
+                        <span class="ta">Post-Body:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <textarea class="text-area" name="body"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="ta-holder">
+                        <span class="ta">Description:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <textarea class="text-area" name="description"></textarea>
                         </div>
                     </div>
                 </div>
