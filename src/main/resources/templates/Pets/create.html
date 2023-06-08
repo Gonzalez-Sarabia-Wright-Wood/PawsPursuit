@@ -12,7 +12,7 @@
     </label>
 </div>
 <section class="d-flex">
-    <div class="container" id="post" hidden="hidden">
+    <div class="mb-4 mt-4 p-4 container col-6 form-box" id="post" hidden="hidden">
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
             <div class="mt-1 d-flex">
                 <div class="col-6">
@@ -50,12 +50,13 @@
                     </div>
                 </div>
             </div>
-
-            <button class="btn button-main" type="submit">Submit</button>
+            <div class="d-flex justify-content-end">
+                <button class="mt-4 btn button-main" type="submit">Submit</button>
+            </div>
         </form>
     </div>
 
-    <div class="container" id="pet" hidden="hidden">
+    <div class="mt-4 mb-4 p-4 container form-box col-12" id="pet" hidden="hidden">
         <form th:action="@{/pets/create}" th:method="post" id="postForm">
             <div class="mt-1 d-flex">
                 <div class="col-6">
@@ -146,22 +147,13 @@
                     </div>
                 </div>
             </div>
-            <button class="btn button-main" type="submit">Submit</button>
+            <div class="d-flex justify-content-end">
+                <button class="mt-4 btn button-main" type="submit">Submit</button>
+            </div>
         </form>
     </div>
-
-
 </section>
 <footer th:replace="~{partials/footer.html :: footer}"></footer>
 <script th:src="@{/js/main.js}"></script>
-<!--<script>-->
-<!--    submitForms = function () {-->
-<!--        document.getElementById("petForm").submit();-->
-<!--        document.getElementById("postForm").submit();-->
-<!--        console.log(document.getElementById("petForm"));-->
-<!--        console.log(document.getElementById("postForm"));-->
-<!--    }-->
-<!--</script>-->
-
 </body>
 </html>

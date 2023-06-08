@@ -41,7 +41,6 @@ input, textarea{
 
 .button-main{
     padding: 1px;
-    height: 25px;
     width:75px;
     background-color: #C39BCA !important;
     border-radius: 30px !important;
@@ -79,7 +78,10 @@ input, textarea{
     padding-bottom: 3rem;
     margin-bottom: -3rem;
 }
-
+.form-box {
+    background-color: #4C6763;
+    border-radius: 30px;
+}
 
 
 .switch {
