@@ -1,8 +1,10 @@
 package com.codeup.pawspursuit.controllers;
 
+import com.codeup.pawspursuit.models.Comment;
 import com.codeup.pawspursuit.models.Pet;
 import com.codeup.pawspursuit.models.Post;
 import com.codeup.pawspursuit.models.User;
+import com.codeup.pawspursuit.repositories.CommentRepository;
 import com.codeup.pawspursuit.repositories.PetRepository;
 import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
@@ -19,11 +21,13 @@ public class PostController {
     private PostRepository postDao;
     private PetRepository petDao;
     private UserRepository userDao;
+    private CommentRepository commentDao;
 
-    public PostController(PostRepository postRepository, UserRepository userRepository, PetRepository petRepository) {
+    public PostController(PostRepository postRepository, UserRepository userRepository, PetRepository petRepository, CommentRepository commentRepository) {
         this.postDao = postRepository;
         this.userDao = userRepository;
         this.petDao = petRepository;
+        this.commentDao = commentRepository;
     }
 
     @GetMapping("/posts")
@@ -36,21 +40,34 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String viewPost(@PathVariable long id, Model model) {
         Post post = postDao.findById(id).get();
+        Comment comment = new Comment();
+        List<Comment> commentList = commentDao.findAllByPostId(id);
+        model.addAttribute("comment", comment);
+        model.addAttribute("commentList", commentList);
         model.addAttribute("post", post);
         return "Posts/show";
     }
 
-//    @GetMapping("/create")
-//    public String createPost(Model model) {
-//        model.addAttribute("post", new Post());
-//        return "Pets/create";
-//    }
+    private int getIndexOfPost(List<Post> postList, Long postId) {
+        for (int i = 0; i < postList.size(); i++) {
+            Post existingPost = postList.get(i);
+            if (existingPost.getId().equals(postId)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     @PostMapping("/posts/create")
     public String submitPost(@ModelAttribute Post post) {
         User user = userDao.findById(1L).get();
         List<Post> postList = user.getPosts();
-        postList.add(post);
+        int index = getIndexOfPost(postList, post.getId());
+        if (index != -1) {
+            postList.set(index, post);
+        } else {
+            postList.add(post);
+        }
         userDao.save(user);
         return "redirect:/profile/1";
     }
@@ -63,7 +80,7 @@ public class PostController {
     }
 
     @PostMapping("/posts/{id}/delete")
-    public String deletePost(@RequestParam Long id){
+    public String deletePost(@RequestParam Long id) {
         Post post = postDao.findById(id).get();
         User user = userDao.findById(1L).get();
         user.getPosts().remove(post);
@@ -81,8 +98,9 @@ public class PostController {
         model.addAttribute("post", pet);
         return "/index";
     }
+
     @GetMapping("/aboutUs")
-    public String aboutUs(){
+    public String aboutUs() {
         return "aboutUs";
     }
 }
