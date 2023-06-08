@@ -67,7 +67,7 @@ public class PetController {
         List<Post> postList = user.getPosts();
         postList.add(post);
         userDao.save(user);
-        return "redirect:/profile/1";
+        return "redirect:/profile";
     }
 
     @GetMapping("/pets/{id}/delete")
@@ -86,7 +86,7 @@ public class PetController {
 
         postDao.deleteById(id);
         petDao.deleteById(id);
-        return "redirect:/profile/1";
+        return "redirect:/profile";
     }
 
     @GetMapping("/pets/{id}/edit")

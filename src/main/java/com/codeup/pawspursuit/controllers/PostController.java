@@ -75,12 +75,12 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
-        List<Pet> pet = petDao.findAll();
-        model.addAttribute("post", pet);
-        return "/index";
-    }
+//    @GetMapping("/")
+//    public String index(Model model) {
+//        List<Pet> pet = petDao.findAll();
+//        model.addAttribute("post", pet);
+//        return "/index";
+//    }
     @GetMapping("/aboutUs")
     public String aboutUs(){
         return "aboutUs";

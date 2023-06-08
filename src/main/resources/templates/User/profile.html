@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head th:replace="~{partials/header.html :: head('Profile')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
 
 <h2>this is the profile landing page</h2>
 
+
+
 <div>
-    <a th:href="@{/chat/{id}(id=${id})/{id2}(id2=${id2})}" >
-    <input value="Chat With This User" type="button">
+    <a th:href="@{/chat/r_id(r_id=${user.getId()})}" >
+        <button>Chat With User</button>
     </a>
 </div>
 
-<input value="make a post">
+<input value="make a post" type="button">
 
 <div th:each="post : ${posts}">
 

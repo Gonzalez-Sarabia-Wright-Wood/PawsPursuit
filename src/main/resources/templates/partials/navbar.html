@@ -30,7 +30,7 @@
                         <a class="nav-link" th:href="@{/pets/create}">Create Pet</a>
                     </li>
                     <li class="navbar-item">
-                        <a class="nav-link" th:href="@{/profile/1}">Profile</a>
+                        <a class="nav-link" th:href="@{/profile}">Profile</a>
                     </li>
                     <li class="navbar-item">
                         <a class="nav-link" th:href="@{/profile/1/edit}">Edit Profile</a>
@@ -46,6 +46,11 @@
                     </li>
                     <li class="navbar-item">
                         <a th:href="@{/posts/create}" class="nav-link">Create Post</a>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </div>
