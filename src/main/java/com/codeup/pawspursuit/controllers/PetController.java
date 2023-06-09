@@ -9,7 +9,9 @@ import com.codeup.pawspursuit.repositories.PetRepository;
 import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import com.codeup.pawspursuit.models.*;
+import com.codeup.pawspursuit.repositories.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +28,15 @@ public class PetController {
     @Value("${filestack.api.key}")
     private String filestackapi;
 
+    private CategoryRepository categoryDao;
 
     public PetController(PetRepository petDao, PostRepository postDao,
-                         UserRepository userDao, CommentRepository commentDao){
+                         UserRepository userDao, CommentRepository commentDao, CategoryRepository categoryDao) {
         this.petDao = petDao;
         this.postDao = postDao;
         this.userDao = userDao;
         this.commentDao = commentDao;
+        this.categoryDao = categoryDao;
     }
 
     @GetMapping(path = "/pets")
@@ -56,9 +60,11 @@ public class PetController {
 
     @GetMapping("/create")
     public String createPet(Model model) {
+        List<Category>Categories = categoryDao.findAll();
         model.addAttribute("pet", new Pet());
         model.addAttribute("post", new Post());
         model.addAttribute("filestackapi", filestackapi);
+        model.addAttribute("categories", Categories);
         return "/Pets/create";
     }
 
@@ -66,7 +72,8 @@ public class PetController {
     public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description) {
         Post post = new Post();
         Pet pet = new Pet();
-        pet.setUser(userDao.findById(1L).get());
+        pet.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         pet.setName(name);
         pet.setSpecies(species);
         pet.setBreed(breed);
@@ -76,11 +83,8 @@ public class PetController {
         post.setTitle(title);
         post.setBody(body);
         post.setPet(petDao.findFirstByOrderByIdDesc());
-        User user = userDao.findById(1L).get();
-        List<Post> postList = user.getPosts();
-        postList.add(post);
-        userDao.save(user);
-        return "redirect:/profile";
+        postDao.save(post);
+        return "redirect:/profile/1";
     }
 
     @GetMapping("/pets/{id}/delete")
@@ -90,16 +94,8 @@ public class PetController {
 
     @PostMapping("/pets/{id}/delete")
     public String deletePetPost(@RequestParam Long id) {
-        Post post = postDao.findByPetId(id);
-        User user = userDao.findById(1L).get();
-        user.getPosts().remove(post);
-        post.getUsers().remove(user);
-        userDao.save(user);
-        postDao.save(post);
-
-        postDao.deleteById(id);
         petDao.deleteById(id);
-        return "redirect:/profile";
+        return "redirect:/pets";
     }
 
     @GetMapping("/pets/{id}/edit")

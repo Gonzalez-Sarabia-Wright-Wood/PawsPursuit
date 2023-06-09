@@ -1,6 +1,7 @@
 package com.codeup.pawspursuit.controllers;
 
 import com.codeup.pawspursuit.models.Pet;
+import com.codeup.pawspursuit.models.Post;
 import com.codeup.pawspursuit.models.User;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
