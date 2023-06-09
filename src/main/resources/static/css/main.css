@@ -100,7 +100,15 @@ input, textarea{
 .dropdown-toggle{
     border: none;
     background: none;
+    height: 1rem;
+    adding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
 
+}
+
+.dropdown-menu.show{
+    ransform: translate3d(0px, 20px, 0px) !important;
 }
 
 a.dropdown-item:active{
