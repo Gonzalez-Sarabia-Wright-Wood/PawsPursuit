@@ -52,14 +52,14 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/pets/create", // only authenticated users can create posts
+                        "/create", // only authenticated users can create posts
                         "/posts/{id}/edit", // only authenticated users can edit posts
                         "/posts/{id}/delete", "/profile" // only authenticated users can delete posts
                 )
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/css/**", "/js/**", "/favicon.ico")
+                .requestMatchers("/css/**", "/js/**", "/favicon.ico", "/img/**", "/static/**")
                 .permitAll();
                 return http.build();
     }
