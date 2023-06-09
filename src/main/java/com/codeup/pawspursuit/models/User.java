@@ -37,11 +37,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Pet> petList;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_post",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "post_id"))
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -140,8 +136,8 @@ public class User {
         this.posts = posts;
     }
 
-    public String getName(){
-        return firstName+ " " +lastName;
+    public String getName() {
+        return firstName + " " + lastName;
     }
 
     public List<Comment> getComments() {
