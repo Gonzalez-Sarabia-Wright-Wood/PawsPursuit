@@ -18,7 +18,8 @@ This is the index for posts not about lost pets
 <div th:each="post: ${posts}">
     <div class="card" style="width: 18rem;">
 
-        <div class="card-body ">
+        <div class="card-body">
+            <a th:href="@{/profile/${post.getUsers().get(0).getId()}}"><span th:text="${post.getUsers().get(0).getName()}"></span></a>
             <h5 th:text="${post.title}" class="card-title"></h5>
             <p class="card-text" th:text="${post.body}"></p>
             <a th:href="@{/posts/{id} (id=${post.id})}" class="btn btn-primary">Show</a>

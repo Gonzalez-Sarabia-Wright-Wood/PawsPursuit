@@ -69,7 +69,7 @@ public class PostController {
             postList.add(post);
         }
         userDao.save(user);
-        return "redirect:/profile/1";
+        return "redirect:/profile";
     }
 
     @GetMapping("/posts/{id}/edit")

@@ -8,6 +8,7 @@ import com.codeup.pawspursuit.repositories.CommentRepository;
 import com.codeup.pawspursuit.repositories.PetRepository;
 import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ public class PetController {
     private PostRepository postDao;
     private UserRepository userDao;
     private CommentRepository commentDao;
+    @Value("${filestack.api.key}")
+    private String filestackapi;
+
 
     public PetController(PetRepository petDao, PostRepository postDao,
                          UserRepository userDao, CommentRepository commentDao){
@@ -54,6 +58,7 @@ public class PetController {
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
         model.addAttribute("post", new Post());
+        model.addAttribute("filestackapi", filestackapi);
         return "/Pets/create";
     }
 

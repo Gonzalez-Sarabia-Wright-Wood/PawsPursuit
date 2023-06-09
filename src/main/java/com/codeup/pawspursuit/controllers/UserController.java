@@ -105,10 +105,10 @@ public class UserController {
     }
 
 
-    @GetMapping("/chat/{r_id}")
-    public String showChat(Model model, @PathVariable Long s_id, @PathVariable Long r_id) {
+    @GetMapping("/chat")
+    public String showChat(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User r_user = userDao.findById(r_id).get();
+        User r_user = userDao.findById(4L).get();
         model.addAttribute("testAppId",  testAppId);
         model.addAttribute("id", user.getId());
         model.addAttribute("name", user.getName());
