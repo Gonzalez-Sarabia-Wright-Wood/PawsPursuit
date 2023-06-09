@@ -5,38 +5,49 @@ import com.codeup.pawspursuit.models.Post;
 import com.codeup.pawspursuit.models.User;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+
+import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 public class UserController {
 
     private UserRepository userDao;
+    private PasswordEncoder passwordEncoder;
+
     @Value("${talkJs.test.app.id}")
     private String testAppId;
 
-    public UserController(UserRepository userDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
+
     }
 
-    @GetMapping("/login")
-    public String userLoginGet() {
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String userLoginGet() {
+//        return "login";
+//    }
 
-    @PostMapping("/login")
-    public String userLoginPost(@RequestParam String username, @RequestParam String password, Model model) {
-        User user = userDao.findUserByUsername(username);
-        if (user == null) {
-            return "redirect:/login";
-        } else if (user.getPassword().equals(password)) {
-            model.addAttribute("user", user);
-            return "redirect:/profile/" + user.getId();
-        }
-        model.addAttribute("error", "Invalid username or password");
-        return "login";
-    }
+//    @PostMapping("/login")
+//    public String userLoginPost(@RequestParam String username, @RequestParam String password, Model model) {
+//        User user = userDao.findByUsername(username);
+//        if (user == null) {
+//            return "redirect:/login";
+//        } else if (user.getPassword().equals(password)) {
+////            model.addAttribute("user", user);
+//            return "redirect:/profile";
+//        }
+//        model.addAttribute("error", "Invalid username or password");
+//        return "login";
+//    }
+
+
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
@@ -46,27 +57,38 @@ public class UserController {
 
     @PostMapping("/register")
     public String saveUser(@ModelAttribute User user, Model model) {
-        User existingUser = userDao.findUserByUsername(user.getUsername());
-
+        User existingUser = userDao.findByUsername(user.getUsername());
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        userDao.save(user);
         if (existingUser != null) {
             model.addAttribute("error", "Username already exists");
             return "register";
         }
-
-        try {
-            userDao.save(user);
             return "redirect:/login";
-        } catch (Exception e) {
-            model.addAttribute("error", "An error occurred during registration");
-            return "register";
-        }
-    }
 
+//        try {
+//            userDao.save(user);
+//            return "redirect:/login";
+//        } catch (Exception e) {
+//            model.addAttribute("error", "An error occurred during registration");
+//            return "register";
+//        }
+    }
+@GetMapping("/profile")
+    public String viewOwnProfile(Model model){
+    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    model.addAttribute("user", user);
+
+    return "User/profile";
+}
 
     @GetMapping("/profile/{id}")
-    public String viewProfile(Model model, @PathVariable Long id) {
+    public String viewOtherUserProfile(Model model, @PathVariable Long id) {
+
         User user = userDao.findById(id).get();
         model.addAttribute("user", user);
+
         return "User/profile";
     }
 
@@ -84,11 +106,11 @@ public class UserController {
     }
 
 
-    @GetMapping("/chat/{s_id}/{r_id}")
-    public String showChat(Model model, @PathVariable Long s_id, @PathVariable Long r_id) {
-        User user = userDao.findById(s_id).get();
+    @GetMapping("/chat/{r_id}")
+    public String showChat(Model model, @PathVariable Long r_id) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User r_user = userDao.findById(r_id).get();
-        model.addAttribute("testAppId", testAppId);
+        model.addAttribute("testAppId",  testAppId);
         model.addAttribute("id", user.getId());
         model.addAttribute("name", user.getName());
         model.addAttribute("email", user.getEmail());
@@ -108,4 +130,5 @@ public class UserController {
     public String showAllMessages() {
         return "User/messages";
     }
+
 }

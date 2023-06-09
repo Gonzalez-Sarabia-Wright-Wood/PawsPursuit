@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials/header.html :: head('Create')}"></head>
+<head>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+</head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<script th:inline="javascript">
+    var filestackapi = [[${filestackapi}]];
+    const client = filestack.init(filestackapi);
+    client.picker().open();
+</script>
 <div class="container">
     <h6 class="d-inline-flex">Is this a lost pet post?</h6>
     <label id="toggler" class="switch">

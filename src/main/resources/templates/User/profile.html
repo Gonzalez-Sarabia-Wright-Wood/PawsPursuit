@@ -1,10 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials/header.html :: head('Profile')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
 
 <h2>this is the profile landing page</h2>
+
+<div>
+    <a th:href="@{/chat/{r_id}(r_id=${user.getId()})}" >
+        <button>Chat With User</button>
+    </a>
+</div>
+
+<input value="make a post" type="button">
+
 <form th:action="@{/profile/1/delete}" th:method="post">
     <input  type="hidden" value="1" name="id">
     <button type="submit">DELETE PROFILE</button>

@@ -27,13 +27,13 @@
                         <a class="nav-link" th:href="@{/create}">Create</a>
                     </li>
                     <li class="navbar-item">
-                        <a class="nav-link" th:href="@{/profile/1}">Profile</a>
+                        <a class="nav-link" th:href="@{/profile}">Profile</a>
                     </li>
                     <li class="navbar-item">
                         <a class="nav-link" th:href="@{/profile/1/edit}">Edit Profile</a>
                     </li>
                     <li class="navbar-item">
-                        <a th:href="@{/chat/5/6}" class="nav-link">Chat</a>
+                        <a th:href="@{/chat}" class="nav-link">Chat</a>
                     </li>
                     <li class="navbar-item">
                         <a th:href="@{/profile/messages}" class="nav-link">Messages</a>
@@ -41,6 +41,15 @@
                     <li class="navbar-item">
                         <a th:href="@{/posts}" class="nav-link">Posts</a>
                     </li>
+                    <li class="navbar-item">
+                        <a th:href="@{/create}" class="nav-link">Create Post</a>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                        </form>
+                    </li>
+
                 </ul>
             </div>
         </div>
