@@ -8,7 +8,7 @@
 <h2>this is the profile landing page</h2>
 
 <div>
-    <a th:href="@{/chat/r_id(r_id=${user.getId()})}" >
+    <a th:href="@{/chat/{r_id}(r_id=${user.getId()})}" >
         <button>Chat With User</button>
     </a>
 </div>

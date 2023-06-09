@@ -54,7 +54,7 @@ public class SecurityConfiguration {
                 .requestMatchers(
                         "/create", "/pets/create", "/posts/create", // only authenticated users can create posts
                         "/posts/{id}/edit", // only authenticated users can edit posts
-                        "/posts/{id}/delete", "/profile", "/chat" // only authenticated users can delete posts
+                        "/posts/{id}/delete", "/profile", "/chat/{r_id}" // only authenticated users can delete posts
                 )
                 .authenticated()
                 .and()
