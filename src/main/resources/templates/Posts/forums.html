@@ -11,6 +11,7 @@ This is the index for posts not about lost pets
         <div class="card-body ">
             <h5 th:text="${post.title}" class="card-title"></h5>
             <p class="card-text" th:text="${post.body}"></p>
+            <h4><span th:text="${post.user.id}"></span></h4>
             <a th:href="@{/posts/{id} (id=${post.id})}" class="btn btn-primary">Show</a>
 
             <a th:href="@{/posts/{id}/edit (id=${post.id})}" class="btn btn-primary">Edit</a>

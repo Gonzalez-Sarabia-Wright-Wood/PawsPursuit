@@ -1,13 +1,7 @@
 package com.codeup.pawspursuit.controllers;
 
-import com.codeup.pawspursuit.models.Comment;
-import com.codeup.pawspursuit.models.Pet;
-import com.codeup.pawspursuit.models.Post;
-import com.codeup.pawspursuit.models.User;
-import com.codeup.pawspursuit.repositories.CommentRepository;
-import com.codeup.pawspursuit.repositories.PetRepository;
-import com.codeup.pawspursuit.repositories.PostRepository;
-import com.codeup.pawspursuit.repositories.UserRepository;
+import com.codeup.pawspursuit.models.*;
+import com.codeup.pawspursuit.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +16,14 @@ public class PostController {
     private PetRepository petDao;
     private UserRepository userDao;
     private CommentRepository commentDao;
+    private CategoryRepository categoryDao;
 
-    public PostController(PostRepository postRepository, UserRepository userRepository, PetRepository petRepository, CommentRepository commentRepository) {
+    public PostController(PostRepository postRepository, UserRepository userRepository, PetRepository petRepository, CommentRepository commentRepository, CategoryRepository categoryDao) {
         this.postDao = postRepository;
         this.userDao = userRepository;
         this.petDao = petRepository;
         this.commentDao = commentRepository;
+        this.categoryDao = categoryDao;
     }
 
     @GetMapping("/posts")
@@ -40,11 +36,13 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public String viewPost(@PathVariable long id, Model model) {
         Post post = postDao.findById(id).get();
+        List<Category> categoryList = post.getCategories();
         Comment comment = new Comment();
         List<Comment> commentList = commentDao.findAllByPostId(id);
         model.addAttribute("comment", comment);
         model.addAttribute("commentList", commentList);
         model.addAttribute("post", post);
+        model.addAttribute("categoryList", categoryList);
         return "Posts/show";
     }
 
@@ -59,16 +57,9 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String submitPost(@ModelAttribute Post post) {
-        User user = userDao.findById(1L).get();
-        List<Post> postList = user.getPosts();
-        int index = getIndexOfPost(postList, post.getId());
-        if (index != -1) {
-            postList.set(index, post);
-        } else {
-            postList.add(post);
-        }
-        userDao.save(user);
+    public String submitPost(@ModelAttribute Post post, @RequestParam Category category){
+        post.getCategories().add(category);
+        postDao.save(post);
         return "redirect:/profile/1";
     }
 
@@ -81,13 +72,6 @@ public class PostController {
 
     @PostMapping("/posts/{id}/delete")
     public String deletePost(@RequestParam Long id) {
-        Post post = postDao.findById(id).get();
-        User user = userDao.findById(1L).get();
-        user.getPosts().remove(post);
-        post.getUsers().remove(user);
-        userDao.save(user);
-        postDao.save(post);
-
         postDao.deleteById(id);
         return "redirect:/posts";
     }
