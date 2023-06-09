@@ -1,8 +1,17 @@
 package com.codeup.pawspursuit.controllers;
 
+import com.codeup.pawspursuit.models.Comment;
+import com.codeup.pawspursuit.models.Pet;
+import com.codeup.pawspursuit.models.Post;
+import com.codeup.pawspursuit.models.User;
+import com.codeup.pawspursuit.repositories.CommentRepository;
+import com.codeup.pawspursuit.repositories.PetRepository;
+import com.codeup.pawspursuit.repositories.PostRepository;
+import com.codeup.pawspursuit.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import com.codeup.pawspursuit.models.*;
 import com.codeup.pawspursuit.repositories.*;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +25,9 @@ public class PetController {
     private PostRepository postDao;
     private UserRepository userDao;
     private CommentRepository commentDao;
+    @Value("${filestack.api.key}")
+    private String filestackapi;
+
     private CategoryRepository categoryDao;
 
     public PetController(PetRepository petDao, PostRepository postDao,
@@ -51,6 +63,7 @@ public class PetController {
         List<Category>Categories = categoryDao.findAll();
         model.addAttribute("pet", new Pet());
         model.addAttribute("post", new Post());
+        model.addAttribute("filestackapi", filestackapi);
         model.addAttribute("categories", Categories);
         return "/Pets/create";
     }
@@ -59,7 +72,8 @@ public class PetController {
     public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description) {
         Post post = new Post();
         Pet pet = new Pet();
-        pet.setUser(userDao.findById(1L).get());
+        pet.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         pet.setName(name);
         pet.setSpecies(species);
         pet.setBreed(breed);
@@ -70,10 +84,6 @@ public class PetController {
         post.setBody(body);
         post.setPet(petDao.findFirstByOrderByIdDesc());
         postDao.save(post);
-//        User user = userDao.findById(1L).get();
-//        List<Post> postList = user.getPosts();
-//        postList.add(post);
-//        userDao.save(user);
         return "redirect:/profile/1";
     }
 

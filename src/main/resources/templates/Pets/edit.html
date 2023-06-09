@@ -4,48 +4,105 @@
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
 
-<div id="pet">
+<section class="d-flex">
+<div class="mt-4 mb-4 p-4 container form-box col-12" id="pet">
     <form th:action="@{/pets/${pet.id}/edit}" th:method="post" id="postForm">
         <input type="hidden" id="post_id"  name="post_id" th:value="${post.id}">
-        <div>
-            <label>Title:
-                <input type="text" name="title" th:value="${post.title}">
-            </label>
-        </div>
-        <div>
-            <label>Body:
-                <input type="text" name="body" th:value="${post.body}">
-            </label>
-        </div>
         <input type="hidden" id="pet_id" name="pet_id" th:value="${pet.id}">
-        <div>
-            <label>Name:
-                <input type="text" name="name" th:value="${pet.name}">
-            </label>
+        <div class="mt-1 d-flex">
+            <div class="col-6">
+                <div class="label-holder">
+                    <span class="label">Title:</span>
+                </div>
+                <div>
+                    <div class="input">
+                    <input class="text-input" type="text" name="title" th:value="${post.title}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="label-holder">
+                    <span class="label">Location:</span>
+                </div>
+                <div>
+                    <div class="input">
+                        <input class="text-input" type="text" name="location" th:value="${post.location}">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>Species:
-                <input type="text" name="species" th:value="${pet.species}">
-            </label>
+        <div class="mt-1 d-flex">
+            <div class="col-6">
+                <div class="label-holder">
+                    <span class="label">Name:</span>
+                </div>
+                <div>
+                    <div class="input">
+                        <input class="text-input" type="text" name="name" th:value="${pet.name}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="label-holder">
+                    <span class="label">Size:</span>
+                </div>
+                <div>
+                    <div class="input">
+                        <input class="text-input" type="text" name="size" th:value="${pet.size}">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>Breed:
-                <input type="text" name="breed" th:value="${pet.breed}">
-            </label>
+        <div class="mt-1 d-flex">
+            <div class="col-6">
+                <div class="label-holder">
+                    <span class="label">Species:</span>
+                </div>
+                <div>
+                    <div class="input">
+                        <input class="text-input" type="text" name="species" th:value="${pet.species}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="label-holder">
+                    <span class="label">Breed:</span>
+                </div>
+                <div>
+                    <div class="input">
+                        <input class="text-input" type="text" name="breed" th:value="${pet.breed}">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>Size:
-                <input type="text" name="size" th:value="${pet.size}">
-            </label>
+        <div class="mt-1 d-flex">
+            <div class="col-6">
+                <div class="ta-holder">
+                    <span class="ta">Post-Body:</span>
+                </div>
+                <div>
+                    <div class="input">
+                        <textarea class="text-area" name="body" th:value="${post.body}"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="ta-holder">
+                    <span class="ta">Description:</span>
+                </div>
+                <div>
+                    <div class="input">
+                        <textarea class="text-area" name="description" th:value="${pet.description}"></textarea>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>Description:
-                <input type="text" name="description" th:value="${pet.description}">
-            </label>
+        <div class="d-flex justify-content-end">
+            <button class="mt-4 btn button-main" type="submit">Submit</button>
         </div>
-        <button type="submit">Submit</button>
     </form>
 </div>
+</section>
 
 <footer th:replace="~{partials/footer.html :: footer}"></footer>
 </body>

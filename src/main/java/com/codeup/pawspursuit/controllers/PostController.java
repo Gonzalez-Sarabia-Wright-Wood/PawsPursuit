@@ -2,6 +2,7 @@ package com.codeup.pawspursuit.controllers;
 
 import com.codeup.pawspursuit.models.*;
 import com.codeup.pawspursuit.repositories.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -59,6 +60,7 @@ public class PostController {
     @PostMapping("/posts/create")
     public String submitPost(@ModelAttribute Post post, @RequestParam Category category){
         post.getCategories().add(category);
+        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         postDao.save(post);
         return "redirect:/profile/1";
     }
@@ -76,12 +78,12 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
-        List<Pet> pet = petDao.findAll();
-        model.addAttribute("post", pet);
-        return "/index";
-    }
+//    @GetMapping("/")
+//    public String index(Model model) {
+//        List<Pet> pet = petDao.findAll();
+//        model.addAttribute("post", pet);
+//        return "/index";
+//    }
 
     @GetMapping("/aboutUs")
     public String aboutUs() {

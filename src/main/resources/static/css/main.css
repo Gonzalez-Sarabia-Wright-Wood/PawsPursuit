@@ -88,7 +88,6 @@ input, textarea{
 }
 
 .card{
-    width: 18rem;
     background-color: #7FADA7;
     border-radius: 30px!important;
 }
@@ -96,26 +95,35 @@ input, textarea{
     text-decoration: none;
     text-underline: none;
 }
+a.dropdown-item:hover{
+    color: #C39BCA!important;
+    background-color:#4C6763 ;
+    border-radius: 30px;
+}
+form.dropdown-item{
+    border-radius: 30px;
+}
+button.dropdown-item:hover{
+    color:#C39BCA !important;
+    background-color: firebrick;
+    border-radius: 30px;
+}
 
 .dropdown-toggle{
     border: none;
     background: none;
-    height: 1rem;
-    adding-top: 0;
+    height: 2rem;
+    width: 2rem;
+    padding-top: 0;
     padding-right: 0;
     padding-bottom: 0;
 
 }
 
 .dropdown-menu.show{
-    ransform: translate3d(0px, 20px, 0px) !important;
-}
+    transform: translate3d(0px, 20px, 0px) !important;
+    background-color: #C39BCA;
 
-a.dropdown-item:active{
-    background-color: #C39BCA !important;
-}
-a.dropdown-item:hover{
-    background-color: #C39BCA !important;
 }
 
 .switch {
