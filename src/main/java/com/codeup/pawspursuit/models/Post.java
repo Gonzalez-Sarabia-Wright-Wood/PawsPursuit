@@ -3,6 +3,7 @@ package com.codeup.pawspursuit.models;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,8 +33,17 @@ public class Post {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     List<Comment> comments;
 
-    @ManyToMany(mappedBy = "posts")
-    private List<User> users;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToMany(cascade = CascadeType.DETACH)
+    @JoinTable(
+            name = "post_categories",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private List<Category> categories = new ArrayList<>();
 
     public Post() {
     }
@@ -86,12 +96,12 @@ public class Post {
         this.pet = pet;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Comment> getComments() {
@@ -100,5 +110,13 @@ public class Post {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }

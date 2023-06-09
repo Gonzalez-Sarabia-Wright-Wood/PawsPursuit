@@ -16,6 +16,16 @@
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
             <div class="mt-1 d-flex">
                 <div class="col-6">
+
+                    <select name="category">
+                        <th:block>
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}"
+                                    th:text="${category.name}"></option>
+                        </th:block>
+                    </select>
+
+
                     <div class="label-holder">
                         <span class="label">Title:</span>
                     </div>

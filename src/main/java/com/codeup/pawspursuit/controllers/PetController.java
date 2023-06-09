@@ -1,13 +1,7 @@
 package com.codeup.pawspursuit.controllers;
 
-import com.codeup.pawspursuit.models.Comment;
-import com.codeup.pawspursuit.models.Pet;
-import com.codeup.pawspursuit.models.Post;
-import com.codeup.pawspursuit.models.User;
-import com.codeup.pawspursuit.repositories.CommentRepository;
-import com.codeup.pawspursuit.repositories.PetRepository;
-import com.codeup.pawspursuit.repositories.PostRepository;
-import com.codeup.pawspursuit.repositories.UserRepository;
+import com.codeup.pawspursuit.models.*;
+import com.codeup.pawspursuit.repositories.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +16,15 @@ public class PetController {
     private PostRepository postDao;
     private UserRepository userDao;
     private CommentRepository commentDao;
+    private CategoryRepository categoryDao;
 
     public PetController(PetRepository petDao, PostRepository postDao,
-                         UserRepository userDao, CommentRepository commentDao){
+                         UserRepository userDao, CommentRepository commentDao, CategoryRepository categoryDao) {
         this.petDao = petDao;
         this.postDao = postDao;
         this.userDao = userDao;
         this.commentDao = commentDao;
+        this.categoryDao = categoryDao;
     }
 
     @GetMapping(path = "/pets")
@@ -52,8 +48,10 @@ public class PetController {
 
     @GetMapping("/create")
     public String createPet(Model model) {
+        List<Category>Categories = categoryDao.findAll();
         model.addAttribute("pet", new Pet());
         model.addAttribute("post", new Post());
+        model.addAttribute("categories", Categories);
         return "/Pets/create";
     }
 
@@ -71,10 +69,11 @@ public class PetController {
         post.setTitle(title);
         post.setBody(body);
         post.setPet(petDao.findFirstByOrderByIdDesc());
-        User user = userDao.findById(1L).get();
-        List<Post> postList = user.getPosts();
-        postList.add(post);
-        userDao.save(user);
+        postDao.save(post);
+//        User user = userDao.findById(1L).get();
+//        List<Post> postList = user.getPosts();
+//        postList.add(post);
+//        userDao.save(user);
         return "redirect:/profile/1";
     }
 
@@ -85,16 +84,8 @@ public class PetController {
 
     @PostMapping("/pets/{id}/delete")
     public String deletePetPost(@RequestParam Long id) {
-        Post post = postDao.findByPetId(id);
-        User user = userDao.findById(1L).get();
-        user.getPosts().remove(post);
-        post.getUsers().remove(user);
-        userDao.save(user);
-        postDao.save(post);
-
-        postDao.deleteById(id);
         petDao.deleteById(id);
-        return "redirect:/profile/1";
+        return "redirect:/pets";
     }
 
     @GetMapping("/pets/{id}/edit")
