@@ -210,7 +210,7 @@ label:hover {
     width: 60px;
     height: 55px;
     position: absolute;
-    background: black;
+    background: #394140;
     margin-left: 7.5px;
     border-radius: 100% 100% 30% 30%;
 }
@@ -218,7 +218,7 @@ label:hover {
     width: 40px;
     height: 30px;
     position: absolute;
-    background: white;
+    background: #C39BCA;
     border-radius: 100% 100% 50% 50%;
     margin-left: 10px;
     margin-top: 20px;
@@ -229,7 +229,7 @@ label:hover {
     height: 10px;
     position: absolute;
     background: white;
-    margin-left: 20px;
+    margin-left: 15px;
     margin-top: 10px;
 }
 .penguin-eye-right{
@@ -238,7 +238,7 @@ label:hover {
     height: 10px;
     position: absolute;
     background: white;
-    margin-left: 45px;
+    margin-left: 35px;
     margin-top: 10px;
 }
 .penguin-pupil{
@@ -247,40 +247,38 @@ label:hover {
     height: 3px;
     position: absolute;
     background: black;
-    margin-left: 2.5px;
-    margin-top: 3px;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 .penguin-arm-left{
     position: absolute;
-    background: black;
+    background: #394140;
     height: 25px;
-    width: 10px;
+    width: 15px;
     margin-top: 20px;
     border-radius: 100%;
-    transform: rotate(10deg);
 }
 .penguin-arm-right{
     position: absolute;
-    background: black;
+    background: #394140;
     height: 25px;
-    width: 10px;
-    margin-left: 65.5px;
+    width: 15px;
+    margin-left: 60px;
     margin-top: 20px;
     border-radius: 100%;
-    transform: rotate(350deg);
 }
 .beak {
     position: absolute;
     background: orange;
-    height: 17.5px;
+    height: 15px;
     width: 10px;
-    margin-left: 32.5px;
-    margin-top: 10px;
+    margin-left: 25px;
+    margin-top: 13px;
     border-radius: 100%;
 }
 .brow-left{
     position: absolute;
-    width: 40px;
+    width: 35px;
     height: 5px;
     background: yellow;
     border-radius: 100%;
@@ -290,11 +288,11 @@ label:hover {
 
 .brow-right{
     position: absolute;
-    width: 40px;
+    width: 35px;
     height: 5px;
     background: yellow;
     border-radius: 100%;
-    margin-left: 35px;
+    margin-left: 25px;
     margin-top: 2px;
     transform: rotate(325deg);
 }
@@ -302,7 +300,7 @@ label:hover {
     position: absolute;
     width: 20px;
     height: 10px;
-    background: darkgoldenrod;
+    background: #C39BCA;
     border-radius: 100%;
     margin-left: 27.5px;
     margin-top: -10px;
@@ -311,7 +309,7 @@ label:hover {
     position: absolute;
     width: 20px;
     height: 10px;
-    background: darkgoldenrod;
+    background: #C39BCA;
     margin-left: 27.5px;
     margin-top: -6px;
 }
@@ -319,7 +317,7 @@ label:hover {
     position: absolute;
     width: 20px;
     height: 5px;
-    background: black;
+    background: #4C6763;
     margin-left: 27.5px;
     margin-top: -3px;
 }
@@ -327,8 +325,54 @@ label:hover {
     position: absolute;
     width: 31px;
     height: 5px;
-    background: darkgoldenrod;
+    background: #C39BCA;
     border-radius: 100%;
     margin-left: 22px;
     margin-top: 0px;
+}
+
+.monocle{
+    Border-radius: 100%;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    margin-left: -1px;
+    margin-top: -1px;
+    border: solid gold;
+}
+.chain-1{
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: gold;
+    margin-left: 9px;
+    margin-top: 4px;
+}
+.chain-2{
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: gold;
+    margin-left: 3px;
+    margin-top: 4px;
+}
+.chain-3{
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: gold;
+    margin-left: 5px;
+    margin-top: 1px;
+}
+.chain-4{
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: gold;
+    margin-left: 3px;
+    margin-top: -4px;
 }

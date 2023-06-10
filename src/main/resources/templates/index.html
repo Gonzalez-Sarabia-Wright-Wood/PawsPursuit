@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head th:replace="~{partials/header.html :: head('Index')}"></head>
 <body>
-<nav th:replace="partials/navbar.html :: nav"></nav>
+<nav th:replace="~{partials/navbar.html :: nav}"></nav>
 
 <img src="path_to_your_image.jpg" alt="Description of the image">
 
@@ -47,15 +47,15 @@
 <input type="button" value="Contact Us">
 
 
-<img src="/imgs/Head_Shot.png" alt="HeadShot Photo">
+<img src="/images/Head_Shot.png" alt="HeadShot Photo">
 
-<img src="/imgs/image.png" alt="Genesis Shot">
+<img src="/images/image.png" alt="Genesis Shot">
 
-<img src="/imgs/Riley_Wood_Headshot.png" alt="Rileys Headshot">
+<img src="/images/Riley_Wood_Headshot.png" alt="Rileys Headshot">
 
-<img src="/imgs/luis_gonzalez_headshot.png" alt="Luis Headshot">
+<img src="/images/luis_gonzalez_headshot.png" alt="Luis Headshot">
 
 
-<footer th:replace="partials/footer.html :: footer"></footer>
+<footer th:replace="~{partials/footer.html :: footer}"></footer>
 </body>
 </html>

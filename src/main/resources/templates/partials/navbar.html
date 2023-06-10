@@ -1,26 +1,32 @@
-<nav th:fragment="navbar" class="navbar navbar-expand-md sticky-top">
+<nav th:fragment="~{partials/navbar.html :: nav}" class="navbar navbar-expand-md sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">
             <div class="penguin">
+                <div class="penguin-arm-left"></div>
                 <div class="penguin-body">
                     <div class="penguin-body-inner"></div>
+                    <div class="penguin-eye-left">
+                        <div class="penguin-pupil"></div>
+                    </div>
+                    <div class="penguin-eye-right">
+                        <div class="penguin-pupil"></div>
+                        <div class="monocle">
+                            <div class="chain-1"><div class="chain-2"><div class="chain-3"><div class="chain-4">
+
+                            </div></div></div></div>
+                        </div>
+                    </div>
+                    <div class="brow-left"></div>
+                    <div class="brow-right"></div>
+                    <div class="beak"></div>
                 </div>
-                <div class="penguin-arm-left"></div>
                 <div class="penguin-arm-right"></div>
-                <div class="penguin-eye-right">
-                    <div class="penguin-pupil"></div>
-                </div>
-                <div class="penguin-eye-left">
-                    <div class="penguin-pupil"></div>
-                </div>
-                <div class="brow-left"></div>
-                <div class="brow-right"></div>
-                <div class="beak"></div>
                 <div class="penguin-hat-top"></div>
                 <div class="penguin-hat-body"></div>
                 <div class="penguin-hat-brim"></div>
                 <div class="penguin-hat-band"></div>
             </div>
+            <img th:src="@{paw.jpeg}">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
