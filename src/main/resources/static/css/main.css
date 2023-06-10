@@ -13,9 +13,7 @@ div.label{
 div.input{
     display: inline-block;
     border-radius: 30px ;
-
 }
-
 
 input, textarea{
     padding-left: 5px;
@@ -37,6 +35,10 @@ input, textarea{
     height: 10rem;
     width: 15rem;
     padding-left: 0.5rem;
+}
+.home{
+    display: flex;
+    align-items: center;
 }
 .button{
     padding: 1px;
@@ -117,7 +119,6 @@ button.dropdown-item:hover{
     padding-top: 0;
     padding-right: 0;
     padding-bottom: 0;
-
 }
 
 .dropdown-menu.show{
@@ -200,12 +201,12 @@ input:checked + .slider:before {
 label:hover {
     cursor: pointer;
 }
-.penguin{
-    width: 75px;
-    height: 75px;
-    margin: 2px;
-}
 
+.penguin{
+    width: 71px;
+    height: 55px;
+    margin: 10px 2px 2px 2px;
+}
 .penguin-body{
     width: 60px;
     height: 55px;
