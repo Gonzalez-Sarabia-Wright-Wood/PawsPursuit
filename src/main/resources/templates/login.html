@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{partials/header.html :: head('Login')}"></head>
+<head th:replace="~{partials/fragment.html :: head('Login')}"></head>
 <body>
-<nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
 <section class="d-flex">
     <div class="mt-4 mb-4 p-4 container col-6 col-md-4 form-box">
         <form th:method="post" th:action="@{/login}">
@@ -32,6 +32,6 @@
         </form>
     </div>
 </section>
-<footer th:replace="~{partials/footer.html :: footer}"></footer>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
 </body>
 </html>

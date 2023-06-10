@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{partials/header.html :: head('Post')}"></head>
+<head th:replace="~{partials/fragment.html :: head('Post')}"></head>
 <body>
 <div th:each="post :${post}">
     <h2 th:text="${post.getTitle()}"></h2>
@@ -32,7 +32,7 @@
         </form>
     </div>
 </div>
-<footer th:replace="~{partials/footer.html :: footer}"></footer>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
 
 </body>
 </html>
