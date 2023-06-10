@@ -1,28 +1,35 @@
-*{
-    color: #394140!important;
+* {
+    color: #394140 !important;
     font-family: 'Eczar', serif;
 }
 
-.home-title{
+.home-title {
     font-family: 'Bubblegum Sans', cursive;
 }
-body{
+
+body {
     background-color: #A4CB9E;
 }
-div.label{
+
+.navbar {
+    background-color: #A4CB9E;
+    padding: 0 !important;
+}
+
+div.label {
     background-color: #7FADA7;
-    padding:1px;
+    padding: 1px;
     margin: 5px;
 }
 
-div.input{
+div.input {
     display: inline-block;
-    border-radius: 30px ;
+    border-radius: 30px;
 }
 
-input, textarea{
+input, textarea {
     padding-left: 5px;
-    border-radius: 30px ;
+    border-radius: 30px;
     border: none;
     overflow: auto;
     outline: none;
@@ -32,45 +39,58 @@ input, textarea{
     resize: none;
 }
 
-.text-input{
+.text-input {
     width: 100%;
 }
 
-.text-area{
+.text-area {
     height: 10rem;
     width: 15rem;
     padding-left: 0.5rem;
 }
-.home{
+.text-area-2 {
+    height: 5rem;
+    width: 25rem;
+    padding-left: 0.5rem;
+}
+
+.home {
     display: flex;
     align-items: center;
 }
-.offcanvas{
+
+.offcanvas {
     background-color: #7FADA7;
 }
-.button{
-    padding: 1px;
-    width:75px;
+
+.button {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
     border-radius: 30px !important;
+    border: transparent;
+    background-color: transparent;
 }
 
-.button-main{
-    padding: 1px;
-    /*width:75px;*/
+.button-main {
+    border: transparent;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
     background-color: #C39BCA !important;
     border-radius: 30px !important;
 }
 
-.button-secondary{
+.button-secondary {
     padding: 1px;
-    width:75px;
+    width: 75px;
     background-color: #7FADA7 !important;
     border-radius: 30px !important;
 }
-.label-holder{
-    display:flex;
+
+.label-holder {
+    display: flex;
 }
-.label{
+
+.label {
     display: flex;
     padding: 5px;
     padding-top: 0;
@@ -80,11 +100,11 @@ input, textarea{
     margin-bottom: -20px;
 }
 
-.ta-holder{
+.ta-holder {
     display: flex;
 }
 
-.ta{
+.ta {
     display: flex;
     padding: 7px;
     background-color: #7FADA7;
@@ -92,34 +112,43 @@ input, textarea{
     padding-bottom: 3rem;
     margin-bottom: -3rem;
 }
+
 .form-box {
     background-color: #4C6763;
     border-radius: 30px;
 }
-
-.card{
+.form-box-2 {
     background-color: #7FADA7;
-    border-radius: 30px!important;
+    border-radius: 30px;
 }
-.a-null{
+
+.card {
+    background-color: #7FADA7;
+    border-radius: 30px !important;
+}
+
+.a-null {
     text-decoration: none;
     text-underline: none;
 }
-a.dropdown-item:hover{
-    color: #C39BCA!important;
-    background-color:#4C6763 ;
+
+a.dropdown-item:hover, button.dropdown-item:hover {
+    color: #C39BCA !important;
+    background-color: #4C6763;
     border-radius: 30px;
 }
-form.dropdown-item{
+
+form.dropdown-item {
     border-radius: 30px;
 }
-button.dropdown-item:hover{
-    color:#C39BCA !important;
+
+button.dropdown-item:hover {
+    color: #C39BCA !important;
     background-color: firebrick;
     border-radius: 30px;
 }
 
-.dropdown-toggle{
+.dropdown-toggle {
     border: none;
     background: none;
     height: 2rem;
@@ -129,12 +158,12 @@ button.dropdown-item:hover{
     padding-bottom: 0;
 }
 
-.dropdown-menu.show{
+.dropdown-menu.show {
     transform: translate3d(0px, 20px, 0px) !important;
     background-color: #C39BCA;
 }
 
-.post{
+.post {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -142,7 +171,8 @@ button.dropdown-item:hover{
     background-color: #7FADA7;
     border-radius: 30px;
 }
-.post-item{
+
+.post-item {
     display: flex;
     justify-content: center;
 }
@@ -210,12 +240,13 @@ label:hover {
     cursor: pointer;
 }
 
-.penguin{
+.penguin {
     width: 71px;
     height: 55px;
     margin: 10px 2px 2px 2px;
 }
-.penguin-body{
+
+.penguin-body {
     width: 60px;
     height: 55px;
     position: absolute;
@@ -223,7 +254,8 @@ label:hover {
     margin-left: 7.5px;
     border-radius: 100% 100% 30% 30%;
 }
-.penguin-body-inner{
+
+.penguin-body-inner {
     width: 40px;
     height: 30px;
     position: absolute;
@@ -232,7 +264,8 @@ label:hover {
     margin-left: 10px;
     margin-top: 20px;
 }
-.penguin-eye-left{
+
+.penguin-eye-left {
     Border-radius: 100%;
     width: 10px;
     height: 10px;
@@ -241,7 +274,8 @@ label:hover {
     margin-left: 15px;
     margin-top: 10px;
 }
-.penguin-eye-right{
+
+.penguin-eye-right {
     Border-radius: 100%;
     width: 10px;
     height: 10px;
@@ -250,7 +284,8 @@ label:hover {
     margin-left: 35px;
     margin-top: 10px;
 }
-.penguin-pupil{
+
+.penguin-pupil {
     border-radius: 100%;
     width: 3px;
     height: 3px;
@@ -259,7 +294,8 @@ label:hover {
     margin-left: 5px;
     margin-top: 5px;
 }
-.penguin-arm-left{
+
+.penguin-arm-left {
     position: absolute;
     background: #394140;
     height: 25px;
@@ -267,7 +303,8 @@ label:hover {
     margin-top: 20px;
     border-radius: 100%;
 }
-.penguin-arm-right{
+
+.penguin-arm-right {
     position: absolute;
     background: #394140;
     height: 25px;
@@ -276,6 +313,7 @@ label:hover {
     margin-top: 20px;
     border-radius: 100%;
 }
+
 .beak {
     position: absolute;
     background: orange;
@@ -285,7 +323,8 @@ label:hover {
     margin-top: 13px;
     border-radius: 100%;
 }
-.brow-left{
+
+.brow-left {
     position: absolute;
     width: 35px;
     height: 5px;
@@ -295,7 +334,7 @@ label:hover {
     transform: rotate(35deg);
 }
 
-.brow-right{
+.brow-right {
     position: absolute;
     width: 35px;
     height: 5px;
@@ -305,7 +344,8 @@ label:hover {
     margin-top: 2px;
     transform: rotate(325deg);
 }
-.penguin-hat-top{
+
+.penguin-hat-top {
     position: absolute;
     width: 20px;
     height: 10px;
@@ -314,7 +354,8 @@ label:hover {
     margin-left: 27.5px;
     margin-top: -10px;
 }
-.penguin-hat-body{
+
+.penguin-hat-body {
     position: absolute;
     width: 20px;
     height: 10px;
@@ -322,7 +363,8 @@ label:hover {
     margin-left: 27.5px;
     margin-top: -6px;
 }
-.penguin-hat-brim{
+
+.penguin-hat-brim {
     position: absolute;
     width: 20px;
     height: 5px;
@@ -330,7 +372,8 @@ label:hover {
     margin-left: 27.5px;
     margin-top: -3px;
 }
-.penguin-hat-band{
+
+.penguin-hat-band {
     position: absolute;
     width: 31px;
     height: 5px;
@@ -340,7 +383,7 @@ label:hover {
     margin-top: 0px;
 }
 
-.monocle{
+.monocle {
     Border-radius: 100%;
     width: 12px;
     height: 12px;
@@ -349,7 +392,8 @@ label:hover {
     margin-top: -1px;
     border: solid gold;
 }
-.chain-1{
+
+.chain-1 {
     border-radius: 100%;
     width: 3px;
     height: 3px;
@@ -358,7 +402,8 @@ label:hover {
     margin-left: 9px;
     margin-top: 4px;
 }
-.chain-2{
+
+.chain-2 {
     border-radius: 100%;
     width: 3px;
     height: 3px;
@@ -367,7 +412,8 @@ label:hover {
     margin-left: 3px;
     margin-top: 4px;
 }
-.chain-3{
+
+.chain-3 {
     border-radius: 100%;
     width: 3px;
     height: 3px;
@@ -376,7 +422,8 @@ label:hover {
     margin-left: 5px;
     margin-top: 1px;
 }
-.chain-4{
+
+.chain-4 {
     border-radius: 100%;
     width: 3px;
     height: 3px;
