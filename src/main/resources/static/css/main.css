@@ -1,5 +1,10 @@
 *{
     color: #394140!important;
+    font-family: 'Eczar', serif;
+}
+
+.home-title{
+    font-family: 'Bubblegum Sans', cursive;
 }
 body{
     background-color: #A4CB9E;
@@ -39,6 +44,9 @@ input, textarea{
 .home{
     display: flex;
     align-items: center;
+}
+.offcanvas{
+    background-color: #7FADA7;
 }
 .button{
     padding: 1px;
