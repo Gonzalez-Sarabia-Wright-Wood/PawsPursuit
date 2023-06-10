@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
 <head th:replace="~{partials/header.html :: head('Pets')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
 This is the index for pets
-<section class="container d-flex">
+
+<section class="m-2 d-flex">
     <div class="m-2 col-3" th:each="pet: ${pets}">
 
         <div class="p-1 container d-flex flex-row card">
@@ -12,7 +12,8 @@ This is the index for pets
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a th:href="@{/pets/{id}/edit (id=${pet.id})}" class=" dropdown-item">Edit</a></li>
+                    <li><a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
+                    <li><a th:href="@{/profile/{id} (id=${post.findByPetId(pet.id).user.id})}" class="dropdown-item">Profile</a></li>
                     <li><form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}" th:method="post">
                         <input class="dropdown-item" type="hidden" name="id" th:value="${pet.id}">
                         <button class=" dropdown-item " type="submit">DELETE</button>

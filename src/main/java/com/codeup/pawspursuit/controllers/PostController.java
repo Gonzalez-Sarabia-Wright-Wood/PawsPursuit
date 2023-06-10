@@ -31,7 +31,7 @@ public class PostController {
     public String getPosts(Model model) {
         List<Post> posts = postDao.findPostsByPetNull();
         model.addAttribute("posts", posts);
-        return "Posts/forums";
+        return "posts/forums";
     }
 
     @GetMapping("/posts/{id}")
@@ -44,7 +44,7 @@ public class PostController {
         model.addAttribute("commentList", commentList);
         model.addAttribute("post", post);
         model.addAttribute("categoryList", categoryList);
-        return "Posts/show";
+        return "posts/show";
     }
 
     private int getIndexOfPost(List<Post> postList, Long postId) {
@@ -69,7 +69,7 @@ public class PostController {
     public String editPost(@PathVariable Long id, Model model) {
         Post post = postDao.findById(id).get();
         model.addAttribute("post", post);
-        return "Posts/edit";
+        return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/delete")

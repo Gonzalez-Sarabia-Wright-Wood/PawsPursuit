@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head th:replace="~{partials/header.html :: head('Pet Edit')}"></head>
 <body>
 <nav th:replace="~{partials/navbar.html :: nav}"></nav>
+
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
+</div>
 
 <section class="d-flex">
 <div class="mt-4 mb-4 p-4 container form-box col-12" id="pet">
