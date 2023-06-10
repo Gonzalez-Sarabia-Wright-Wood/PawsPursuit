@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials/header.html :: head('Post')}"></head>
 <body>
 <div th:each="post :${post}">
@@ -32,5 +31,7 @@
         </form>
     </div>
 </div>
+<footer th:replace="~{partials/footer.html :: footer}"></footer>
+
 </body>
 </html>

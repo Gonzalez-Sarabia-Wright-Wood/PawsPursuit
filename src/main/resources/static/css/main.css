@@ -30,7 +30,7 @@ input, textarea{
 }
 
 .text-input{
-    width: 15rem;
+    width: 100%;
 }
 
 .text-area{
@@ -46,7 +46,7 @@ input, textarea{
 
 .button-main{
     padding: 1px;
-    width:75px;
+    /*width:75px;*/
     background-color: #C39BCA !important;
     border-radius: 30px !important;
 }
@@ -113,7 +113,7 @@ button.dropdown-item:hover{
     border: none;
     background: none;
     height: 2rem;
-    width: 2rem;
+    width: 1rem;
     padding-top: 0;
     padding-right: 0;
     padding-bottom: 0;
