@@ -36,7 +36,7 @@ public class CommentController {
     @PostMapping("/comment/pet")
     public String submitPetComment(@ModelAttribute Comment comment) {
         comment.setPost(postDao.findById(comment.getPost().getId()).get());
-        comment.setUser(userDao.findById(1L).get());
+        comment.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         commentDao.save(comment);
         return "redirect:/pets/" + comment.getPost().getPet().getId();
     }
