@@ -66,14 +66,6 @@ public class UserController {
             return "register";
         }
             return "redirect:/login";
-
-//        try {
-//            userDao.save(user);
-//            return "redirect:/login";
-//        } catch (Exception e) {
-//            model.addAttribute("error", "An error occurred during registration");
-//            return "register";
-//        }
     }
 @GetMapping("/profile")
     public String viewOwnProfile(Model model){
