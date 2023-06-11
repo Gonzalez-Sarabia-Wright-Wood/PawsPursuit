@@ -162,7 +162,7 @@
                 </div>
             </div>
             <div>
-                <input id="stashFilestackURL" name="stashFilestackURL" value="replaceme" th:field="*{pet.photo}" type="hidden">
+                <input id="stashFilestackURL" th:name="stashFilestackURL" th:value="replaceme" type="hidden">
                 <label for="upload"></label>
                 <button type="button" id="upload" name="upload">Upload an image</button>
             </div>
@@ -177,13 +177,18 @@
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
         crossOrigin="anonymous"></script>
 <script th:inline="javascript">
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
     var filestackapi = [[${filestackapi}]];
     const client = filestack.init(filestackapi);
-    client.picker().open();
+    const options = {
+        onUploadDone:
+    function(res) {
+        $("#stashFilestackURL").val(res.filesUploaded[0].url);
+    }
+    }
 
-    $("#upload").click(function () {
-        client.picker().open()
-    });
 </script>
 <script th:src="@{/js/main.js}"></script>
 </body>
