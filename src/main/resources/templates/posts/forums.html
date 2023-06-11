@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{partials/header.html :: head('Forums')}"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials/fragment.html :: head('Forums')}"></head>
 <body>
-<nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
 This is the index for posts not about lost pets
 
 <div sec:authorize="isAuthenticated()">
@@ -36,5 +34,7 @@ This is the index for posts not about lost pets
         </div>
     </div>
 </div>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
+
 </body>
 </html>

@@ -72,7 +72,7 @@ public class UserController {
     User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     model.addAttribute("user", user);
 
-    return "User/profile";
+    return "user/profile";
 }
 
     @GetMapping("/profile/{id}")
@@ -81,14 +81,14 @@ public class UserController {
         User user = userDao.findById(id).get();
         model.addAttribute("user", user);
 
-        return "User/profile";
+        return "user/profile";
     }
 
     @GetMapping(path = "/profile/{id}/edit")
     public String editUser(Model model, @PathVariable Long id) {
         User user = userDao.findById(id).get();
         model.addAttribute("user", user);
-        return "User/edit";
+        return "user/edit";
     }
 
     @PostMapping("/profile/{id}/delete")
@@ -110,17 +110,17 @@ public class UserController {
         model.addAttribute("name2", r_user.getName());
         model.addAttribute("email2", r_user.getEmail());
 
-        return "User/chat";
+        return "user/chat";
     }
 
     @PostMapping("/chat")
     public String sendChat() {
-        return "User/chat";
+        return "user/chat";
     }
 
     @GetMapping("/profile/messages")
     public String showAllMessages() {
-        return "User/messages";
+        return "user/messages";
     }
 
 }

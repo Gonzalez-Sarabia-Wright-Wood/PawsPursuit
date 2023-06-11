@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{partials/header.html :: head('Profile')}"></head>
+<head th:replace="~{partials/fragment.html :: head('Profile')}"></head>
 <body>
-<nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
 
 <h2>this is the profile landing page</h2>
 
 <div>
     <a th:href="@{/chat/{r_id}(r_id=${user.getId()})}" >
-        <button>Chat With User</button>
+        <button class="btn button-main">Chat With User</button>
     </a>
 </div>
 
@@ -28,6 +27,7 @@
 </div>
 
 
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
 
 </body>
 </html>
