@@ -1,42 +1,94 @@
 <!DOCTYPE html>
-<head th:replace="~{partials/header.html :: head('Pet')}"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials/fragment.html :: head('Pet')}"></head>
 <body>
-<nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
 <div th:each="pet :${onePet}" th:with="postTitle=${onePost.getTitle()}, postBody=${onePost.getBody()}">
-    <h2 th:text="${pet.isLost()}"></h2>
-    <h2 th:text="${postTitle}"></h2>
-    <img th:src="${pet.getPhoto()}"></img>
-    <h2 th:text="${pet.getName()}"></h2>
-    <h2 th:text="${pet.getSpecies()}"></h2>
-    <h2 th:text="${pet.getBreed()}"></h2>
-    <h2 th:text="${pet.getSize()}"></h2>
-    <h2 th:text="${pet.getDescription()}"></h2>
-    <h2 th:text="${postBody}"></h2>
-
-    <form th:action="@{/comment/pet}" th:method="post" th:object="${comment}">
-        <input type="hidden" th:name="post" th:value="${onePost.id}">
-        <label>Body:
-            <input type="text" th:field="*{body}">
-        </label>
-        <button type="submit">Add comment</button>
-    </form>
-
-    <div th:each="comment : ${commentList}">
-        <h2 th:text="${comment.getBody()}"></h2>
-
-        <form th:action="@{/comment/edit}" th:method="post">
-            <input type="hidden" name="id" th:value="${comment.id}">
-            <input type="text" name="body" th:value="${comment.body}">
-            <button type="submit">Edit Me</button>
-        </form>
-
-        <form th:action="@{/comment/delete}" th:method="post">
-            <input type="hidden" th:name="id" th:value="${comment.id}">
-            <button type="submit">Delete</button>
+    <div class="m-2 post">
+        <div class="col-12 post-item"><h1 class="lost" th:text="${pet.isLost()}"></h1></div>
+        <div class="col-12 post-item"><h2 th:text="${postTitle}"></h2></div>
+        <div class="col-12 post-item"><img th:src="${pet.getPhoto()}"></img></div>
+        <div class="col-3 post-item"><h3>Name:&nbsp;</h3>
+            <h3 th:text="${pet.getName()}"></h3></div>
+        <div class="col-3 post-item"><h3>Species:&nbsp;</h3>
+            <h3 th:text="${pet.getSpecies()}"></h3></div>
+        <div class="col-3 post-item"><h3>Breed:&nbsp;</h3>
+            <h3 th:text="${pet.getBreed()}"></h3></div>
+        <div class="col-3 post-item"><h3>Size:&nbsp;</h3>
+            <h3 th:text="${pet.getSize()}"></h3></div>
+        <div class="col-6 post-item"><h5>Description:&nbsp;</h5><h5 th:text="${pet.getDescription()}"></h5></div>
+        <div class="col-6 post-item"><h5>Additional Info:&nbsp;</h5><h5 th:text="${postBody}"></h5></div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-center col-12 container">
+        <form th:action="@{/comment/pet}" th:method="post" th:object="${comment}">
+            <div class="py-2 px-4 col-12 form-box">
+                <input type="hidden" th:name="post" th:value="${onePost.id}">
+                <div class="ta-holder">
+                    <span class="ta">Body:</span>
+                </div>
+                <div class="col-12 input">
+                    <textarea class="text-area-2" type="text" th:field="*{body}"></textarea>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="button-main" type="submit">Add comment</button>
+                </div>
+            </div>
         </form>
     </div>
-</div>
-<footer th:replace="~{partials/footer.html :: footer}"></footer>
+    <hr>
+<div class="p-2 container form-box">
+    <div class="container" th:each="comment : ${commentList}">
+        <div class="m-1 d-flex py-1 px-4 col-12 justify-content-between form-box-2">
+            <h2 class="m-0" th:text="${comment.getBody()}"></h2>
+            <span class="col-1 dropdown">
+                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <button class="button dropdown-item" type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                            Edit
+                        </button>
+                    </li>
+                    <!--                    <li><a th:href="@{/profile/{id} (id=${onePost.petId.user.id})}" class="dropdown-item">Profile</a></li>-->
+                    <li>
+                        <form class="p-0 dropdown-item" th:action="@{/comment/delete}" th:method="post">
+                            <input class="dropdown-item" type="hidden" th:name="id" th:value="${comment.id}">
+                            <button class=" dropdown-item " type="submit">Delete</button>
+                        </form>
+                    </li>
+                </ul>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="p-0 dropdown-item" th:action="@{/comment/edit}" th:method="post">
+                                <input class="dropdown-item" type="hidden" name="id" th:value="${comment.id}">
+                                <input type="text" name="body" th:value="${comment.body}">
+                                <div class="modal-footer">
+                                    <button class="button-main" type="submit">Save Changes</button>
+                                    <button type="button" class="button-secondary"
+                                            data-bs-dismiss="modal">Close</button>
 
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </span>
+        </div>
+    </div>
+</div>
+</div>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
+
+<script th:src="@{/js/index.js}"></script>
 </body>
 </html>

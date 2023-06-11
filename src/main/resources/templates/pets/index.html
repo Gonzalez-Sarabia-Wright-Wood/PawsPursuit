@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<head th:replace="~{partials/header.html :: head('Pets')}"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials/fragment.html :: head('Pets')}"></head>
 <body>
-<nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
 This is the index for pets
 
 <section class="m-2 d-flex">
@@ -46,6 +47,6 @@ This is the index for pets
     </div>
 </section>
 </body>
-<footer th:replace="~{partials/footer.html :: footer}"></footer>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
 <script th:src="@{/js/index.js}"></script>
 </html>

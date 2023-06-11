@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<head th:replace="~{partials/header.html :: head('Post Edit')}"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{partials/fragment.html :: head('Post Edit')}"></head>
 <body>
-<nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
 <form th:action="@{/posts/create}" th:method="post" id="postForm" th:object="${post}">
     <input type="hidden" id="id" th:field="*{id}">
     <div>
@@ -22,7 +24,7 @@
     </div>
     <button type="submit">Submit</button>
 </form>
-<footer th:replace="~{partials/footer.html :: footer}"></footer>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
 
 </body>
 </html>

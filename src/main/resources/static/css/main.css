@@ -1,25 +1,35 @@
-*{
-    color: #394140!important;
+* {
+    color: #394140 !important;
+    font-family: 'Eczar', serif;
 }
-body{
+
+.home-title {
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+body {
     background-color: #A4CB9E;
 }
-div.label{
+
+.navbar {
+    background-color: #A4CB9E;
+    padding: 0 !important;
+}
+
+div.label {
     background-color: #7FADA7;
-    padding:1px;
+    padding: 1px;
     margin: 5px;
 }
 
-div.input{
+div.input {
     display: inline-block;
-    border-radius: 30px ;
-
+    border-radius: 30px;
 }
 
-
-input, textarea{
+input, textarea {
     padding-left: 5px;
-    border-radius: 30px ;
+    border-radius: 30px;
     border: none;
     overflow: auto;
     outline: none;
@@ -29,38 +39,58 @@ input, textarea{
     resize: none;
 }
 
-.text-input{
+.text-input {
     width: 100%;
 }
 
-.text-area{
+.text-area {
     height: 10rem;
     width: 15rem;
     padding-left: 0.5rem;
 }
-.button{
-    padding: 1px;
-    width:75px;
-    border-radius: 30px !important;
+.text-area-2 {
+    height: 5rem;
+    width: 25rem;
+    padding-left: 0.5rem;
 }
 
-.button-main{
-    padding: 1px;
-    /*width:75px;*/
+.home {
+    display: flex;
+    align-items: center;
+}
+
+.offcanvas {
+    background-color: #7FADA7;
+}
+
+.button {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+    border-radius: 30px !important;
+    border: transparent;
+    background-color: transparent;
+}
+
+.button-main {
+    border: transparent;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
     background-color: #C39BCA !important;
     border-radius: 30px !important;
 }
 
-.button-secondary{
+.button-secondary {
     padding: 1px;
-    width:75px;
+    width: 75px;
     background-color: #7FADA7 !important;
     border-radius: 30px !important;
 }
-.label-holder{
-    display:flex;
+
+.label-holder {
+    display: flex;
 }
-.label{
+
+.label {
     display: flex;
     padding: 5px;
     padding-top: 0;
@@ -70,11 +100,11 @@ input, textarea{
     margin-bottom: -20px;
 }
 
-.ta-holder{
+.ta-holder {
     display: flex;
 }
 
-.ta{
+.ta {
     display: flex;
     padding: 7px;
     background-color: #7FADA7;
@@ -82,34 +112,43 @@ input, textarea{
     padding-bottom: 3rem;
     margin-bottom: -3rem;
 }
+
 .form-box {
     background-color: #4C6763;
     border-radius: 30px;
 }
-
-.card{
+.form-box-2 {
     background-color: #7FADA7;
-    border-radius: 30px!important;
+    border-radius: 30px;
 }
-.a-null{
+
+.card {
+    background-color: #7FADA7;
+    border-radius: 30px !important;
+}
+
+.a-null {
     text-decoration: none;
     text-underline: none;
 }
-a.dropdown-item:hover{
-    color: #C39BCA!important;
-    background-color:#4C6763 ;
+
+a.dropdown-item:hover, button.dropdown-item:hover {
+    color: #C39BCA !important;
+    background-color: #4C6763;
     border-radius: 30px;
 }
-form.dropdown-item{
+
+form.dropdown-item {
     border-radius: 30px;
 }
-button.dropdown-item:hover{
-    color:#C39BCA !important;
+
+button.dropdown-item:hover {
+    color: #C39BCA !important;
     background-color: firebrick;
     border-radius: 30px;
 }
 
-.dropdown-toggle{
+.dropdown-toggle {
     border: none;
     background: none;
     height: 2rem;
@@ -117,13 +156,25 @@ button.dropdown-item:hover{
     padding-top: 0;
     padding-right: 0;
     padding-bottom: 0;
-
 }
 
-.dropdown-menu.show{
+.dropdown-menu.show {
     transform: translate3d(0px, 20px, 0px) !important;
     background-color: #C39BCA;
+}
 
+.post {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #7FADA7;
+    border-radius: 30px;
+}
+
+.post-item {
+    display: flex;
+    justify-content: center;
 }
 
 .switch {
@@ -187,4 +238,197 @@ input:checked + .slider:before {
 
 label:hover {
     cursor: pointer;
+}
+
+.penguin {
+    width: 71px;
+    height: 55px;
+    margin: 10px 2px 2px 2px;
+}
+
+.penguin-body {
+    width: 60px;
+    height: 55px;
+    position: absolute;
+    background: #394140;
+    margin-left: 7.5px;
+    border-radius: 100% 100% 30% 30%;
+}
+
+.penguin-body-inner {
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    background: #C39BCA;
+    border-radius: 100% 100% 50% 50%;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.penguin-eye-left {
+    Border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: white;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.penguin-eye-right {
+    Border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: white;
+    margin-left: 35px;
+    margin-top: 10px;
+}
+
+.penguin-pupil {
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: black;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.penguin-arm-left {
+    position: absolute;
+    background: #394140;
+    height: 25px;
+    width: 15px;
+    margin-top: 20px;
+    border-radius: 100%;
+}
+
+.penguin-arm-right {
+    position: absolute;
+    background: #394140;
+    height: 25px;
+    width: 15px;
+    margin-left: 60px;
+    margin-top: 20px;
+    border-radius: 100%;
+}
+
+.beak {
+    position: absolute;
+    background: orange;
+    height: 15px;
+    width: 10px;
+    margin-left: 25px;
+    margin-top: 13px;
+    border-radius: 100%;
+}
+
+.brow-left {
+    position: absolute;
+    width: 35px;
+    height: 5px;
+    background: yellow;
+    border-radius: 100%;
+    margin-top: 2px;
+    transform: rotate(35deg);
+}
+
+.brow-right {
+    position: absolute;
+    width: 35px;
+    height: 5px;
+    background: yellow;
+    border-radius: 100%;
+    margin-left: 25px;
+    margin-top: 2px;
+    transform: rotate(325deg);
+}
+
+.penguin-hat-top {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background: #C39BCA;
+    border-radius: 100%;
+    margin-left: 27.5px;
+    margin-top: -10px;
+}
+
+.penguin-hat-body {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background: #C39BCA;
+    margin-left: 27.5px;
+    margin-top: -6px;
+}
+
+.penguin-hat-brim {
+    position: absolute;
+    width: 20px;
+    height: 5px;
+    background: #4C6763;
+    margin-left: 27.5px;
+    margin-top: -3px;
+}
+
+.penguin-hat-band {
+    position: absolute;
+    width: 31px;
+    height: 5px;
+    background: #C39BCA;
+    border-radius: 100%;
+    margin-left: 22px;
+    margin-top: 0px;
+}
+
+.monocle {
+    Border-radius: 100%;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    margin-left: -1px;
+    margin-top: -1px;
+    border: solid gold;
+}
+
+.chain-1 {
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: gold;
+    margin-left: 9px;
+    margin-top: 4px;
+}
+
+.chain-2 {
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: gold;
+    margin-left: 3px;
+    margin-top: 4px;
+}
+
+.chain-3 {
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: gold;
+    margin-left: 5px;
+    margin-top: 1px;
+}
+
+.chain-4 {
+    border-radius: 100%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    background: gold;
+    margin-left: 3px;
+    margin-top: -4px;
 }

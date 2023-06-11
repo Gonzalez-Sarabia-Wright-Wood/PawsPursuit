@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<head th:replace="~{partials/header.html :: head('Create')}"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{partials/fragment.html :: head('Create')}"></head>
 <head>
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 </head>
 <body>
-<nav th:replace="~{partials/navbar.html :: nav}"></nav>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
 <script th:inline="javascript">
     var filestackapi = [[${filestackapi}]];
     const client = filestack.init(filestackapi);
@@ -68,7 +70,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <button class="mt-4 btn button-main" type="submit">Submit</button>
+                <button class="mt-4 button-main" type="submit">Submit</button>
             </div>
         </form>
     </div>
@@ -165,12 +167,12 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <button class="mt-4 btn button-main" type="submit">Submit</button>
+                <button class="mt-4 button-main" type="submit">Submit</button>
             </div>
         </form>
     </div>
 </section>
-<footer th:replace="~{partials/footer.html :: footer}"></footer>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
 <script th:src="@{/js/main.js}"></script>
 </body>
 </html>
