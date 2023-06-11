@@ -126,12 +126,12 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="navbar-item">
-                        <a class="nav-link" th:href="@{/register}">Register</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a th:href="@{/login}" class="nav-link">Login</a>
-                    </li>
+<!--                    <li class="navbar-item">-->
+<!--                        <a class="nav-link" th:href="@{/register}">Register</a>-->
+<!--                    </li>-->
+<!--                    <li class="navbar-item">-->
+<!--                        <a th:href="@{/login}" class="nav-link">Login</a>-->
+<!--                    </li>-->
                     <li class="navbar-item">
                         <a class="nav-link" th:href="@{/pets}">Pets</a>
                     </li>
@@ -156,10 +156,28 @@
                     <li class="navbar-item">
                         <a th:href="@{/create}" class="nav-link">Create Post</a>
                     </li>
-                    <li>
-                        <form th:action="@{/logout}" th:method="post">
-                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+<!--                    <li>-->
+<!--                        <form th:action="@{/logout}" th:method="post">-->
+<!--                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/posts}">Home</a>
+                    </li>
+                    <th:block sec:authorize="!isAuthenticated()">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/register}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">Login</a>
+                        </li>
+                    </th:block>
+                    <li sec:authorize="isAuthenticated()">
+                        <form style="display: none" th:action="@{/logout}" th:method="post">
+                            <button type="submit" id="button_to_link"></button>
                         </form>
+                        <label class="nav-link" for="button_to_link">Logout</label>
                     </li>
 
                 </ul>
