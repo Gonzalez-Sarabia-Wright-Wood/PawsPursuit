@@ -2,9 +2,11 @@ package com.codeup.pawspursuit.controllers;
 
 import com.codeup.pawspursuit.models.Comment;
 import com.codeup.pawspursuit.models.Post;
+import com.codeup.pawspursuit.models.User;
 import com.codeup.pawspursuit.repositories.CommentRepository;
 import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +28,7 @@ public class CommentController {
     @PostMapping("/comment/post")
     public String submitPostComment(@ModelAttribute Comment comment) {
         comment.setPost(postDao.findById(comment.getPost().getId()).get());
-        comment.setUser(userDao.findById(1L).get());
+        comment.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         commentDao.save(comment);
         return "redirect:/posts/" + comment.getPost().getId();
     }
