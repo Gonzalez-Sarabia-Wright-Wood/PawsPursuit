@@ -14,7 +14,7 @@ This is the index for pets
                 </button>
                 <ul class="dropdown-menu">
                     <li><a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
-                    <li><a th:href="@{/profile/{id} (id=${post.findByPetId(pet.id).user.id})}" class="dropdown-item">Profile</a></li>
+                    <li><a th:href="@{/profile/{id} (id=${pet.user.id})}" class="dropdown-item">Profile</a></li>
                     <li><form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}" th:method="post">
                         <input class="dropdown-item" type="hidden" name="id" th:value="${pet.id}">
                         <button class=" dropdown-item " type="submit">DELETE</button>

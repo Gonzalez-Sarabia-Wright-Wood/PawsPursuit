@@ -58,9 +58,11 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String submitPost(@ModelAttribute Post post, @RequestParam Category category){
+    public String submitPost(@ModelAttribute Post post, @RequestParam Category category) {
         post.getCategories().add(category);
-        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        User authenticatedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(authenticatedUser.getId()).orElseThrow();
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/profile/1";
     }
@@ -68,6 +70,8 @@ public class PostController {
     @GetMapping("/posts/{id}/edit")
     public String editPost(@PathVariable Long id, Model model) {
         Post post = postDao.findById(id).get();
+        Category category = post.getCategories().get(0);
+        model.addAttribute("category", category);
         model.addAttribute("post", post);
         return "posts/edit";
     }
@@ -77,13 +81,6 @@ public class PostController {
         postDao.deleteById(id);
         return "redirect:/posts";
     }
-
-//    @GetMapping("/")
-//    public String index(Model model) {
-//        List<Pet> pet = petDao.findAll();
-//        model.addAttribute("post", pet);
-//        return "/index";
-//    }
 
     @GetMapping("/aboutUs")
     public String aboutUs() {
