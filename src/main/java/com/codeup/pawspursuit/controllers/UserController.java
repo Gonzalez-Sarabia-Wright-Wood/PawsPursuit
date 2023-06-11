@@ -48,7 +48,6 @@ public class UserController {
 //    }
 
 
-
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("user", new User());
@@ -60,12 +59,12 @@ public class UserController {
         User existingUser = userDao.findByUsername(user.getUsername());
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        userDao.save(user);
         if (existingUser != null) {
             model.addAttribute("error", "Username already exists");
             return "register";
         }
-            return "redirect:/login";
+        userDao.save(user);
+        return "redirect:/login";
 
 //        try {
 //            userDao.save(user);
@@ -75,13 +74,14 @@ public class UserController {
 //            return "register";
 //        }
     }
-@GetMapping("/profile")
-    public String viewOwnProfile(Model model){
-    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    model.addAttribute("user", user);
 
-    return "user/profile";
-}
+    @GetMapping("/profile")
+    public String viewOwnProfile(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
+
+        return "user/profile";
+    }
 
     @GetMapping("/profile/{id}")
     public String viewOtherUserProfile(Model model, @PathVariable Long id) {
@@ -110,7 +110,7 @@ public class UserController {
     public String showChat(Model model, @PathVariable Long r_id) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User r_user = userDao.findById(r_id).get();
-        model.addAttribute("testAppId",  testAppId);
+        model.addAttribute("testAppId", testAppId);
         model.addAttribute("id", user.getId());
         model.addAttribute("name", user.getName());
         model.addAttribute("email", user.getEmail());

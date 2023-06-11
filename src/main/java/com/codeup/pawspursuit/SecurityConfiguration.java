@@ -37,7 +37,7 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/posts") // user's home page, it can be any URL
+                .defaultSuccessUrl("/") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -46,22 +46,24 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/posts", "/pets", "/posts/{id}", "/register", "/profile/{id}", "/pets/{id}") // anyone can see home, the post pages, and sign up
+                .requestMatchers("/", "/posts", "/pets", "/register", "/profile/{id}", "/posts/{id}", "/pets/{id}")
+                // anyone can see home, the post pages, and sign up
                 .permitAll()
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/create", "/pets/create", "/posts/create", // only authenticated users can create posts
-                        "/posts/{id}/edit", // only authenticated users can edit posts
-                        "/posts/{id}/delete", "/profile", "/chat/{r_id}" // only authenticated users can delete posts
+                        "/posts/{id}/edit", "/pets/{id}/edit", // only authenticated users can edit posts
+                        "/posts/{id}/delete", "/pets/{id}/delete", // only authenticated users can delete posts
+                        "/profile", "/chat/{r_id}"
                 )
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/css/**", "/js/**", "/favicon.ico", "/img/**", "/static/**")
+                .requestMatchers("/css/**", "/js/**", "/favicon.ico", "/images/**", "/static/**")
                 .permitAll();
-                return http.build();
+        return http.build();
     }
 
 }
