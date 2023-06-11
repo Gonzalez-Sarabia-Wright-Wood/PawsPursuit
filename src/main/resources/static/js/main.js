@@ -1,3 +1,5 @@
+
+
 let toggle = document.querySelector("#toggler");
 let pet = document.querySelector("#pet");
 let post = document.querySelector("#post");
