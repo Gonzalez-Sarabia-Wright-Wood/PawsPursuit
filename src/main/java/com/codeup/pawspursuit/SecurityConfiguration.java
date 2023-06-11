@@ -37,7 +37,7 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/") // user's home page, it can be any URL
+                .defaultSuccessUrl("/", true) // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -56,7 +56,7 @@ public class SecurityConfiguration {
                         "/create", "/pets/create", "/posts/create", // only authenticated users can create posts
                         "/posts/{id}/edit", "/pets/{id}/edit", // only authenticated users can edit posts
                         "/posts/{id}/delete", "/pets/{id}/delete", // only authenticated users can delete posts
-                        "/profile", "/chat/{r_id}"
+                        "/profile", "/chat/{r_id}", "/comment/pet", "/comment/post", "/comment/edit", "/comment/delete"
                 )
                 .authenticated()
                 .and()
