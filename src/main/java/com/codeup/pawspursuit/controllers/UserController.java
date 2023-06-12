@@ -65,41 +65,30 @@ public class UserController {
         }
         userDao.save(user);
         return "redirect:/login";
-
-//        try {
-//            userDao.save(user);
-//            return "redirect:/login";
-//        } catch (Exception e) {
-//            model.addAttribute("error", "An error occurred during registration");
-//            return "register";
-//        }
     }
 
     @GetMapping("/profile")
     public String viewOwnProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
-
         return "user/profile";
     }
 
     @GetMapping("/profile/{id}")
     public String viewOtherUserProfile(Model model, @PathVariable Long id) {
-
         User user = userDao.findById(id).get();
         model.addAttribute("user", user);
-
         return "user/profile";
     }
 
     @GetMapping(path = "/profile/{id}/edit")
     public String editUser(Model model, @PathVariable Long id) {
-        User user = userDao.findById(id).get();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         return "user/edit";
     }
 
-    @PostMapping("/profile/{id}/delete")
+    @PostMapping("/profile/delete")
     public String deleteUserPost(@RequestParam Long id) {
         userDao.deleteById(id);
         return "redirect:/login";

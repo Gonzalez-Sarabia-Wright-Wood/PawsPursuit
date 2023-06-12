@@ -9,6 +9,7 @@
 
 body {
     background-color: #A4CB9E;
+    overflow-x: hidden;
 }
 
 .navbar {

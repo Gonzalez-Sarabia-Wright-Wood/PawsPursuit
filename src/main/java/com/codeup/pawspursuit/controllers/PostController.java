@@ -64,7 +64,7 @@ public class PostController {
         User user = userDao.findById(authenticatedUser.getId()).orElseThrow();
         post.setUser(user);
         postDao.save(post);
-        return "redirect:/profile/1";
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/{id}/edit")
