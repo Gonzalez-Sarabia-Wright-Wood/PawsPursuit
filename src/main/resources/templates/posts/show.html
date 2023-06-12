@@ -29,7 +29,7 @@
         </form>
     </div>
     <hr>
-    <div class="p-2 container form-box">
+    <div class="p-2 container ">
         <div class="container" th:each="comment : ${commentList}">
             <div class="m-1 d-flex py-1 px-4 col-12 justify-content-between form-box-2">
                 <h2 class="m-0" th:text="${comment.getBody()}"></h2>
@@ -47,7 +47,7 @@
                         <li>
                             <form class="p-0 dropdown-item" th:action="@{/comment/delete}" th:method="post">
                                 <input class="dropdown-item" type="hidden" th:name="id" th:value="${comment.id}">
-                                <button class=" dropdown-item " type="submit">Delete</button>
+                                <button class="delete button dropdown-item " type="submit">Delete</button>
                             </form>
                         </li>
                     </ul>
