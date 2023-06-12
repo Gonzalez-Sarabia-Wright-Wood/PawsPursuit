@@ -37,9 +37,9 @@
                     <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false"></button>
                     <ul class="dropdown-menu">
-                        <li>
-                            <button class="button dropdown-item" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                        <li> <div class="modal-label" hidden="hidden" th:text="${comment.id}"></div>
+                            <button class="to-edit button dropdown-item" type="button" data-bs-toggle="modal"
+                                    data-bs-target="modal">
                             Edit
                             </button>
                         </li>
@@ -51,7 +51,7 @@
                             </form>
                         </li>
                     </ul>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade" th:id="${comment.id}" tabindex="-1" aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -81,6 +81,8 @@
 </div>
 
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
+<script th:src="@{/js/index.js}"></script>
+
 
 </body>
 </html>

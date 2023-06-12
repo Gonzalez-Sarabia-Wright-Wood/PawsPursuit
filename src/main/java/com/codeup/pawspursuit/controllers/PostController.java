@@ -76,7 +76,7 @@ public class PostController {
             model.addAttribute("post", post);
             return "posts/edit";
         } else{
-            return "posts/forums";
+            return "redirect:/posts";
         }
     }
 
