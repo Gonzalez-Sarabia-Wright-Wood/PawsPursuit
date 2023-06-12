@@ -180,11 +180,13 @@
                 <label for="upload"></label>
                 <button type="button" id="upload" name="upload">Upload an image</button>
             </div>
-            <input id="lastSeen" th:name="lastSeen" th:value="replaceme" type="hidden">
             <div>
-                <div id="map" style='width: 400px; height: 300px;'>
-                </div>
+                    <input type="search" placeholder="Search" id="searchInput"><button id="locationSearch" class="btn" type="button">Search</button>
+                    <input id="lastSeen" th:name="lastSeen" th:value="replaceme" type="hidden">
+                    <div id="map" style='width: 400px; height: 300px;'>
+                    </div>
             </div>
+
             <div class="d-flex justify-content-end">
                 <button class="mt-4 button-main" type="submit">Submit</button>
             </div>
@@ -218,7 +220,7 @@
         center: [-98.4946, 29.4252], // Starting position [lng, lat]
         zoom: 12 // Starting zoom level
     });
-
+    //MAP MARKER INFO
     const marker = new mapboxgl.Marker ({ // Initialize a new marker
         draggable: true
     })
@@ -239,6 +241,29 @@
                 'features': []
             }
         });
+    //MAP SEARCH INFO
+    function mapboxSearch(searchString){
+        console.log(searchString)
+        geocode(searchString, mapboxApiKey).then(
+        function (results){
+            console.log(results)
+        // FLIES TO SEARCHED LOCATION
+        let markerFlyTo = {center: results, zoom: 12}
+        map.flyTo(markerFlyTo);
+        marker.setLngLat(results)
+        //     let longlat = results.target._lngLat;
+        // console.log(results.target.lng)
+        //     console.log(results.target.lat)
+        //     console.log(`${longlat.lng},${longlat.lat}`)
+            console.log(results[0])
+            console.log(results[1])
+            $("#lastSeen").val(`${results[0]},${results[1]}`)
+
+        }
+
+
+    );
+
 
         map.addLayer({
             'id': 'point',
@@ -249,6 +274,11 @@
                 'circle-color': '#d641ff'
             }
         });
+    }
+        $("#locationSearch").on("click", function (e) {
+            e.preventDefault();
+            mapboxSearch($("#searchInput").val());
+        })
     });
 </script>
 <script th:src="@{/js/main.js}"></script>
