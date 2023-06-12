@@ -1,5 +1,5 @@
 * {
-    color: #394140 !important;
+    color: #000405 !important;
     font-family: 'Eczar', serif;
 }
 
@@ -8,16 +8,16 @@
 }
 
 body {
-    background-color: #A4CB9E;
+    background-color: #ecfafd;
 }
 
 .navbar {
-    background-color: #A4CB9E;
+    background-color: #ecfafd;
     padding: 0 !important;
 }
 
 div.label {
-    background-color: #7FADA7;
+    background-color: #db8e85;
     padding: 1px;
     margin: 5px;
 }
@@ -92,11 +92,9 @@ input, textarea {
 
 .label {
     display: flex;
-    padding: 5px;
-    padding-top: 0;
-    background-color: #7FADA7;
+    padding:0.5px 5px 1rem 5px ;
+    background-color: #db8e85;
     border-radius: 30px;
-    padding-bottom: 1rem;
     margin-bottom: -20px;
 }
 
@@ -106,15 +104,14 @@ input, textarea {
 
 .ta {
     display: flex;
-    padding: 7px;
-    background-color: #7FADA7;
+    padding: 7px 7px 3rem 7px;
+    background-color: #db8e85;
     border-radius: 30px;
-    padding-bottom: 3rem;
     margin-bottom: -3rem;
 }
 
 .form-box {
-    background-color: #4C6763;
+    background-color: #810953 ;
     border-radius: 30px;
 }
 .form-box-2 {
