@@ -238,6 +238,7 @@ input:checked + .slider:before {
 
 label:hover {
     cursor: pointer;
+
 }
 
 .penguin {

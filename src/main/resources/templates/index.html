@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{partials/fragment.html :: head('Index')}"></head>
+<html lang="en">
+<head th:replace="~{partials/header.html :: head('Index')}"></head>
+<link rel="stylesheet"  th:href="@{/css/index.css}">
 <body>
-<nav th:replace="~{partials/fragment.html :: nav}"></nav>
+<nav th:replace="partials/navbar.html :: nav"></nav>
 
-<img src="path_to_your_image.jpg" alt="Description of the image">
+<div class="flex-container1">
 
+<img th:src="@{/images/DogPic.png}" class="resizable-image1">
 
+</div>
 
 <h1>Help Reunite Best Friends</h1>
 
@@ -40,23 +43,33 @@
 </div>
 </div>
 
-
 <h2>Ready to get started?</h2>
 <h3>Sign up or contact us</h3>
 
 <input type="button" value="Sign Up?">
 <input type="button" value="Contact Us">
 
+<footer th:replace="partials/footer.html :: footer"></footer>
 
-<img src="/images/Head_Shot.png" alt="HeadShot Photo">
+<div class="flex-container2">
 
-<img src="/images/image.png" alt="Genesis Shot">
+<img th:src="@{/images/Ciera_Romero_headShot.png}" class="resizable-image2">
+    <p> Ciera Romero-Wright</p>
+    <a href="https://github.com/cieraromerowright"></a>
 
-<img src="/images/Riley_Wood_Headshot.png" alt="Rileys Headshot">
+<img th:src="@{/images/Genesis_Head_Shot.png}" class="resizable-image3">
+    <p>Genesis Sarabia </p>
+    <a href="https://github.com/genesissarbia"></a>
 
-<img src="/images/luis_gonzalez_headshot.png" alt="Luis Headshot">
+<img th:src="@{/images/Riley_Wood_Headshot.png}" class="resizable-image4">
+    <p>Riley Wood</p>
+    <a href="https://github.com/RileyWood9984"></a>
 
+<img th:src="@{/images/luis_gonzalez_headshot.png}" class="resizable-image5">
+    <p>Luis Gonzalez</p>
+    <a href="https://github.com/zluigon"></a>
 
-<footer th:replace="~{partials/fragment.html :: footer}"></footer>
+</div>
+
 </body>
 </html>
