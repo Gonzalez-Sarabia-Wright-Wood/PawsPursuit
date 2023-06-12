@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head th:replace="~{partials/fragment.html :: head('Profile')}"></head>
+<body>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
+
+<h2>this is the profile landing page</h2>
+
+<div>
+    <a th:href="@{/chat/{r_id}(r_id=${user.getId()})}" >
+        <button class="btn button-main">Chat With User</button>
+    </a>
+</div>
+
+<input value="make a post" type="button">
+
+<form th:action="@{/profile/1/delete}" th:method="post">
+    <input  type="hidden" value="1" name="id">
+    <button type="submit">DELETE PROFILE</button>
+</form>
+<div th:each="post : ${posts}">
+
+    <a th:href="@{/posts/{id}(id=${post.getId()})}" >
+        <h4 th:text="${post.title}"></h4></a>
+        <p th:text="${post.body}"></p>
+
+</div>
+
+
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
+
+</body>
+</html>

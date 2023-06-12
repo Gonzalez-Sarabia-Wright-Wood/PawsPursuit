@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials/fragment.html :: head('Pets')}"></head>
+<body>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
+This is the index for pets
+
+<section class="m-2 d-flex">
+    <div class="m-2 col-3" th:each="pet: ${pets}">
+
+        <div class="p-1 container d-flex flex-row card">
+            <span class="col-1 dropdown">
+                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
+                    <li><a th:href="@{/profile/{id} (id=${pet.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li><form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}" th:method="post">
+                        <input class="dropdown-item" type="hidden" name="id" th:value="${pet.id}">
+                        <button class=" dropdown-item " type="submit">DELETE</button>
+                    </form></li>
+                </ul>
+            </span>
+            <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
+                <div class="card-body ">
+
+                    <h5 th:text="${pet.isLost()}" class="card-title lost"></h5>
+
+                    <img class="card-img" src="..." alt="Card image cap">
+
+                    <div>
+                        <h6 class="card-subtitle d-inline-block">Species : </h6>
+                        <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+                    </div>
+                    <div>
+                        <h6 class="card-subtitle d-inline-block">Name : </h6>
+                        <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
+                    </div>
+                    <div>
+                        <h6 class="card-subtitle d-inline-block">Size : </h6>
+                        <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
+                    </div>
+                    <p hidden="hidden" class="card-text" th:text="${pet.getId()}"></p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+</body>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
+<script th:src="@{/js/index.js}"></script>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{partials/fragment.html :: head('Create')}"></head>
+<head>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+</head>
+<body>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
+<div class="container">
+    <h6 class="d-inline-flex">Is this a lost pet post?</h6>
+    <label id="toggler" class="switch">
+
+        <input type="checkbox">
+        <span class="slider round"> </span>
+    </label>
+</div>
+<section class="d-flex">
+    <div class="mb-4 mt-4 p-4 container col-6 form-box" id="post" hidden="hidden">
+        <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+
+                    <select name="category">
+                        <th:block>
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}"
+                                    th:text="${category.name}"></option>
+                        </th:block>
+                    </select>
+
+
+                    <div class="label-holder">
+                        <span class="label">Title:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" th:field="*{title}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Location:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" th:field="*{location}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="ta-holder">
+                        <span class="ta">Post-Body:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <textarea class="text-area" th:field="*{body}"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="mt-4 button-main" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="mt-4 mb-4 p-4 container form-box col-12" id="pet" hidden="hidden">
+        <form th:action="@{/pets/create}" th:method="post" id="postForm">
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Title:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="title">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Location:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="location">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Name:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Size:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="size">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Species:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="species">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="label-holder">
+                        <span class="label">Breed:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="breed">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 d-flex">
+                <div class="col-6">
+                    <div class="ta-holder">
+                        <span class="ta">Post-Body:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <textarea class="text-area" name="body"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="ta-holder">
+                        <span class="ta">Description:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <textarea class="text-area" name="description"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input id="stashFilestackURL" th:name="stashFilestackURL" th:value="replaceme" type="hidden">
+                <label for="upload"></label>
+                <button type="button" id="upload" name="upload">Upload an image</button>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="mt-4 button-main" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+        crossOrigin="anonymous"></script>
+<script th:inline="javascript">
+    $("#upload").click(function () {
+        client.picker(options).open()
+    });
+    var filestackapi = [[${filestackapi}]];
+    const client = filestack.init(filestackapi);
+    const options = {
+        onUploadDone:
+    function(res) {
+        $("#stashFilestackURL").val(res.filesUploaded[0].url);
+    }
+    }
+
+</script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>
