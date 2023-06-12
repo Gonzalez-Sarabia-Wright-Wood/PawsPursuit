@@ -70,10 +70,14 @@ public class PostController {
     @GetMapping("/posts/{id}/edit")
     public String editPost(@PathVariable Long id, Model model) {
         Post post = postDao.findById(id).get();
-        Category category = post.getCategories().get(0);
-        model.addAttribute("category", category);
-        model.addAttribute("post", post);
-        return "posts/edit";
+        if (post.getUser() == (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()) {
+            Category category = post.getCategories().get(0);
+            model.addAttribute("category", category);
+            model.addAttribute("post", post);
+            return "posts/edit";
+        } else{
+            return "redirect:/posts";
+        }
     }
 
     @PostMapping("/posts/{id}/delete")
