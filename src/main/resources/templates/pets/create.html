@@ -180,9 +180,10 @@
                 <label for="upload"></label>
                 <button type="button" id="upload" name="upload">Upload an image</button>
             </div>
-            <div id="map" style='width: 400px; height: 300px;'>
-<!--                <label for="map"></label>-->
-<!--                <button type="button" id="map" name="map">Pet Location</button>-->
+            <input id="lastSeen" th:name="lastSeen" th:value="replaceme" type="hidden">
+            <div>
+                <div id="map" style='width: 400px; height: 300px;'>
+                </div>
             </div>
             <div class="d-flex justify-content-end">
                 <button class="mt-4 button-main" type="submit">Submit</button>
@@ -196,7 +197,7 @@
         crossOrigin="anonymous"></script>
 <script th:inline="javascript">
 
-    //FILESTACK
+    //FILESTACK ---------------------------------------------------
     $("#upload").click(function () {
         client.picker(options).open()
     });
@@ -208,7 +209,7 @@
         $("#stashFilestackURL").val(res.filesUploaded[0].url);
     }
     }
-    //MAPBOX
+    //MAPBOX ---------------------------------------------------
     var mapboxApiKey = [[${mapboxapi}]]
     mapboxgl.accessToken = mapboxApiKey;
     const map = new mapboxgl.Map({
@@ -227,6 +228,8 @@
     marker.on('dragend', function(e) {
         let html = "";
         let longlat = e.target._lngLat;
+        console.log(`${longlat.lng},${longlat.lat}`)
+        $("#lastSeen").val(`${longlat.lng},${longlat.lat}`)
     });
     map.on('load', () => {
         map.addSource('single-point', {
@@ -247,7 +250,6 @@
             }
         });
     });
-
 </script>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{js/mapbox-geocoder-utils.js}"></script>

@@ -77,7 +77,7 @@ public class PetController {
     }
 
     @PostMapping("/pets/create")
-    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam String stashFilestackURL, @RequestParam String stashMapboxUrl) {
+    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam String stashFilestackURL, @RequestParam String lastSeen) {
         Post post = new Post();
         Pet pet = new Pet();
         pet.setUser((User) getContext().getAuthentication().getPrincipal());
@@ -92,7 +92,7 @@ public class PetController {
         post.setBody(body);
         post.setPet(petDao.findFirstByOrderByIdDesc());
         pet.setPhoto(stashFilestackURL);
-        post.setLocation(stashMapboxUrl);
+        post.setLocation(lastSeen);
         postDao.save(post);
         return "redirect:/profile/1";
     }
