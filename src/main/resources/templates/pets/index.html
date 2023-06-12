@@ -5,8 +5,8 @@
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 This is the index for pets
 
-<section class="m-2 d-flex">
-    <div class="m-2 col-3" th:each="pet: ${pets}">
+<section class="container-fluid d-flex flex-wrap">
+    <div class="m-2 col-12 col-sm-3" th:each="pet: ${pets}">
 
         <div class="p-1 container d-flex flex-row card">
             <span class="col-1 dropdown">
