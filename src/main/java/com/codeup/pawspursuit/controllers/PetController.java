@@ -31,6 +31,8 @@ public class PetController {
     private CommentRepository commentDao;
     @Value("${filestack.api.key}")
     private String filestackapi;
+    @Value("${mapbox.api.key}")
+    private String mapboxapikey;
 
     private CategoryRepository categoryDao;
 
@@ -69,12 +71,13 @@ public class PetController {
         model.addAttribute("pet", new Pet());
         model.addAttribute("post", new Post());
         model.addAttribute("filestackapi", filestackapi);
+        model.addAttribute("mapboxapi", mapboxapikey);
         model.addAttribute("categories", Categories);
         return "/pets/create";
     }
 
     @PostMapping("/pets/create")
-    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam String stashFilestackURL) {
+    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam String stashFilestackURL, @RequestParam String stashMapboxUrl) {
         Post post = new Post();
         Pet pet = new Pet();
         pet.setUser((User) getContext().getAuthentication().getPrincipal());
@@ -89,6 +92,7 @@ public class PetController {
         post.setBody(body);
         post.setPet(petDao.findFirstByOrderByIdDesc());
         pet.setPhoto(stashFilestackURL);
+        post.setLocation(stashMapboxUrl);
         postDao.save(post);
         return "redirect:/profile/1";
     }
