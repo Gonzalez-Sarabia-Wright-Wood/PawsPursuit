@@ -3,7 +3,7 @@
 <head th:replace="~{partials/fragment.html :: head('Index')}"></head>
 <link rel="stylesheet"  th:href="@{/css/index.css}">
 <body>
-<nav th:replace="~{partials/fragment.html :: nav}"></nav>
+<nav th:replace="partials/fragment.html :: nav"></nav>
 
 <div class="flex-container1">
 
@@ -69,8 +69,7 @@
     <a href="https://github.com/zluigon"></a>
 
 </div>
+
 <footer th:replace="partials/fragment.html :: footer"></footer>
-
-
 </body>
 </html>
