@@ -1,5 +1,5 @@
 * {
-    color: #000405 !important;
+    color: #170309 !important;
     font-family: 'Eczar', serif;
 }
 
@@ -8,16 +8,20 @@
 }
 
 body {
-    background-color: #ecfafd;
+    background-color: rgba( 233, 176, 53, 40%);
+}
+div.container-fluid{
+    background-color: rgba( 233, 176, 53, 40%);
 }
 
 .navbar {
-    background-color: #ecfafd;
+    background-color: white;
     padding: 0 !important;
 }
 
 div.label {
-    background-color: #db8e85;
+    background-color: #fef6f8;
+    border: solid #170309 ;
     padding: 1px;
     margin: 5px;
 }
@@ -30,7 +34,7 @@ div.input {
 input, textarea {
     padding-left: 5px;
     border-radius: 30px;
-    border: none;
+    border: solid #170309;
     overflow: auto;
     outline: none;
     -webkit-box-shadow: none;
@@ -60,29 +64,30 @@ input, textarea {
 }
 
 .offcanvas {
-    background-color: #7FADA7;
+    background-color: rgb( 233, 176, 53);
+    width: 15rem!important;
 }
 
 .button {
     padding-left: 0.25rem !important;
     padding-right: 0.25rem !important;
     border-radius: 30px !important;
-    border: transparent;
     background-color: transparent;
 }
 
 .button-main {
-    border: transparent;
+    border: solid #170309;
     padding-left: 0.25rem !important;
     padding-right: 0.25rem !important;
-    background-color: #C39BCA !important;
+    background-color: #f3a391 !important;
     border-radius: 30px !important;
 }
 
 .button-secondary {
+    border:solid #170309;
     padding: 1px;
     width: 75px;
-    background-color: #7FADA7 !important;
+    background-color: #faefd6 !important;
     border-radius: 30px !important;
 }
 
@@ -93,7 +98,7 @@ input, textarea {
 .label {
     display: flex;
     padding:0.5px 5px 1rem 5px ;
-    background-color: #db8e85;
+    background-color: #e9b035;
     border-radius: 30px;
     margin-bottom: -20px;
 }
@@ -103,6 +108,7 @@ input, textarea {
 }
 
 .ta {
+    border: solid #170309;
     display: flex;
     padding: 7px 7px 3rem 7px;
     background-color: #db8e85;
@@ -111,16 +117,20 @@ input, textarea {
 }
 
 .form-box {
-    background-color: #810953 ;
+    background-color: #e9b035;
     border-radius: 30px;
+    border: solid #170309;
 }
 .form-box-2 {
-    background-color: #7FADA7;
+    background-color: #e9b035;
     border-radius: 30px;
+    border: solid #170309;
+
 }
 
 .card {
-    background-color: #7FADA7;
+    border: solid #170309 ;
+    background-color: #e9b035;
     border-radius: 30px !important;
 }
 
@@ -130,19 +140,19 @@ input, textarea {
 }
 
 a.dropdown-item:hover, button.dropdown-item:hover {
-    color: #C39BCA !important;
-    background-color: #4C6763;
-    border-radius: 30px;
+    color: #170309 !important;
+    background-color: #e9b035;
+    border: #170309 solid;
 }
 
 form.dropdown-item {
     border-radius: 30px;
 }
 
-button.dropdown-item:hover {
-    color: #C39BCA !important;
+button.delete:hover {
+    color: #fef6f8 !important;
     background-color: firebrick;
-    border-radius: 30px;
+    border: solid #170309;
 }
 
 .dropdown-toggle {
@@ -157,7 +167,7 @@ button.dropdown-item:hover {
 
 .dropdown-menu.show {
     transform: translate3d(0px, 20px, 0px) !important;
-    background-color: #C39BCA;
+    background-color: #f3a391;
 }
 
 .post {
@@ -165,8 +175,9 @@ button.dropdown-item:hover {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: #7FADA7;
+    background-color: #e9b035;
     border-radius: 30px;
+    border: solid #170309;
 }
 
 .post-item {
@@ -212,11 +223,11 @@ button.dropdown-item:hover {
 }
 
 input:checked + .slider {
-    background-color: #7FADA7;
+    background-color: #f3a391;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #7FADA7;
+    box-shadow: 0 0 1px #f3a391;
 }
 
 input:checked + .slider:before {
@@ -247,19 +258,19 @@ label:hover {
     width: 60px;
     height: 55px;
     position: absolute;
-    background: #394140;
+    background: #170309;
     margin-left: 7.5px;
     border-radius: 100% 100% 30% 30%;
 }
 
 .penguin-body-inner {
-    width: 40px;
-    height: 30px;
+    width: 30px;
+    height: 20px;
     position: absolute;
-    background: #C39BCA;
+    background: darkgray;
     border-radius: 100% 100% 50% 50%;
-    margin-left: 10px;
-    margin-top: 20px;
+    margin-left: 15px;
+    margin-top: 30px;
 }
 
 .penguin-eye-left {
@@ -294,7 +305,7 @@ label:hover {
 
 .penguin-arm-left {
     position: absolute;
-    background: #394140;
+    background: #170309;
     height: 25px;
     width: 15px;
     margin-top: 20px;
@@ -303,7 +314,7 @@ label:hover {
 
 .penguin-arm-right {
     position: absolute;
-    background: #394140;
+    background: #170309;
     height: 25px;
     width: 15px;
     margin-left: 60px;
@@ -313,7 +324,7 @@ label:hover {
 
 .beak {
     position: absolute;
-    background: orange;
+    background: #e9b035;
     height: 15px;
     width: 10px;
     margin-left: 25px;
@@ -325,7 +336,7 @@ label:hover {
     position: absolute;
     width: 35px;
     height: 5px;
-    background: yellow;
+    background: #f3a391;
     border-radius: 100%;
     margin-top: 2px;
     transform: rotate(35deg);
@@ -335,7 +346,7 @@ label:hover {
     position: absolute;
     width: 35px;
     height: 5px;
-    background: yellow;
+    background: #f3a391;
     border-radius: 100%;
     margin-left: 25px;
     margin-top: 2px;
@@ -346,7 +357,7 @@ label:hover {
     position: absolute;
     width: 20px;
     height: 10px;
-    background: #C39BCA;
+    background: saddlebrown;
     border-radius: 100%;
     margin-left: 27.5px;
     margin-top: -10px;
@@ -356,7 +367,7 @@ label:hover {
     position: absolute;
     width: 20px;
     height: 10px;
-    background: #C39BCA;
+    background: saddlebrown;
     margin-left: 27.5px;
     margin-top: -6px;
 }
@@ -374,7 +385,7 @@ label:hover {
     position: absolute;
     width: 31px;
     height: 5px;
-    background: #C39BCA;
+    background: saddlebrown;
     border-radius: 100%;
     margin-left: 22px;
     margin-top: 0px;
