@@ -1,38 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{partials/fragment.html :: head('Forums')}"></head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
-This is the index for posts not about lost pets
 
-<div sec:authorize="isAuthenticated()">
-    This content is only shown to authenticated users.
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--    This content is only shown to authenticated users.-->
 
-    User ID: <span th:text="${#authentication.principal.id}"/>
-    Username: <span th:text="${#authentication.principal.username}"/>
-    Email: <span th:text="${#authentication.principal.email}"/>
-</div>
+<!--    User ID: <span th:text="${#authentication.principal.id}"/>-->
+<!--    Username: <span th:text="${#authentication.principal.username}"/>-->
+<!--    Email: <span th:text="${#authentication.principal.email}"/>-->
+<!--</div>-->
 
-<div th:each="post: ${posts}">
-    <div class="card" style="width: 18rem;">
-        <a th:href="@{/profile/{id} (id=${post.user.id})}">Profile</a>
-        <div class="card-body">
-
-            <h5 th:text="${post.title}" class="card-title"></h5>
-            <p class="card-text" th:text="${post.body}"></p>
-            <p class="card-text" th:text="${post.categories.get(0).name}"></p>
-            <h4><span th:text="${post.user.id}"></span></h4>
-            <a th:href="@{/posts/{id} (id=${post.id})}" class="btn btn-primary">Show</a>
-
-            <a th:href="@{/posts/{id}/edit (id=${post.id})}" class="btn btn-primary">Edit</a>
-
-
-
-            <form th:action="@{/posts/{id}/delete (id=${post.id})}" th:method="post">
-                <input type="hidden" name="id" th:value="${post.id}">
-                <button type="submit">DELETE</button>
-            </form>
-        </div>
+<div class="container-fluid" th:each="post: ${posts}">
+    <div class="p-1 container d-flex flex-row card">
+                    <span class="col-1 dropdown">
+                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/posts/{id}/edit (id=${post.id})}" class="dropdown-item">Edit</a></li>
+                    <li><a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li><form class="p-0 dropdown-item" th:action="@{/posts/{id}/delete (id=${post.id})}"
+                              th:method="post">
+                        <input class="dropdown-item" type="hidden" name="id" th:value="${post.id}">
+                        <button class=" dropdown-item " type="submit">DELETE</button>
+                    </form></li>
+                </ul>
+            </span>
+        <a class="col-11 a-null" th:href="@{/posts/{id} (id=${post.id})}">
+            <div class="card-body">
+                <h4 th:text="${post.title}" class="card-title"></h4>
+                <p class="card-text" th:text="${post.body}"></p>
+                <span>Category:&nbsp;<span class="card-text" th:text="${post.categories.get(0).name}"></span></span>
+            </div>
+        </a>
     </div>
 </div>
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
