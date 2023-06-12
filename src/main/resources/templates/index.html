@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="~{partials/header.html :: head('Index')}"></head>
+<head th:replace="~{partials/fragment.html :: head('Index')}"></head>
 <link rel="stylesheet"  th:href="@{/css/index.css}">
 <body>
-<nav th:replace="partials/navbar.html :: nav"></nav>
+<nav th:replace="partials/fragment.html :: nav"></nav>
 
 <div class="flex-container1">
 
@@ -49,7 +49,6 @@
 <input type="button" value="Sign Up?">
 <input type="button" value="Contact Us">
 
-<footer th:replace="partials/footer.html :: footer"></footer>
 
 <div class="flex-container2">
 
@@ -71,5 +70,6 @@
 
 </div>
 
+<footer th:replace="partials/fragment.html :: footer"></footer>
 </body>
 </html>
