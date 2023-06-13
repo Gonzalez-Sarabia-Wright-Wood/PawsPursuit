@@ -3,14 +3,9 @@
 <head th:replace="~{partials/fragment.html :: head('Forums')}"></head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
-
-<!--<div sec:authorize="isAuthenticated()">-->
-<!--    This content is only shown to authenticated users.-->
-
-<!--    User ID: <span th:text="${#authentication.principal.id}"/>-->
-<!--    Username: <span th:text="${#authentication.principal.username}"/>-->
-<!--    Email: <span th:text="${#authentication.principal.email}"/>-->
-<!--</div>-->
+<span hidden sec:authorize="isAuthenticated()">
+    <span id="usr" th:text="${#authentication.principal.id}"></span>
+</span>
 
 <div class="container-fluid" th:each="post: ${posts}">
     <div class="p-1 container d-flex flex-row card">
@@ -18,9 +13,15 @@
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a th:href="@{/posts/{id}/edit (id=${post.id})}" class="dropdown-item">Edit</a></li>
-                    <li><a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
-                    <li><form class="p-0 dropdown-item" th:action="@{/posts/{id}/delete (id=${post.id})}"
+                    <li class="profile">
+                        <span class="prf-hddn" hidden="hidden" th:text="${post.user.id}"></span>
+                        <a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${post.user.id}"></span>
+                        <a th:href="@{/posts/{id}/edit (id=${post.id})}" class="dropdown-item">Edit</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${post.user.id}"></span>
+                        <form class="p-0 dropdown-item" th:action="@{/posts/{id}/delete (id=${post.id})}"
                               th:method="post">
                         <input class="dropdown-item" type="hidden" name="id" th:value="${post.id}">
                         <button class=" dropdown-item " type="submit">DELETE</button>
@@ -37,6 +38,7 @@
     </div>
 </div>
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
+<script th:src="@{/js/index.js}"></script>
 
 </body>
 </html>
