@@ -36,8 +36,12 @@
         <div class="col-6 post-item"><h5>Additional Info:&nbsp;</h5><h5 th:text="${postBody}"></h5></div>
     </div>
     <hr>
+    <h3 class="text-center">Pet Was Last Seen At:</h3>
     <!--MAP-->
-    <div class="col-12 post-item" id="map" style='width: 400px; height: 300px;'></div>
+    <div class="d-flex justify-content-center align-items-center">
+
+        <div class="col-12 fade-in-text post" id="map"></div>
+    </div>
     <hr>
     <div class="d-flex justify-content-center col-12 container">
         <form th:action="@{/comment/pet}" th:method="post" th:object="${comment}">
