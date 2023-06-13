@@ -110,14 +110,16 @@ public class UserController {
         return "user/chat";
     }
 
-    @PostMapping("/chat")
-    public String sendChat() {
-        return "user/chat";
-    }
-
-    @GetMapping("/profile/messages")
-    public String showAllMessages() {
+    @GetMapping("/chat")
+    public String sendChat(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("testAppId", testAppId);
+        model.addAttribute("id", user.getId());
+        model.addAttribute("name", user.getFirstName()+" "+user.getLastName());
+        System.out.println(user.getFirstName()+" "+user.getLastName());
+        model.addAttribute("email", user.getEmail());
         return "user/messages";
     }
+
 
 }
