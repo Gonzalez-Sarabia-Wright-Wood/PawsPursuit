@@ -1,8 +1,61 @@
 <!DOCTYPE html>
-<head th:replace="~{partials/fragment.html :: head('User Edit')}"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{partials/fragment.html :: head('Profile')}"></head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
-<footer th:replace="~{partials/fragment.html :: footer}"></footer>
 
+<section class="d-flex">
+    <div class="mt-4 mb-4 p-4 container col-6 form-box">
+        <form th:method="post" th:action="@{/profile/edit}" th:object="${user}">
+            <input type="hidden" th:field="*{id}">
+            <div class="mt-1 col-12">
+                <div class="label-holder">
+                    <label class="label" for="firstName">First Name</label>
+                </div>
+                <div>
+                    <input class="text-input" id="firstName" type="text" th:field="*{firstName}">
+                </div>
+            </div>
+            <div class="mt-1 col-12">
+                <div class="label-holder">
+                    <label class="label" for="lastName">Last Name</label>
+                </div>
+                <div>
+                    <input class="text-input" id="lastName" type="text" th:field="*{lastName}">
+                </div>
+            </div>
+            <div class="mt-1 col-12">
+                <div class="label-holder">
+                    <label class="label" for="username">Username&ast;</label>
+                </div>
+                <div>
+                    <input class="text-input" id="username" type="text" th:field="*{username}" required>
+                </div>
+            </div>
+            <div class="mt-1 col-12">
+                <div class="label-holder">
+                    <label class="label" for="email">Email</label>
+                </div>
+                <div>
+                    <input class="text-input" id="email" type="email" th:field="*{email}">
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a class="btn button-secondary mt-4 mb-4" onclick="history.back()">Go Back</a>
+                <button class="mt-4 mb-4 btn button-main" type="submit">Update</button>
+            </div>
+        </form>
+        <form th:action="@{/profile/delete}" th:method="post">
+            <input type="hidden" th:value="${#authentication.principal.id}"
+                   th:name="id">
+            <button class="mt-4 mb-4 btn button-secondary" onclick="return confirm('Are you sure about that?')"
+                    type="submit">DELETE PROFILE
+            </button>
+        </form>
+    </div>
+</section>
+
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
 </body>
 </html>

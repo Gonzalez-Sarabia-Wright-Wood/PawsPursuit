@@ -69,8 +69,9 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li>
-                        <button class="button dropdown-item" type="button" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
+                        <span hidden="hidden" th:text="${comment.id}" class="hiddenModal"></span>
+                        <button data-bs-target="#m" class="tooMuchModal button dropdown-item" type="button" data-bs-toggle="modal"
+                                >
                             Edit
                         </button>
                     </li>
@@ -82,7 +83,7 @@
                         </form>
                     </li>
                 </ul>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div th:id="${'modal' + comment.id}" class=" modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -111,9 +112,14 @@
 </div>
 </div>
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
-
+<!--<script th:inline="javascript">-->
+<!--    var cArray= [[${commentList}]]-->
+<!--    console.log(cArray);-->
+<!--</script>-->
 <script th:src="@{/js/index.js}"></script>
+
 <script th:src="@{/js/mapbox-geocoder-utils.js}"></script>
+  
 <script th:inline="javascript">
     //MAPBOX ---------------------------------------------------
     let coords = [[${petLocation}]].split(",").map(Number)
@@ -137,8 +143,7 @@
         popup.setHTML(`<p>${result}</p>`);
         marker.setPopup(popup);
     });
-
-
 </script>
+
 </body>
 </html>

@@ -2,44 +2,141 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{partials/fragment.html :: head('Profile')}"></head>
+
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 
-<section class="container-fluid m-5">
+<section class="container">
 
-    <div>
-        <h1 th:text="${#authentication.principal.id}"></h1>
-        <h1 th:text="${#authentication.principal.username}"></h1>
-        <h1 th:text="${#authentication.principal.email}"></h1>
+    <div class="profile mt-5 mb-3">
+        <div>
+            <th:block sec:authorize="isAuthenticated()">
+                <div th:if="${#authentication.principal.id == user.id}"
+                     class="row justify-content-between align-items-center">
+                    <div class="col-md-4 mb-sm-3">
+                        <h2>Welcome, <span th:text="${#authentication.principal.username}"></span></h2>
+                        <h4><span
+                                th:text="${#authentication.principal.firstName + ' ' + #authentication.principal.lastName}"></span>
+                        </h4>
+                    </div>
+
+                    <div class="col-md-5 d-flex justify-content-evenly text-nowrap">
+                        <a th:href="@{/create}">
+                            <button class="btn button-main">Create A Post</button>
+                        </a>
+                        <div class="vr"></div>
+                        <a th:href="@{/profile/edit}" class="btn button-secondary">
+                            Edit
+                            Profile</a>
+                    </div>
+                </div>
+
+                <div th:unless="${#authentication.principal.id == user.id}" class="row justify-content-between align-items-center">
+                    <div class="col-md-4 mb-sm-3">
+                        <h2><span th:text="${user.username}"></span></h2>
+                        <h4><span th:text="${user.firstName + ' ' + user.lastName}"></span></h4>
+                    </div>
+                    <div class="col-md-5 d-flex justify-content-end text-nowrap">
+                        <a th:href="@{/chat/{r_id}(r_id=${user.getId()})}">
+                            <button class="btn button-main">Chat With Me</button>
+                        </a>
+                    </div>
+                </div>
+            </th:block>
+            <th:block sec:authorize="!isAuthenticated()">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-4 mb-sm-3">
+                        <h2><span th:text="${user.username}"></span></h2>
+                        <h4><span th:text="${user.firstName + ' ' + user.lastName}"></span></h4>
+                    </div>
+
+
+                <div class="col-md-5 d-flex justify-content-end text-nowrap">
+                    <a th:href="@{/register}">
+                        <button class="btn button-main">Register to chat</button>
+                    </a>
+                </div>
+                </div>
+            </th:block>
+        </div>
     </div>
 
+    <hr class="my-4">
+
+    <h3>Pets:</h3>
+    <section class="container-fluid d-flex flex-wrap">
+        <div class="m-2 col-12 col-sm-3" th:each="pet: ${pets}">
+            <div class="p-1 container d-flex flex-row card">
+            <span class="col-1 dropdown">
+                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
+                    <li><a th:href="@{/profile/{id} (id=${pet.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li><form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}"
+                              th:method="post">
+                        <input class="dropdown-item" type="hidden" name="id" th:value="${pet.id}">
+                        <button class=" dropdown-item " type="submit">DELETE</button>
+                    </form></li>
+                </ul>
+            </span>
+                <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
+                    <div class="card-body ">
+
+                        <h5 th:text="${pet.isLost()}" class="card-title lost"></h5>
+
+                        <img class="card-img" th:src="${pet.photo}" alt="Card image cap">
+
+                        <div>
+                            <h6 class="card-subtitle d-inline-block">Species : </h6>
+                            <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+                        </div>
+                        <div>
+                            <h6 class="card-subtitle d-inline-block">Name : </h6>
+                            <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
+                        </div>
+                        <div>
+                            <h6 class="card-subtitle d-inline-block">Size : </h6>
+                            <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
+                        </div>
+                        <p hidden="hidden" class="card-text" th:text="${pet.getId()}"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <hr class="my-4">
+
+
+    <h3>Posts:</h3>
+    <div class="m-2" th:each="post: ${posts}">
+        <div class="p-1 container d-flex flex-row card">
+                    <span class="col-1 dropdown">
+                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{/posts/{id}/edit (id=${post.id})}" class="dropdown-item">Edit</a></li>
+                    <li><a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li><form class="p-0 dropdown-item" th:action="@{/posts/{id}/delete (id=${post.id})}"
+                              th:method="post">
+                        <input class="dropdown-item" type="hidden" name="id" th:value="${post.id}">
+                        <button class=" dropdown-item " type="submit">DELETE</button>
+                    </form></li>
+                </ul>
+            </span>
+            <a class="col-11 a-null" th:href="@{/posts/{id} (id=${post.id})}">
+                <div class="card-body">
+                    <h4 th:text="${post.title}" class="card-title"></h4>
+                    <p class="card-text" th:text="${post.body}"></p>
+                    <span>Category:&nbsp;<span class="card-text"
+                                               th:text="${post.categories.get(0).name}"></span></span>
+                </div>
+            </a>
+        </div>
+    </div>
 </section>
-
-
-
-
-
-
-<div>
-    <a th:href="@{/chat/{r_id}(r_id=${user.getId()})}" >
-        <button class="btn button-main">Chat With Me</button>
-    </a>
-</div>
-
-<input value="make a post" type="button">
-
-<form th:action="@{/profile/delete}" th:method="post">
-    <input  type="hidden" th:value="${#authentication.principal.id}" th:name="id">
-    <button onclick="return confirm('Are you sure about that?')" type="submit">DELETE PROFILE</button>
-</form>
-<div th:each="post : ${posts}">
-
-    <a th:href="@{/posts/{id}(id=${post.getId()})}" >
-        <h4 th:text="${post.title}"></h4></a>
-        <p th:text="${post.body}"></p>
-
-</div>
-
 
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
 

@@ -1,0 +1,39 @@
+:root {
+    --text-color: #170309;
+    --main-bg-color: #fef6f8;
+    --primary-button: #f3a391;
+    --secondary-button: #faefd6;
+    --accent-color: #e9b035;
+    --bs-btn-hover-bg: #f3a391
+}
+
+body {
+    background-color: var(--main-bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+.primary-btn {
+    background-color: var(--primary-button);
+    border: 1px solid var(--text-color);
+    border-radius: 0.375rem;
+}
+
+.primary-btn:hover {
+    background-color: #E5775FFF;
+    border: 1px solid var(--text-color);
+    border-radius: 0.375rem;
+}
+
+
+.btn-secondary {
+    background-color: var(--secondary-button) !important;
+    border-color: var(--text-color) !important;
+}
+
+.modal {
+    background-color: rgba(var(--accent-color, 0.4)) !important;
+}
+
+.modal-content {
+    background-color: var(--main-bg-color) !important;
+}

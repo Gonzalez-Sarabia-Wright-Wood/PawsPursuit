@@ -70,7 +70,8 @@ public class PostController {
     @GetMapping("/posts/{id}/edit")
     public String editPost(@PathVariable Long id, Model model) {
         Post post = postDao.findById(id).get();
-        if (post.getUser() == (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (post.getUser().getId().equals(user.getId())) {
             Category category = post.getCategories().get(0);
             model.addAttribute("category", category);
             model.addAttribute("post", post);
