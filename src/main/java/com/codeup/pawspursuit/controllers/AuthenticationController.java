@@ -13,9 +13,9 @@ public class AuthenticationController {
 
     private UserRepository userDao;
 
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "/login";
-    }
+//    @GetMapping("/login")
+//    public String showLoginForm() {
+//        return "/login";
+//    }
 
 }
