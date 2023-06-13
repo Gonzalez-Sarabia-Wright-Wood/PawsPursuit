@@ -96,7 +96,7 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/posts}">Home</a>
+                        <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
                     </li>
                     <li class="navbar-item">
                         <a class="nav-link" th:href="@{/pets}">Pets</a>
@@ -110,12 +110,6 @@
                     <li class="navbar-item">
                         <a th:href="@{/posts}" class="nav-link">Posts</a>
                     </li>
-                    <!--                    <li>-->
-                    <!--                        <form th:action="@{/logout}" th:method="post">-->
-                    <!--                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
-                    <!--                        </form>-->
-                    <!--                    </li>-->
-
 
                     <th:block sec:authorize="!isAuthenticated()">
                         <li class="nav-item">

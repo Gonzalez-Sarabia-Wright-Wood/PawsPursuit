@@ -28,7 +28,7 @@ public class UserController {
     @Value("${talkJs.test.app.id}")
     private String testAppId;
 
-    public UserController(UserRepository userDao,PetRepository petsDao,PostRepository postDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userDao, PetRepository petsDao, PostRepository postDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.petsDao = petsDao;
         this.postDao = postDao;
@@ -57,7 +57,7 @@ public class UserController {
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("user", new User());
-        return "/register";
+        return "register";
     }
 
     @PostMapping("/register")
@@ -76,9 +76,10 @@ public class UserController {
     @GetMapping("/profile")
     public String viewOwnProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userFromDb = userDao.getReferenceById(user.getId());
         List<Pet> pets = petsDao.findPetsByUserId(user.getId());
         List<Post> posts = postDao.findPostsByUserId(user.getId());
-        model.addAttribute("user", user);
+        model.addAttribute("user", userFromDb);
         model.addAttribute("pets", pets);
         model.addAttribute("posts", posts);
         return "user/profile";
@@ -87,6 +88,11 @@ public class UserController {
     @GetMapping("/profile/{id}")
     public String viewOtherUserProfile(Model model, @PathVariable Long id) {
         User user = userDao.findById(id).get();
+        List<Pet> pets = petsDao.findPetsByUserId(user.getId());
+        List<Post> posts = postDao.findPostsByUserId(user.getId());
+        model.addAttribute("user", user);
+        model.addAttribute("pets", pets);
+        model.addAttribute("posts", posts);
         model.addAttribute("user", user);
         return "user/profile";
     }
@@ -94,8 +100,22 @@ public class UserController {
     @GetMapping(path = "/profile/edit")
     public String editUser(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", user);
+        User userFromDb = userDao.getReferenceById(user.getId());
+        model.addAttribute("user", userFromDb);
         return "user/edit";
+    }
+
+    @PostMapping(path = "/profile/edit")
+    public String editUser(@ModelAttribute User user){
+        User userFromDb = userDao.findById(user.getId()).get();
+        userFromDb.setFirstName(user.getFirstName());
+        userFromDb.setLastName(user.getLastName());
+        userFromDb.setEmail(user.getEmail());
+        userFromDb.setPhoneNumber(user.getPhoneNumber());
+        userFromDb.setZipCode(user.getZipCode());
+        userFromDb.setUsername(user.getUsername());
+        userDao.save(userFromDb);
+        return "redirect:/profile";
     }
 
     @PostMapping("/profile/delete")
