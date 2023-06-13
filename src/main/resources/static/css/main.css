@@ -11,7 +11,7 @@
 
 body {
     overflow-x: hidden;
-    background-color: rgba( 233, 176, 53, 40%);
+    background-color: rgba( 233, 176, 53, 40%)!important;
 }
 
 div.container-fluid{

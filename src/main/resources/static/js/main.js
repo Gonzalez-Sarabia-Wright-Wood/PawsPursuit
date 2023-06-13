@@ -1,4 +1,4 @@
-
+// mapboxgl.accessToken = mapboxapi;
 
 let toggle = document.querySelector("#toggler");
 let pet = document.querySelector("#pet");
