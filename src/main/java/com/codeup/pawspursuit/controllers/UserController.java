@@ -145,8 +145,7 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("testAppId", testAppId);
         model.addAttribute("id", user.getId());
-        model.addAttribute("name", user.getFirstName()+" "+user.getLastName());
-        System.out.println(user.getFirstName()+" "+user.getLastName());
+        model.addAttribute("name", user.getName());
         model.addAttribute("email", user.getEmail());
         return "user/messages";
     }

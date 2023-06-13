@@ -18,35 +18,31 @@ this is the messages home
 
         var me = new Talk.User({
             id: "[[${id}]]",
-            name: "[[${name}]]",
-            email: "[[${email}]]"
+            name: [[${name}]],
+            email: [[${email}]]
         });
         window.talkSession = new Talk.Session({
             appId: testAppId,
-            me: me,
+            me: me
         });
-        var other = new Talk.User({
-            id: "[[${id2}]]",
-            name: [[${name2}]],
-            email: [[${email2}]]
-        });
+        // // var other = new Talk.User({
+        // //     id: "[[${id2}]]",
+        // //     name: [[${name2}]],
+        // //     email: [[${email2}]]
+        // // });
+        //
+        // var conversation = talkSession.getOrCreateConversation(
+        //     Talk.oneOnOneId(me)
+        // );
+        // conversation.setParticipant(me);
+        // conversation.setParticipant(other);
 
-        var conversation = talkSession.getOrCreateConversation(
-            Talk.oneOnOneId(me, other)
-        );
-        conversation.setParticipant(me);
-        conversation.setParticipant(other);
-
-        const inbox = session.createInbox();
+        const inbox = window.talkSession.createInbox();
         inbox.mount(document.getElementById('inbox-container'));
     });
 
 </script>
-
-<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
-    <i>Loading chat...</i>
-</div>
-<div id="inbox-container">
+<div id="inbox-container" style="width: 90%; margin: 30px; height: 500px">
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
 </div>
 </body>
