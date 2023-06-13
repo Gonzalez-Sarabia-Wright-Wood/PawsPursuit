@@ -1,6 +1,8 @@
 * {
     color: #170309 !important;
     font-family: 'Eczar', serif;
+    padding: 0;
+    margin: 0;
 }
 
 .home-title {
@@ -87,8 +89,8 @@ input, textarea {
 
 .button-secondary {
     border:solid #170309;
-    padding: 1px;
-    width: 75px;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
     background-color: #faefd6 !important;
     border-radius: 30px !important;
 }
@@ -99,7 +101,7 @@ input, textarea {
 
 .label {
     display: flex;
-    padding:0.5px 5px 1rem 5px ;
+    padding:1px 5px 1rem 5px ;
     background-color: #e9b035;
     border-radius: 30px;
     margin-bottom: -20px;

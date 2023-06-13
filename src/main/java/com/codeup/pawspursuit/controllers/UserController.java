@@ -3,6 +3,8 @@ package com.codeup.pawspursuit.controllers;
 import com.codeup.pawspursuit.models.Pet;
 import com.codeup.pawspursuit.models.Post;
 import com.codeup.pawspursuit.models.User;
+import com.codeup.pawspursuit.repositories.PetRepository;
+import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,21 +14,25 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class UserController {
 
     private UserRepository userDao;
+    private PetRepository petsDao;
+    private PostRepository postDao;
     private PasswordEncoder passwordEncoder;
 
     @Value("${talkJs.test.app.id}")
     private String testAppId;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userDao, PetRepository petsDao, PostRepository postDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
+        this.petsDao = petsDao;
+        this.postDao = postDao;
         this.passwordEncoder = passwordEncoder;
-
     }
 
     @GetMapping("/login")
@@ -70,22 +76,46 @@ public class UserController {
     @GetMapping("/profile")
     public String viewOwnProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", user);
+        User userFromDb = userDao.getReferenceById(user.getId());
+        List<Pet> pets = petsDao.findPetsByUserId(user.getId());
+        List<Post> posts = postDao.findPostsByUserId(user.getId());
+        model.addAttribute("user", userFromDb);
+        model.addAttribute("pets", pets);
+        model.addAttribute("posts", posts);
         return "user/profile";
     }
 
     @GetMapping("/profile/{id}")
     public String viewOtherUserProfile(Model model, @PathVariable Long id) {
         User user = userDao.findById(id).get();
+        List<Pet> pets = petsDao.findPetsByUserId(user.getId());
+        List<Post> posts = postDao.findPostsByUserId(user.getId());
+        model.addAttribute("user", user);
+        model.addAttribute("pets", pets);
+        model.addAttribute("posts", posts);
         model.addAttribute("user", user);
         return "user/profile";
     }
 
-    @GetMapping(path = "/profile/{id}/edit")
-    public String editUser(Model model, @PathVariable Long id) {
+    @GetMapping(path = "/profile/edit")
+    public String editUser(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", user);
+        User userFromDb = userDao.getReferenceById(user.getId());
+        model.addAttribute("user", userFromDb);
         return "user/edit";
+    }
+
+    @PostMapping(path = "/profile/edit")
+    public String editUser(@ModelAttribute User user){
+        User userFromDb = userDao.findById(user.getId()).get();
+        userFromDb.setFirstName(user.getFirstName());
+        userFromDb.setLastName(user.getLastName());
+        userFromDb.setEmail(user.getEmail());
+        userFromDb.setPhoneNumber(user.getPhoneNumber());
+        userFromDb.setZipCode(user.getZipCode());
+        userFromDb.setUsername(user.getUsername());
+        userDao.save(userFromDb);
+        return "redirect:/profile";
     }
 
     @PostMapping("/profile/delete")

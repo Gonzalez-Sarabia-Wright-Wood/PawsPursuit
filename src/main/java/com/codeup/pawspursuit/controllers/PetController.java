@@ -79,7 +79,7 @@ public class PetController {
     }
 
     @PostMapping("/pets/create")
-    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam String stashFilestackURL, @RequestParam String lastSeen) {
+    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam String stashFilestackURL, @RequestParam String lastSeen, @RequestParam Category category){
         Post post = new Post();
         Pet pet = new Pet();
         pet.setUser((User) getContext().getAuthentication().getPrincipal());
@@ -89,14 +89,15 @@ public class PetController {
         pet.setBreed(breed);
         pet.setSize(size);
         pet.setDescription(description);
+        pet.setPhoto(stashFilestackURL);
         petDao.save(pet);
+        post.setPet(petDao.findFirstByOrderByIdDesc());
         post.setTitle(title);
         post.setBody(body);
-        post.setPet(petDao.findFirstByOrderByIdDesc());
-        pet.setPhoto(stashFilestackURL);
         post.setLocation(lastSeen);
+        post.getCategories().add(category);
         postDao.save(post);
-        return "redirect:/profile/1";
+        return "redirect:/profile";
     }
 
     @GetMapping("/pets/{id}/delete")
@@ -114,7 +115,8 @@ public class PetController {
     public String editPet(Model model, @PathVariable Long id) {
         Pet pet = petDao.findById(id).get();
         Post post = postDao.findByPetId(id);
-        if(post.getUser()==(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (post.getUser().getId().equals(user.getId())) {
             model.addAttribute("pet", pet);
             model.addAttribute("post", post);
             return "/pets/edit";
