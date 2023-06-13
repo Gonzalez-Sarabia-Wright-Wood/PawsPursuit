@@ -114,9 +114,13 @@ public class PetController {
     public String editPet(Model model, @PathVariable Long id) {
         Pet pet = petDao.findById(id).get();
         Post post = postDao.findByPetId(id);
-        model.addAttribute("pet", pet);
-        model.addAttribute("post", post);
-        return "/pets/edit";
+        if(post.getUser()==(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()) {
+            model.addAttribute("pet", pet);
+            model.addAttribute("post", post);
+            return "/pets/edit";
+        }else{
+            return "redirect:/pets";
+        }
     }
 
     @PostMapping("/pets/{id}/edit")
