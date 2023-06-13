@@ -37,6 +37,9 @@
       <div th:case="'Permanent Redirect'" class="col-12">
         <h1>Sorry, looks like something's bonked up :/</h1>
       </div>
+      <div th:case="*" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
     </th:block>
   </div>
   <div>
