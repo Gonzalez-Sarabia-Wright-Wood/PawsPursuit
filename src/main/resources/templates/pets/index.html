@@ -10,7 +10,8 @@ This is the index for pets
 </span>
 
 <section class="container-fluid d-flex flex-wrap">
-    <div class="m-2 col-12 col-sm-3" th:each="pet: ${pets}">
+    <div class="p-1 col-12 col-sm-3" th:each="pet: ${pets}">
+
 
         <div class="p-1 container d-flex flex-row card">
             <span class="col-1 dropdown">
@@ -18,7 +19,7 @@ This is the index for pets
                 </button>
                 <ul class="dropdown-menu">
                     <li class="profile">
-                        <span class="prf-hddn" hidden="hidden" th:text="${post.user.id}"></span>
+                        <span class="prf-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
                         <a th:href="@{/profile/{id} (id=${pet.user.id})}" class="dropdown-item">Profile</a></li>
                     <li class="dd-hidden">
                         <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
