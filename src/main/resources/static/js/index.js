@@ -15,4 +15,3 @@ for (let i = 0; i < modal.length; i++) {
     a = a.join("");
     toModal[i].outerHTML = a;
 }
-
