@@ -56,13 +56,9 @@ public class CommentController {
         Comment comment = commentDao.findById(id).get();
         comment.setBody(body);
         commentDao.save(comment);
-        if (comment.getUser() == (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()) {
-            if (postDao.findById(comment.getPost().getId()).get().getPet() != null) {
-                return "redirect:/pets/" + postDao.findById(comment.getPost().getId()).get().getPet().getId();
-            }
-            return "redirect:/posts/" + comment.getPost().getId();
-        }else {
-            return "redirect:/posts/" + comment.getPost().getId();
+        if (postDao.findById(comment.getPost().getId()).get().getPet() != null) {
+            return "redirect:/pets/" + postDao.findById(comment.getPost().getId()).get().getPet().getId();
         }
+        return "redirect:/posts/" + comment.getPost().getId();
     }
 }

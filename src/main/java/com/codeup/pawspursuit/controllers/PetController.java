@@ -62,6 +62,8 @@ public class PetController {
         List<Comment> commentList = commentDao.findAllByPostId(onePost.getId());
         model.addAttribute("comment", comment);
         model.addAttribute("commentList", commentList);
+        model.addAttribute("mapboxapi", mapboxapikey);
+        model.addAttribute("petLocation", onePost.getLocation());
         return "/pets/show";
     }
 

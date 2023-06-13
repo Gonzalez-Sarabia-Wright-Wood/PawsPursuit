@@ -24,7 +24,6 @@
 <div class="container">
     <h6 class="d-inline-flex">Is this a lost pet post?</h6>
     <label id="toggler" class="switch">
-
         <input type="checkbox">
         <span class="slider round"> </span>
     </label>
@@ -222,6 +221,7 @@
     }
     //MAPBOX ---------------------------------------------------
     var mapboxApiKey = [[${mapboxapi}]]
+    console.log(mapboxApiKey)
     mapboxgl.accessToken = mapboxApiKey;
     const map = new mapboxgl.Map({
         container: 'map', // Container ID
@@ -237,9 +237,7 @@
         .addTo(map); // Add the marker to the map
 
     marker.on('dragend', function(e) {
-        let html = "";
         let longlat = e.target._lngLat;
-        console.log(`${longlat.lng},${longlat.lat}`)
         $("#lastSeen").val(`${longlat.lng},${longlat.lat}`)
     });
     map.on('load', () => {
@@ -252,28 +250,15 @@
         });
     //MAP SEARCH INFO
     function mapboxSearch(searchString){
-        console.log(searchString)
         geocode(searchString, mapboxApiKey).then(
         function (results){
-            console.log(results)
         // FLIES TO SEARCHED LOCATION
         let markerFlyTo = {center: results, zoom: 12}
         map.flyTo(markerFlyTo);
         marker.setLngLat(results)
-        //     let longlat = results.target._lngLat;
-        // console.log(results.target.lng)
-        //     console.log(results.target.lat)
-        //     console.log(`${longlat.lng},${longlat.lat}`)
-            console.log(results[0])
-            console.log(results[1])
             $("#lastSeen").val(`${results[0]},${results[1]}`)
-
         }
-
-
     );
-
-
         map.addLayer({
             'id': 'point',
             'source': 'single-point',
@@ -292,6 +277,5 @@
 </script>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{js/mapbox-geocoder-utils.js}"></script>
-
 </body>
 </html>
