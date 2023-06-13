@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <head th:replace="~{partials/fragment.html :: head('Chat')}"></head>
-<!--<script th:src="@{/js/talkjs.js}"></script>-->
 <script th:inline="javascript">
     (function(t,a,l,k,j,s){
         s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
@@ -37,6 +36,7 @@
         var inbox = talkSession.createInbox({ selected: conversation });
         inbox.mount(document.getElementById('talkjs-container'));
     });
+
 </script>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
@@ -47,6 +47,9 @@ this is the individual chat window
 <!-- container element in which TalkJS will display a chat UI -->
 <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
     <i>Loading chat...</i>
+</div>
+<div id="inbox-container">
+
 </div>
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
 
