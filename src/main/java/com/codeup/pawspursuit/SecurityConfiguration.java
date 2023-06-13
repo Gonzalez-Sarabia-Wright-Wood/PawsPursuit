@@ -46,7 +46,7 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/posts", "/pets", "/register", "/profile/{id}", "/posts/{id}", "/pets/{id}")
+                .requestMatchers("/", "/posts", "/pets", "/register", "/profile/{id}", "/posts/{id}", "/pets/{id}", "/error")
                 // anyone can see home, the post pages, and sign up
                 .permitAll()
                 /* Pages that require authentication */
