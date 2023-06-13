@@ -29,23 +29,23 @@ public class UserController {
 
     }
 
-//    @GetMapping("/login")
-//    public String userLoginGet() {
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String userLoginGet() {
+        return "login";
+    }
 
-//    @PostMapping("/login")
-//    public String userLoginPost(@RequestParam String username, @RequestParam String password, Model model) {
-//        User user = userDao.findByUsername(username);
-//        if (user == null) {
-//            return "redirect:/login";
-//        } else if (user.getPassword().equals(password)) {
-////            model.addAttribute("user", user);
-//            return "redirect:/profile";
-//        }
-//        model.addAttribute("error", "Invalid username or password");
-//        return "login";
-//    }
+    @PostMapping("/login")
+    public String userLoginPost(@RequestParam String username, @RequestParam String password, Model model) {
+        User user = userDao.findByUsername(username);
+        if (user == null) {
+            return "redirect:/login";
+        } else if (user.getPassword().equals(password)) {
+//            model.addAttribute("user", user);
+            return "redirect:/profile";
+        }
+        model.addAttribute("error", "Invalid username or password");
+        return "login";
+    }
 
 
     @GetMapping("/register")
