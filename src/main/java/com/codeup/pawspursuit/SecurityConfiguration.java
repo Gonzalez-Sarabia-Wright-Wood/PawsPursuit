@@ -56,7 +56,7 @@ public class SecurityConfiguration {
                         "/create", "/pets/create", "/posts/create", // only authenticated users can create posts
                         "/posts/{id}/edit", "/pets/{id}/edit", // only authenticated users can edit posts
                         "/posts/{id}/delete", "/pets/{id}/delete", // only authenticated users can delete posts
-                        "/profile","/profile/{id}/edit", "/chat/{r_id}", "/comment/pet", "/comment/post", "/comment/edit", "/comment/delete", "profile/delete"
+                        "/profile","/profile/edit", "/chat/{r_id}", "/comment/pet", "/comment/post", "/comment/edit", "/comment/delete", "profile/delete"
                 )
                 .authenticated()
                 .and()

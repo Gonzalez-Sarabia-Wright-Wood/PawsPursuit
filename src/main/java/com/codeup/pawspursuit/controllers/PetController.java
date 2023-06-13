@@ -90,7 +90,7 @@ public class PetController {
         post.setPet(petDao.findFirstByOrderByIdDesc());
         pet.setPhoto(stashFilestackURL);
         postDao.save(post);
-        return "redirect:/profile/1";
+        return "redirect:/profile";
     }
 
     @GetMapping("/pets/{id}/delete")

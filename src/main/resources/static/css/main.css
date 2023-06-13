@@ -1,6 +1,8 @@
 * {
     color: #170309 !important;
     font-family: 'Eczar', serif;
+    padding: 0;
+    margin: 0;
 }
 
 .home-title {
