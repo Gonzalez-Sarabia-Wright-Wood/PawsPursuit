@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials/fragment.html :: head('Post')}"></head>
+<head>
+  <meta charset="UTF-8"/>
+  <title th:text="'Oops, ' + ${error}"></title>
+</head>
+<body>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
+<div class="ps-5 text-center">
+  <div>
+    <th:block th:switch="${error}">
+      <div th:case="'Multiple Choices'" class="col-12">
+        <h1>Page not found!!</h1>
+      </div>
+      <div th:case="'Moved Permanently'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Found'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'See Other'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Not Modified'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Use Proxy'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Unused'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Temporary Redirect'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Permanent Redirect'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+    </th:block>
+  </div>
+  <div>
+    <p>Watch a funny pet video for now</p>
+  </div>
+  <div class="d-flex align-items-center justify-content-center">
+    <iframe class="post d-flex align-items-center justify-content-center" width="560" height="315" src="https://www.youtube.com/embed/o0XIOR2FQEM?autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+</div>
+</body>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
+</html>
