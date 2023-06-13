@@ -2,6 +2,7 @@ package com.codeup.pawspursuit.controllers;
 
 import com.codeup.pawspursuit.models.*;
 import com.codeup.pawspursuit.repositories.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ public class PostController {
     private UserRepository userDao;
     private CommentRepository commentDao;
     private CategoryRepository categoryDao;
+    @Value("${mapbox.api.key}")
+    private String mapboxapikey;
 
     public PostController(PostRepository postRepository, UserRepository userRepository, PetRepository petRepository, CommentRepository commentRepository, CategoryRepository categoryDao) {
         this.postDao = postRepository;
@@ -44,6 +47,9 @@ public class PostController {
         model.addAttribute("commentList", commentList);
         model.addAttribute("post", post);
         model.addAttribute("categoryList", categoryList);
+        model.addAttribute("mapboxapi", mapboxapikey);
+        model.addAttribute("petLocation", post.getLocation());
+
         return "posts/show";
     }
 
@@ -58,11 +64,12 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String submitPost(@ModelAttribute Post post, @RequestParam Category category) {
+    public String submitPost(@ModelAttribute Post post, @RequestParam Category category, @RequestParam String lastSeen2) {
         post.getCategories().add(category);
         User authenticatedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findById(authenticatedUser.getId()).orElseThrow();
         post.setUser(user);
+        post.setLocation(lastSeen2);
         postDao.save(post);
         return "redirect:/posts";
     }
