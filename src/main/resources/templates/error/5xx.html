@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials/fragment.html :: head('Post')}"></head>
+<head>
+  <meta charset="UTF-8"/>
+  <title th:text="'Oops, ' + ${error}"></title>
+</head>
+<body>
+<nav th:replace="~{partials/fragment.html :: nav}"></nav>
+<div class="ps-5 text-center">
+  <div>
+    <th:block th:switch="${error}">
+      <div th:case="'Internal Server Error'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Not Implemented'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Bad Gateway'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Service Unavailable'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Gateway Timeout'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Not Implemented'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'HTTP Version Not Supported'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Variant Also Negotiates'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Insufficient Storage'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Loop Detected'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Not Extended'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+      <div th:case="'Network Authentication Required'" class="col-12">
+        <h1>Sorry, looks like something's bonked up :/</h1>
+      </div>
+    </th:block>
+  </div>
+  <div>
+    <p>Watch a funny pet video for now</p>
+  </div>
+  <div class="d-flex align-items-center justify-content-center">
+    <iframe class="post d-flex align-items-center justify-content-center" width="560" height="315" src="https://www.youtube.com/embed/o0XIOR2FQEM?autoplay=1&mute=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+</div>
+</body>
+<footer th:replace="~{partials/fragment.html :: footer}"></footer>
+</html>
