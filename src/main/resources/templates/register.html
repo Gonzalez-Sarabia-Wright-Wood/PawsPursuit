@@ -24,7 +24,7 @@
             </div>
             <div class="mt-1 col-12">
                 <div class="label-holder">
-                    <label class="label" for="username">Username</label>
+                    <label class="label" for="username">Username&ast;</label>
                 </div>
                 <div>
                     <input class="text-input" id="username" type="text" th:field="*{username}" required>
@@ -40,10 +40,11 @@
             </div>
             <div class="mt-1 col-12">
                 <div class="label-holder">
-                    <label class="label" for="password">Password</label>
+                    <label class="label" for="password">Password&ast;</label>
                 </div>
                 <div>
-                    <input class="text-input" id="password" type="password" th:field="*{password}" required>
+                    <input class="text-input" id="password" type="password" th:field="*{password}" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
+                    <small>Password must be at least 8 characters long and contain at least one letter and one number.</small>
                 </div>
             </div>
             <div th:if="${error}" style="color: red;">

@@ -60,6 +60,13 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        phoneNumber = copy.phoneNumber;
+        zipCode = copy.zipCode;
+        petList = copy.petList;
+        posts = copy.posts;
+        comments = copy.comments;
     }
 
     public Long getId() {
