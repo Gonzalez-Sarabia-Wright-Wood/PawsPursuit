@@ -14,6 +14,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li class="profile">
+                        <span class="prf-hddn" hidden="hidden" th:text="${post.user.id}"></span>
                         <a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
                     <li class="dd-hidden">
                         <span class="usr-hddn" hidden="hidden" th:text="${post.user.id}"></span>

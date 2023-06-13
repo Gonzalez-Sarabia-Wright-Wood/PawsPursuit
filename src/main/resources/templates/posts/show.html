@@ -43,6 +43,7 @@
                             aria-expanded="false"></button>
                     <ul class="dropdown-menu">
                         <li class="profile">
+                            <span class="prf-hddn" hidden="hidden" th:text="${comment.user.id}"></span>
                             <a th:href="@{/profile/{id} (id=${comment.user.id})}" class="dropdown-item">Profile</a></li>
 
                         <li class="dd-hidden">
