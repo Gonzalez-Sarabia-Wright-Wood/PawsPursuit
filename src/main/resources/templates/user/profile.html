@@ -28,7 +28,7 @@
 
 <input value="make a post" type="button">
 
-<form th:action="@{/profile/delete}" th:method="post">
+    <form th:action="@{/profile/delete}" th:method="post">
     <input  type="hidden" th:value="${#authentication.principal.id}" th:name="id">
     <button onclick="return confirm('Are you sure about that?')" type="submit">DELETE PROFILE</button>
 </form>
