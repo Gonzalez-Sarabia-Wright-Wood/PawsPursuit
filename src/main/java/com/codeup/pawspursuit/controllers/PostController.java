@@ -90,4 +90,11 @@ public class PostController {
     public String aboutUs() {
         return "aboutUs";
     }
+
+    @GetMapping("/dummy")
+    public String dummy() {
+        return "dummy";
+    }
+
 }
+
