@@ -102,15 +102,8 @@
                         <a class="nav-link" th:href="@{/pets}">Pets</a>
                     </li>
                     <li class="navbar-item">
-                        <a th:href="@{/chat}" class="nav-link">Chat</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a th:href="@{/profile/messages}" class="nav-link">Messages</a>
-                    </li>
-                    <li class="navbar-item">
                         <a th:href="@{/posts}" class="nav-link">Posts</a>
                     </li>
-
                     <th:block sec:authorize="!isAuthenticated()">
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/register}">Register</a>
@@ -122,6 +115,9 @@
                     <th:block sec:authorize="isAuthenticated()">
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/create}">Create</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a th:href="@{/chat}" class="nav-link">Chat</a>
                         </li>
                         <li class="navbar-item">
                             <a class="nav-link" th:href="@{/profile}">Profile</a>
