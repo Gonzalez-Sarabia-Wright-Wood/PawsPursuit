@@ -133,11 +133,13 @@ public class PetController {
         pet.setBreed(breed);
         pet.setSize(size);
         pet.setDescription(description);
+        if(!stashFilestackURL.equals("replaceme")){
+            pet.setPhoto(stashFilestackURL);
+        }
         petDao.save(pet);
         Post post = postDao.findById(post_id).get();
         post.setTitle(title);
         post.setBody(body);
-        pet.setPhoto(stashFilestackURL);
         postDao.save(post);
         return "redirect:/pets";
     }
