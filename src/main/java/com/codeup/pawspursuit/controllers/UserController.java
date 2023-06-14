@@ -7,6 +7,8 @@ import com.codeup.pawspursuit.repositories.PetRepository;
 import com.codeup.pawspursuit.repositories.PostRepository;
 import com.codeup.pawspursuit.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -33,6 +35,15 @@ public class UserController {
         this.petsDao = petsDao;
         this.postDao = postDao;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @GetMapping("/")
+    public String homePage(Model model) {
+        Page<Pet> pets = petsDao.findAll(
+                PageRequest.of(0, 4)
+        );
+        model.addAttribute("pets", pets);
+        return "index";
     }
 
     @GetMapping("/login")
@@ -106,7 +117,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/profile/edit")
-    public String editUser(@ModelAttribute User user){
+    public String editUser(@ModelAttribute User user) {
         User userFromDb = userDao.findById(user.getId()).get();
         userFromDb.setFirstName(user.getFirstName());
         userFromDb.setLastName(user.getLastName());
