@@ -81,6 +81,7 @@ public class PostController {
         if (post.getUser().getId().equals(user.getId())) {
             List<Category> categories = categoryDao.findAll();
             Category category = post.getCategories().get(0);
+            model.addAttribute("mapboxapi", mapboxapikey);
             model.addAttribute("category", category);
             model.addAttribute("categories", categories);
             model.addAttribute("post", post);
