@@ -4,17 +4,39 @@
 <head th:replace="~{partials/fragment.html :: head('Post Edit')}"></head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
-<form th:action="@{/posts/create}" th:method="post" id="postForm" th:object="${post}">
-    <input type="hidden" id="id" th:field="*{id}">
-    <input type="hidden" name="category" id="category" th:value="${category.id}">
-    <div>
-        <div>
-            <label for="title">Title</label>
-        </div>
-        <div>
-            <input id="title" type="text" th:field="*{title}">
-        </div>
+<section class="d-flex">
+    <div class="mt-4 mb-4 p-4 container form-box col-12 col-lg-8" id="pet">
+        <form th:action="@{/posts/create}" th:method="post" id="postForm" th:object="${post}">
+            <input type="hidden" id="id" th:field="*{id}">
+            <input type="hidden" name="category" id="category" th:value="${category.id}">
+            <div class="mt-1 d-flex flex-wrap">
+                <div class="m-2 px-1 col-12 col-sm-6">
+                    <div class="label-holder">
+                        <span class="label">Title:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <input class="text-input" type="text" name="title" th:value="${post.title}">
+                        </div>
+                    </div>
+                </div>
+                <div class="m-2 px-1 col-12 col-sm-6">
+                    <div class="ta-holder">
+                        <span class="ta">Post-Body:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <textarea rows="4" class="text-area" name="body" th:text="${post.body}"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="mt-4" type="submit">Submit</button>
+            </div>
+        </form>
     </div>
+
     <div>
         <div>
             <label for="description">Description</label>
@@ -28,6 +50,9 @@
         <button class="mt-4 mb-4 btn button-main" type="submit">Submit</button>
     </div>
 </form>
+
+</section>
+
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
 
 </body>

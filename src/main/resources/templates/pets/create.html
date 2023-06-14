@@ -33,8 +33,8 @@
 <section class="d-flex">
     <div class="mb-4 mt-4 p-4 container col-6 form-box" id="post" hidden="hidden">
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
-            <div class="mt-1 d-flex">
-                <div class="col-6">
+            <div class="mt-1 d-flex flex-wrap">
+                <div class="px-1 col-12">
 
                     <select name="category">
                         <th:block>
@@ -55,8 +55,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-1 d-flex">
-                <div class="col-6">
+            <div class="mt-1 d-flex flex-wrap">
+                <div class="px-1 col-12">
                     <div class="label-holder">
                         <span class="label">Location:</span>
                     </div>
@@ -67,8 +67,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-1 d-flex">
-                <div class="col-6">
+            <div class="mt-1 d-flex flex-wrap">
+                <div class="px-1 col-12">
                     <div class="ta-holder">
                         <span class="ta">Post-Body:</span>
                     </div>
@@ -88,8 +88,8 @@
 
     <div class="mt-4 mb-4 p-4 container form-box col-12" id="pet" hidden="hidden">
         <form th:action="@{/pets/create}" th:method="post" id="postForm">
-            <div class="mt-1 d-flex">
-                <div class="col-6">
+            <div class="mt-1 d-flex flex-wrap">
+                <div class="px-1 col-12 col-sm-6">
 
                     <select name="category">
                         <th:block>
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="px-1 col-12 col-sm-6">
                     <div class="label-holder">
                         <span class="label">Location:</span>
                     </div>
@@ -119,8 +119,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-1 d-flex">
-                <div class="col-6">
+            <div class="mt-1 d-flex flex-wrap">
+                <div class="px-1 col-12 col-sm-6">
                     <div class="label-holder">
                         <span class="label">Name:</span>
                     </div>
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="px-1 col-12 col-sm-6">
                     <div class="label-holder">
                         <span class="label">Size:</span>
                     </div>
@@ -141,8 +141,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-1 d-flex">
-                <div class="col-6">
+            <div class="mt-1 d-flex flex-wrap">
+                <div class="px-1 col-12 col-sm-6">
                     <div class="label-holder">
                         <span class="label">Species:</span>
                     </div>
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="px-1 col-12 col-sm-6">
                     <div class="label-holder">
                         <span class="label">Breed:</span>
                     </div>
@@ -163,8 +163,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-1 d-flex">
-                <div class="col-6">
+            <div class="mt-1 d-flex flex-wrap">
+                <div class="px-1 col-12 col-sm-6">
                     <div class="ta-holder">
                         <span class="ta">Post-Body:</span>
                     </div>
@@ -175,7 +175,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="px-1 col-12 col-sm-6">
                     <div class="ta-holder">
                         <span class="ta">Description:</span>
                     </div>
