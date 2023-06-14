@@ -17,7 +17,9 @@
     />
     <!--geocoder-->
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
+    <link rel='stylesheet'
+          href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css'
+          type='text/css'/>
 </head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
@@ -189,10 +191,11 @@
                 <button type="button" id="upload" name="upload">Upload an image</button>
             </div>
             <div>
-                    <input type="search" placeholder="Search" id="searchInput"><button id="locationSearch" class="btn" type="button">Search</button>
-                    <input id="lastSeen" th:name="lastSeen" th:value="replaceme" type="hidden">
-                    <div id="map" style='width: 400px; height: 300px;'>
-                    </div>
+                <input type="search" placeholder="Search" id="searchInput">
+                <button id="locationSearch" class="btn" type="button">Search</button>
+                <input id="lastSeen" th:name="lastSeen" th:value="replaceme" type="hidden">
+                <div id="map" style='width: 400px; height: 300px;'>
+                </div>
             </div>
 
             <div class="d-flex justify-content-end">
@@ -215,13 +218,12 @@
     const client = filestack.init(filestackapi);
     const options = {
         onUploadDone:
-    function(res) {
-        $("#stashFilestackURL").val(res.filesUploaded[0].url);
-    }
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
     }
     //MAPBOX ---------------------------------------------------
     var mapboxApiKey = [[${mapboxapi}]]
-    console.log(mapboxApiKey)
     mapboxgl.accessToken = mapboxApiKey;
     const map = new mapboxgl.Map({
         container: 'map', // Container ID
@@ -230,14 +232,15 @@
         zoom: 12 // Starting zoom level
     });
     //MAP MARKER INFO
-    const marker = new mapboxgl.Marker ({ // Initialize a new marker
+    const marker = new mapboxgl.Marker({ // Initialize a new marker
         draggable: true
     })
         .setLngLat([-98.491142, 29.424349])// Marker [lng, lat] coordinates
         .addTo(map); // Add the marker to the map
 
-    marker.on('dragend', function(e) {
+    marker.on('dragend', function (e) {
         let longlat = e.target._lngLat;
+        console.log(longlat)
         $("#lastSeen").val(`${longlat.lng},${longlat.lat}`)
     });
     map.on('load', () => {
@@ -248,31 +251,36 @@
                 'features': []
             }
         });
-    //MAP SEARCH INFO
-    function mapboxSearch(searchString){
-        geocode(searchString, mapboxApiKey).then(
-        function (results){
-        // FLIES TO SEARCHED LOCATION
-        let markerFlyTo = {center: results, zoom: 12}
-        map.flyTo(markerFlyTo);
-        marker.setLngLat(results)
-            $("#lastSeen").val(`${results[0]},${results[1]}`)
+
+        //MAP SEARCH INFO
+        function mapboxSearch(searchString) {
+            geocode(searchString, mapboxApiKey).then(
+                function (results) {
+                    // FLIES TO SEARCHED LOCATION
+                    console.log(results)
+                    let markerFlyTo = {center: results, zoom: 12}
+                    map.flyTo(markerFlyTo);
+                    marker.setLngLat(results)
+                    $("#lastSeen").val(`${results[0]},${results[1]}`)
+                }
+            );
+            map.addLayer({
+                'id': 'point',
+                'source': 'single-point',
+                'type': 'circle',
+                'paint': {
+                    'circle-radius': 10,
+                    'circle-color': '#d641ff'
+                }
+            });
         }
-    );
-        map.addLayer({
-            'id': 'point',
-            'source': 'single-point',
-            'type': 'circle',
-            'paint': {
-                'circle-radius': 10,
-                'circle-color': '#d641ff'
-            }
-        });
-    }
+
         $("#locationSearch").on("click", function (e) {
             e.preventDefault();
             mapboxSearch($("#searchInput").val());
         })
+
+        mapboxSearch([[${#authentication.principal.zipCode}]]);
     });
 </script>
 <script th:src="@{/js/main.js}"></script>
