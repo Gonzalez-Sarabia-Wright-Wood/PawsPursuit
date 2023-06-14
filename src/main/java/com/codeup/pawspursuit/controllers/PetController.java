@@ -97,18 +97,18 @@ public class PetController {
         post.setLocation(lastSeen);
         post.getCategories().add(category);
         postDao.save(post);
-        return "redirect:profile";
+        return "redirect:/profile";
     }
 
     @GetMapping("/pets/{id}/delete")
     public String deletePetGet() {
-        return "redirect:/Users/profile";
+        return "redirect:/users/profile";
     }
 
     @PostMapping("/pets/{id}/delete")
     public String deletePetPost(@RequestParam Long id) {
         petDao.deleteById(id);
-        return "redirect:pets";
+        return "redirect:/pets";
     }
 
     @GetMapping("/pets/{id}/edit")
@@ -121,7 +121,7 @@ public class PetController {
             model.addAttribute("post", post);
             return "/pets/edit";
         }else{
-            return "redirect:pets";
+            return "redirect:/pets";
         }
     }
 
@@ -138,7 +138,7 @@ public class PetController {
         post.setTitle(title);
         post.setBody(body);
         postDao.save(post);
-        return "redirect:pets";
+        return "redirect:/pets";
     }
 
 }
