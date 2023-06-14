@@ -85,7 +85,7 @@
 
                         <h5 th:text="${pet.isLost()}" class="card-title lost"></h5>
 
-                        <img class="card-img" th:src="${pet.photo}" alt="Card image cap">
+                        <img class="card-img" th:src="${pet.photo}" alt="pet photo">
 
                         <div>
                             <h6 class="card-subtitle d-inline-block">Species : </h6>
@@ -139,6 +139,6 @@
 </section>
 
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
-
+<script th:src="@{/js/index.js}"></script>
 </body>
 </html>
