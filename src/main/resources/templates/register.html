@@ -52,8 +52,8 @@
                     <label class="label" for="zipCode">Zip Code&ast;</label>
                 </div>
                 <div>
-                    <input class="text-input" id="zipCode" type="text" th:field="*{zipCode}" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
-                    <small>Password must be at least 8 characters long and contain at least one letter and one number.</small>
+                    <input class="text-input" id="zipCode" type="text" th:field="*{zipCode}" >
+
                 </div>
             </div>
             <div th:if="${error}" style="color: red;">
