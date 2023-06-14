@@ -5,4 +5,4 @@ VALUES ('Dog'),
        ('Cat'),
        ('Bird'),
        ('Rodent'),
-       ('Reptile');
+       ('Reptile')

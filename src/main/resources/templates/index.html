@@ -19,18 +19,19 @@
                 Connecting with each other to reconnect you with your beloved pet, that’s PawsPursuit!</p>
         </div>
         <div class="p-2 col-12 col-sm-8">
-            <img th:src="@{/images/DogPic.png}" class="resizable-image-1">
+            <img th:src="@{/images/DogPic.png}" class="resizable-image">
         </div>
     </div>
 </div>
 
 <div class="d-flex justify-content-evenly my-3">
-<a class="a-null button-secondary" th:href="@{/pets}">View all pet posts</a>
-<a class="a-null button-main" th:href="@{/register}">Sign up</a>
+    <a class="a-null button-secondary" th:href="@{/pets}">View all pet posts</a>
+    <a class="a-null button-main" th:href="@{/register}">Sign up</a>
 </div>
 <section class="pets row">
     <div th:each="pet: ${pets}" class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
+        <div class="card">
+
             <div class="card-body ">
                 <h5 th:text="${pet.isLost()}" class="card-heading lost text-center"></h5>
                 <img th:src="${pet.photo}" class="card-img-top" alt="...">
@@ -55,66 +56,82 @@
     <a th:href="@{/register}" class="btn button-main fs-3">Sign Up Today!</a>
 </div>
 
-<section class="devs row">
+<section class="p-2 devs row">
     <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
-        <div class="card text-center" style="width: 18rem;">
-            <img th:src="@{/images/luis_gonzalez_headshot_copy.jpeg}" class="card-img-top" alt="...">
+        <div class="card text-center">
+            <div class="dev-profile">
+                <img th:src="@{/images/luis_gonzalez_headshot_copy.jpeg}" class="card-img-top" alt="...">
+            </div>
+
             <div class="card-body">
-                <h5 class="card-title">Luis Gonzalez</h5>
-                <p class="card-text">Full Stack Software Developer</p>
-                <div class="d-flex justify-content-evenly">
-                    <a th:href="@{https://github.com/zluigon}"><i class="fa-brands fa-square-github fa-2xl"
-                                                                  style="color: #170309;"></i></a>
-                    <a th:href="@{https://www.linkedin.com/in/zluigon/}"><i class="fa-brands fa-linkedin fa-2xl"
+                    <h5 class="card-title">Luis Gonzalez</h5>
+                    <p class="card-text">Full Stack Software Developer</p>
+                    <div class="d-flex justify-content-evenly">
+                        <a th:href="@{https://github.com/zluigon}"><i class="fa-brands fa-square-github fa-2xl"
+                                                                      style="color: #170309;"></i></a>
+                        <a th:href="@{https://www.linkedin.com/in/zluigon/}"><i class="fa-brands fa-linkedin fa-2xl"
+                                                                                style="color: #170309;"></i></a>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
+        <div class="card text-center">
+            <div class="dev-profile">
+
+                <img th:src="@{/images/Genesis_Headshot.png}" class="card-img-top" alt="...">
+            </div>
+
+            <div class="card-body">
+                    <h5 class="card-title">Genesis Sarabia</h5>
+                    <p class="card-text">Full Stack Software Developer</p>
+                    <div class="d-flex justify-content-evenly">
+                        <a th:href="@{https://github.com/genesissarabia}"><i class="fa-brands fa-square-github fa-2xl"
+                                                                             style="color: #170309;"></i></a>
+                        <a th:href="@{https://www.linkedin.com/in/genesis-sarabia/}"><i
+                                class="fa-brands fa-linkedin fa-2xl"
+                                style="color: #170309;"></i></a>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
+        <div class="card text-center">
+            <div class="dev-profile">
+                <img th:src="@{/images/Riley_Wood_HeadShot.png}" class="card-img-top" alt="...">
+            </div>
+                <div class="card-body">
+                    <h5 class="card-title">Riley Wood</h5>
+                    <p class="card-text">Full Stack Software Developer</p>
+                    <div class="d-flex justify-content-evenly">
+                        <a th:href="@{https://github.com/RileyWood9984}"><i class="fa-brands fa-square-github fa-2xl"
                                                                             style="color: #170309;"></i></a>
+                        <a th:href="@{https://www.linkedin.com/in/riley-j-wood/}"><i
+                                class="fa-brands fa-linkedin fa-2xl"
+                                style="color: #170309;"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
     <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
-        <div class="card text-center" style="width: 18rem;">
-            <img th:src="@{/images/Genesis_Headshot.png}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Genesis Sarabia</h5>
-                <p class="card-text">Full Stack Software Developer</p>
-                <div class="d-flex justify-content-evenly">
-                    <a th:href="@{https://github.com/genesissarabia}"><i class="fa-brands fa-square-github fa-2xl"
-                                                                         style="color: #170309;"></i></a>
-                    <a th:href="@{https://www.linkedin.com/in/genesis-sarabia/}"><i class="fa-brands fa-linkedin fa-2xl"
-                                                                                    style="color: #170309;"></i></a>
-                </div>
+        <div class="card text-center">
+            <div class="dev-profile">
+
+                <img th:src="@{/images/ciera_romero_wright_headshsot.jpeg}" class="card-img-top" alt="...">
             </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
-        <div class="card text-center" style="width: 18rem;">
-            <img th:src="@{/images/Riley_Wood_HeadShot.png}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Riley Wood</h5>
-                <p class="card-text">Full Stack Software Developer</p>
-                <div class="d-flex justify-content-evenly">
-                    <a th:href="@{https://github.com/RileyWood9984}"><i class="fa-brands fa-square-github fa-2xl"
-                                                                        style="color: #170309;"></i></a>
-                    <a th:href="@{https://www.linkedin.com/in/riley-j-wood/}"><i class="fa-brands fa-linkedin fa-2xl"
-                                                                                 style="color: #170309;"></i></a>
+                    <h5 class="card-title">Ciera Romero-Wright</h5>
+                    <p class="card-text">Full Stack Software Developer</p>
+                    <div class="d-flex justify-content-evenly">
+                        <a th:href="@{https://github.com/cieraromerowright}"><i
+                                class="fa-brands fa-square-github fa-2xl"
+                                style="color: #170309;"></i></a>
+                        <a th:href="@{https://www.linkedin.com/in/ciera-romero-wright/}"><i
+                                class="fa-brands fa-linkedin fa-2xl"
+                                style="color: #170309;"></i></a>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
-        <div class="card text-center" style="width: 18rem;">
-            <img th:src="@{/images/ciera_romero_wright_headshsot.jpeg}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Ciera Romero-Wright</h5>
-                <p class="card-text">Full Stack Software Developer</p>
-                <div class="d-flex justify-content-evenly">
-                    <a th:href="@{https://github.com/cieraromerowright}"><i class="fa-brands fa-square-github fa-2xl"
-                                                                            style="color: #170309;"></i></a>
-                    <a th:href="@{https://www.linkedin.com/in/ciera-romero-wright/}"><i
-                            class="fa-brands fa-linkedin fa-2xl"
-                            style="color: #170309;"></i></a>
-                </div>
-            </div>
         </div>
     </div>
 </section>
