@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{partials/fragment.html :: head('Messages')}"></head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 <input type="button" value="Back to posts">
-this is the messages home
 <script th:inline="javascript">
     (function(t,a,l,k,j,s){
         s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)

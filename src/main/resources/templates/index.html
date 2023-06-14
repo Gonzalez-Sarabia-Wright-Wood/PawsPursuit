@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{partials/fragment.html :: head('Index')}"></head>
-
-<link rel="stylesheet" th:href="@{/css/index.css}">
+<head>
+    <script src="https://kit.fontawesome.com/94186186be.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
 <body>
 <nav th:replace="partials/fragment.html :: nav"></nav>
 <div class="p-2">
@@ -22,38 +24,32 @@
     </div>
 </div>
 
+<div class="d-flex justify-content-evenly my-3">
 <a class="a-null button-secondary" th:href="@{/pets}">View all pet posts</a>
 <a class="a-null button-main" th:href="@{/register}">Sign up</a>
-
-<div th:each="pet: ${post}">
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body ">
-            <h5 th:text="${pet.isLost()}" class="card-title"></h5>
-
-            <img class="card-img" src="..." alt="Card image cap">
-
-            <div>
-                <h6 class="card-subtitle d-inline-block">Species : </h6>
-                <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+</div>
+<section class="pets row">
+    <div th:each="pet: ${pets}" class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body ">
+                <h5 th:text="${pet.isLost()}" class="card-heading lost text-center"></h5>
+                <img th:src="${pet.photo}" class="card-img-top" alt="...">
+                <div class="mt-2">
+                    <h6 class="card-subtitle d-inline-block">Name : </h6>
+                    <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <div>
+                    <p class="card-subtitle d-inline-block">Species : </p>
+                    <p th:text="${pet.getPost().getCategories().get(0).getName()}"
+                       class="card-subtitle d-inline-block"></p>
+                </div>
             </div>
-            <div>
-                <h6 class="card-subtitle d-inline-block">Name : </h6>
-                <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
-            </div>
-            <div>
-                <h6 class="card-subtitle d-inline-block">Size : </h6>
-                <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
-            </div>
-            <p class="card-text" th:text="${pet.getId()}"></p>
         </div>
     </div>
-</div>
-
+</section>
 
 <div class="d-flex justify-content-evenly">
-<h2>Ready to get started?</h2>
-<!--<h3>Sign up or contact us</h3>-->
+    <h2>Ready to get started?</h2>
 </div>
 <div class="d-flex justify-content-center my-3">
     <a th:href="@{/register}" class="btn button-main fs-3">Sign Up Today!</a>
@@ -113,15 +109,16 @@
                 <p class="card-text">Full Stack Software Developer</p>
                 <div class="d-flex justify-content-evenly">
                     <a th:href="@{https://github.com/cieraromerowright}"><i class="fa-brands fa-square-github fa-2xl"
-                                                                  style="color: #170309;"></i></a>
-                    <a th:href="@{https://www.linkedin.com/in/ciera-romero-wright/}"><i class="fa-brands fa-linkedin fa-2xl"
                                                                             style="color: #170309;"></i></a>
+                    <a th:href="@{https://www.linkedin.com/in/ciera-romero-wright/}"><i
+                            class="fa-brands fa-linkedin fa-2xl"
+                            style="color: #170309;"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <footer th:replace="partials/fragment.html :: footer"></footer>
+<script th:src="@{/js/index.js}"></script>
 </body>
 </html>
