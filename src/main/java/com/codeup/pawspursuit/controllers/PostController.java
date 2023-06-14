@@ -79,8 +79,10 @@ public class PostController {
         Post post = postDao.findById(id).get();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (post.getUser().getId().equals(user.getId())) {
+            List<Category> categories = categoryDao.findAll();
             Category category = post.getCategories().get(0);
             model.addAttribute("category", category);
+            model.addAttribute("categories", categories);
             model.addAttribute("post", post);
             return "posts/edit";
         } else{

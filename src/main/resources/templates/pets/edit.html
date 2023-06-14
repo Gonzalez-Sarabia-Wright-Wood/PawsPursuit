@@ -21,21 +21,13 @@
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 
-<div sec:authorize="isAuthenticated()">
-    This content is only shown to authenticated users.
-
-    User ID: <span th:text="${#authentication.principal.id}"/>
-    Username: <span th:text="${#authentication.principal.username}"/>
-    Email: <span th:text="${#authentication.principal.email}"/>
-</div>
-
 <section class="d-flex">
-<div class="mt-4 mb-4 p-4 container form-box col-12" id="pet">
+<div class="mt-4 mb-4 p-4 container form-box col-12 col-lg-8" id="pet">
     <form th:action="@{/pets/${pet.id}/edit}" th:method="post" id="postForm">
         <input type="hidden" id="post_id"  name="post_id" th:value="${post.id}">
         <input type="hidden" id="pet_id" name="pet_id" th:value="${pet.id}">
-        <div class="mt-1 d-flex">
-            <div class="col-6">
+        <div class="mt-1 d-flex flex-wrap">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Title:</span>
                 </div>
@@ -45,19 +37,9 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="col-6">-->
-<!--                <div class="label-holder">-->
-<!--                    <span class="label">Location:</span>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <div class="input">-->
-<!--                        <input class="text-input" type="text" name="location" th:value="${post.location}">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
-        <div class="mt-1 d-flex">
-            <div class="col-6">
+        <div class="mt-1 d-flex flex-wrap">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Name:</span>
                 </div>
@@ -67,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Size:</span>
                 </div>
@@ -78,18 +60,22 @@
                 </div>
             </div>
         </div>
-        <div class="mt-1 d-flex">
-            <div class="col-6">
+        <div class="mt-1">
+            <div class="px-1 col-12">
                 <div class="label-holder">
                     <span class="label">Species:</span>
                 </div>
-                <div>
-                    <div class="input">
-                        <input class="text-input" type="text" name="species" th:value="${pet.species}">
-                    </div>
+                <div class="input">
+                    <select class="text-input" name="category">
+                        <th:block>
+                            <option th:each="category : ${categories}"
+                                    th:value="${category.id}"
+                                    th:text="${category.name}"></option>
+                        </th:block>
+                    </select>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Breed:</span>
                 </div>
@@ -100,24 +86,24 @@
                 </div>
             </div>
         </div>
-        <div class="mt-1 d-flex">
-            <div class="col-6">
+        <div class="mt-1 d-flex flex-wrap">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="ta-holder">
                     <span class="ta">Post-Body:</span>
                 </div>
                 <div>
                     <div class="input">
-                        <textarea class="text-area" name="body" th:value="${post.body}"></textarea>
+                        <textarea rows="4" class="text-area" name="body" th:text="${post.body}"></textarea>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="ta-holder">
                     <span class="ta">Description:</span>
                 </div>
                 <div>
                     <div class="input">
-                        <textarea class="text-area" name="description" th:value="${pet.description}"></textarea>
+                        <textarea rows="4" class="text-area" name="description" th:text="${pet.description}"></textarea>
                     </div>
                 </div>
             </div>
@@ -137,7 +123,8 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <button class="mt-4  button-main" type="submit">Submit</button>
+            <a class="btn button-secondary mt-4 mb-4 me-3" onclick="history.back()">Go Back</a>
+            <button class="mt-4 mb-4 btn button-main" type="submit">Submit</button>
         </div>
     </form>
 </div>

@@ -117,8 +117,15 @@ public class UserController {
     }
 
     @PostMapping(path = "/profile/edit")
-    public String editUser(@ModelAttribute User user) {
+    public String editUser(@ModelAttribute User user, @RequestParam String currentPW, @RequestParam String newPW) {
         User userFromDb = userDao.findById(user.getId()).get();
+
+        if (!newPW.isEmpty()) {
+            if (passwordEncoder.matches(currentPW, userFromDb.getPassword())) {
+                String hash = passwordEncoder.encode(newPW);
+                userFromDb.setPassword(hash);
+            }
+        }
         userFromDb.setFirstName(user.getFirstName());
         userFromDb.setLastName(user.getLastName());
         userFromDb.setEmail(user.getEmail());

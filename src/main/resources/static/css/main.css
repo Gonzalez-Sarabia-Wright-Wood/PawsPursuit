@@ -11,11 +11,11 @@
 
 body {
     overflow-x: hidden;
-    background-color: rgba( 233, 176, 53, 40%)!important;
+    background-color: rgba(233, 176, 53, 40%) !important;
 }
 
-.navfrag{
-    background-color: rgba( 233, 176, 53, 40%);
+.navfrag {
+    background-color: rgba(233, 176, 53, 40%);
 }
 
 .navbar {
@@ -25,18 +25,15 @@ body {
 
 div.label {
     background-color: #fef6f8;
-    border: solid #170309 ;
+    border: solid #170309;
     padding: 1px;
     margin: 5px;
 }
 
-div.input {
-    display: inline-block;
-    border-radius: 30px;
-}
-
-input, textarea {
-    padding-left: 5px;
+.text-input, textarea {
+    width: 100%;
+    padding-left: 0.5rem;
+    background-color: #faefd6;
     border-radius: 30px;
     border: solid #170309;
     overflow: auto;
@@ -47,19 +44,15 @@ input, textarea {
     resize: none;
 }
 
-.text-input {
-    width: 100%;
-}
-
-.text-area {
-    height: 10rem;
-    width: 15rem;
-    padding-left: 0.5rem;
-}
 .text-area-2 {
     height: 5rem;
     width: 25rem;
     padding-left: 0.5rem;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
 }
 
 .home {
@@ -68,8 +61,8 @@ input, textarea {
 }
 
 .offcanvas {
-    background-color: rgb( 233, 176, 53);
-    width: 15rem!important;
+    background-color: rgb(233, 176, 53);
+    width: 15rem !important;
 }
 
 .button {
@@ -88,7 +81,7 @@ input, textarea {
 }
 
 .button-secondary {
-    border:solid #170309;
+    border: solid #170309;
     padding-left: 0.25rem !important;
     padding-right: 0.25rem !important;
     background-color: #faefd6 !important;
@@ -101,10 +94,11 @@ input, textarea {
 
 .label {
     display: flex;
-    padding:1px 5px 1rem 5px ;
-    background-color: #e9b035;
+    padding: 1px 5px 1rem 5px;
+    background-color: #db8e85;
     border-radius: 30px;
     margin-bottom: -20px;
+    border: solid #170309;
 }
 
 .ta-holder {
@@ -125,6 +119,7 @@ input, textarea {
     border-radius: 30px;
     border: solid #170309;
 }
+
 .form-box-2 {
     background-color: #e9b035;
     border-radius: 30px;
@@ -133,16 +128,10 @@ input, textarea {
 }
 
 .card {
-    border: solid #170309 ;
+    border: solid #170309;
     background-color: #e9b035;
     border-radius: 30px !important;
-}
-
-.card > img {
-    border-top-left-radius: 27px !important;
-    border-top-right-radius: 27px !important;
-    border-bottom: #170309 solid 3px !important;
-    height: 285px !important;
+    width: 100%;
 }
 
 .a-null {
@@ -454,28 +443,36 @@ label:hover {
 }
 
 @keyframes eyeroll {
-    from{transform: rotate(0deg)}
-    to{transform: rotate(360deg)}
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
 }
-div.penguin-eye-left:hover ,div.monocle:hover{
-animation-name: eyeroll;
+
+div.penguin-eye-left:hover {
+    animation-name: eyeroll;
     animation-duration: 750ms;
 }
-.paw{
+
+.paw {
     margin-left: 85px;
     position: absolute;
     margin-top: 25px;
     transform: rotate(335deg);
     opacity: 50%;
 }
-.paw-2{
+
+.paw-2 {
     margin-left: 135px;
     position: absolute;
     margin-top: -37px;
     transform: rotate(335deg);
     opacity: 25%;
 }
-.paw-pad-1{
+
+.paw-pad-1 {
     background: black;
     width: 10px;
     height: 15px;
@@ -483,7 +480,8 @@ animation-name: eyeroll;
     position: absolute;
     transform: rotate(315deg);
 }
-.paw-pad-2{
+
+.paw-pad-2 {
     background: black;
     width: 10px;
     height: 15px;
@@ -492,7 +490,8 @@ animation-name: eyeroll;
     margin-top: 7.5px;
     transform: rotate(45deg);
 }
-.pad-1{
+
+.pad-1 {
     background: black;
     width: 8px;
     height: 5px;
@@ -501,7 +500,8 @@ animation-name: eyeroll;
     margin-top: -2px;
     margin-left: 9px;
 }
-.pad-2{
+
+.pad-2 {
     background: black;
     width: 9px;
     height: 6px;
@@ -510,7 +510,8 @@ animation-name: eyeroll;
     margin-top: 3px;
     margin-left: 14px;
 }
-.pad-3{
+
+.pad-3 {
     background: black;
     width: 9px;
     height: 6px;
@@ -519,7 +520,8 @@ animation-name: eyeroll;
     margin-top: 10px;
     margin-left: 14px;
 }
-.pad-4{
+
+.pad-4 {
     background: black;
     width: 8px;
     height: 5px;
@@ -529,11 +531,16 @@ animation-name: eyeroll;
     margin-left: 10px;
 }
 
-#map {
-    border: 3px solid black;
+#map, #map2 {
+    border: 3px solid #170309;
+    border-radius: 30px;
     height: 40vh;
-    width: 90vw;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+}
+
+.mapboxgl-canvas{
+    width: 100% !important;
+    height: auto !important;
+}
+.w-pets {
+    width: 90%;
 }

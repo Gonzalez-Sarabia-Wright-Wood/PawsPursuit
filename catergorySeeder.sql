@@ -4,5 +4,5 @@ INSERT INTO categories (name)
 VALUES ('Dog'),
        ('Cat'),
        ('Bird'),
-       ('Fish'),
-       ('Reptile');
+       ('Rodent'),
+       ('Reptile')

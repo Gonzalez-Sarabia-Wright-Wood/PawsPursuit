@@ -114,10 +114,12 @@ public class PetController {
     public String editPet(Model model, @PathVariable Long id) {
         Pet pet = petDao.findById(id).get();
         Post post = postDao.findByPetId(id);
+        List<Category> categories = categoryDao.findAll();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (post.getUser().getId().equals(user.getId())) {
             model.addAttribute("pet", pet);
             model.addAttribute("post", post);
+            model.addAttribute("categories", categories);
             model.addAttribute("filestackapi", filestackapi);
             model.addAttribute("mapboxapi", mapboxapikey);
             return "/pets/edit";
@@ -127,10 +129,10 @@ public class PetController {
     }
 
     @PostMapping("/pets/{id}/edit")
-    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id, @RequestParam String stashFilestackURL, @RequestParam String lastSeen) {
+    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam Category category, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id, @RequestParam String stashFilestackURL, @RequestParam String lastSeen) {
         Pet pet = petDao.findById(pet_id).get();
         pet.setName(name);
-        pet.setSpecies(species);
+        pet.setSpecies(String.valueOf(category));
         pet.setBreed(breed);
         pet.setSize(size);
         pet.setDescription(description);
@@ -141,6 +143,7 @@ public class PetController {
         Post post = postDao.findById(post_id).get();
         post.setTitle(title);
         post.setBody(body);
+        post.getCategories().add(category);
         if(!lastSeen.equals("replaceme")) {
             post.setLocation(lastSeen);
         }
