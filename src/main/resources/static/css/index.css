@@ -1,5 +1,6 @@
 .resizable-image-1 {
-    width: 35rem;
+    width:100%;
+    height:auto;
     border-radius: 10px;
 }
 

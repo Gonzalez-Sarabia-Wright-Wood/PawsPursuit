@@ -52,8 +52,7 @@ input, textarea {
 }
 
 .text-area {
-    height: 10rem;
-    width: 15rem;
+    width: 100%;
     padding-left: 0.5rem;
 }
 .text-area-2 {
@@ -102,7 +101,7 @@ input, textarea {
 .label {
     display: flex;
     padding:1px 5px 1rem 5px ;
-    background-color: #e9b035;
+    background-color: #db8e85;
     border-radius: 30px;
     margin-bottom: -20px;
 }
