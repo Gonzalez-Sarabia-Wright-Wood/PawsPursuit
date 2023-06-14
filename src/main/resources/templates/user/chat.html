@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{partials/fragment.html :: head('Chat')}"></head>
 <script th:inline="javascript">
     (function(t,a,l,k,j,s){
@@ -40,10 +42,6 @@
 </script>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
-
-this is the individual chat window
-
-
 <!-- container element in which TalkJS will display a chat UI -->
 <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
     <i>Loading chat...</i>

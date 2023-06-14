@@ -7,7 +7,7 @@
     <span id="usr" th:text="${#authentication.principal.id}"></span>
 </span>
 
-<div class="container-fluid" th:each="post: ${posts}">
+<div class="container-fluid p-2" th:each="post: ${posts}">
     <div class="p-1 container d-flex flex-row card">
                     <span class="col-1 dropdown">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
