@@ -1,34 +1,5 @@
-.resizable-image-1 {
+.resizable-image {
     width:100%;
     height:auto;
     border-radius: 10px;
 }
-
-
-.resizable-image2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-}
-
-/*.resizable-image3 {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: right;*/
-/*    height: 100px;*/
-/*}*/
-
-/*.resizable-image4 {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    height: 100px;*/
-/*}*/
-
-/*.resizable-image5 {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    height: 100px;*/
-/*}*/
