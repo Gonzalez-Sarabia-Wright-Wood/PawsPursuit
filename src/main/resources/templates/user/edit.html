@@ -41,6 +41,14 @@
                     <input class="text-input" id="email" type="email" th:field="*{email}">
                 </div>
             </div>
+            <div class="mt-1 col-12">
+                <div class="label-holder">
+                    <label class="label" for="zipCode">Zip Code</label>
+                </div>
+                <div>
+                    <input class="text-input" id="zipCode" type="text" th:field="*{zipCode}">
+                </div>
+            </div>
             <div class="d-flex justify-content-end">
                 <a class="btn button-secondary mt-4 mb-4" onclick="history.back()">Go Back</a>
                 <button class="mt-4 mb-4 btn button-main" type="submit">Update</button>

@@ -17,7 +17,9 @@
     />
     <!--geocoder-->
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
-    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
+    <link rel='stylesheet'
+          href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css'
+          type='text/css'/>
 </head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
@@ -29,7 +31,7 @@
     </label>
 </div>
 <section class="d-flex">
-<!--PET- NO DETAILS FORM    -->
+    <!--PET- NO DETAILS FORM    -->
     <div class="mb-4 mt-4 p-4 container col-6 form-box" id="post" hidden="hidden">
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
             <div class="mt-1 d-flex">
@@ -70,7 +72,8 @@
                 <h4 class="mt-3 mb-0">Where was the pet last seen?</h4>
                 <input id="lastSeen2" th:name="lastSeen2" th:value="replaceme" type="hidden">
                 <div class="mb-2">
-                    <input type="search" placeholder="Search" id="searchInput2"><button id="locationSearch2" class="btn button-secondary" type="button">Search</button>
+                    <input type="search" placeholder="Search" id="searchInput2">
+                    <button id="locationSearch2" class="btn button-secondary" type="button">Search</button>
                 </div>
                 <div id="map2" style='width: 400px; height: 300px;'>
                 </div>
@@ -80,7 +83,7 @@
             </div>
         </form>
     </div>
-<!--PET WITH DESCRIPTION FORM-->
+    <!--PET WITH DESCRIPTION FORM-->
     <div class="mt-4 mb-4 p-4 container form-box col-12" id="pet" hidden="hidden">
         <form th:action="@{/pets/create}" th:method="post" id="postForm">
             <div class="mt-1 d-flex">
@@ -89,13 +92,13 @@
                         <div>
                             <span class="label">Pet Species:</span>
                         </div>
-                    <select class="form-select text-input" name="category">
-                        <th:block>
-                            <option th:each="category : ${categories}"
-                                    th:value="${category.id}"
-                                    th:text="${category.name}"></option>
-                        </th:block>
-                    </select>
+                        <select class="form-select text-input" name="category">
+                            <th:block>
+                                <option th:each="category : ${categories}"
+                                        th:value="${category.id}"
+                                        th:text="${category.name}"></option>
+                            </th:block>
+                        </select>
                     </div>
                 </div>
                 <div>
@@ -180,12 +183,16 @@
                 <h4 class="mt-3 mb-0">Where was the pet last seen?</h4>
                 <input id="lastSeen" th:name="lastSeen" th:value="replaceme" type="hidden">
                 <div class="mb-2">
-                    <input type="search" placeholder="Search" id="searchInput"><button id="locationSearch" class="btn button-secondary" type="button">Search</button>
+                    <input type="search" placeholder="Search" id="searchInput">
+                    <button id="locationSearch" class="btn button-secondary" type="button">Search</button>
                 </div>
-                    <div id="map" style='width: 400px; height: 300px;'>
-                    </div>
+                <div id="map" style='width: 400px; height: 300px;'>
+                </div>
             </div>
-
+            <div class="d-flex justify-content-end">
+                <a class="btn button-secondary mt-4 mb-4" onclick="history.back()">Go Back</a>
+                <button class="mt-4 mb-4 btn button-main" type="submit">Update</button>
+            </div>
             <div class="d-flex justify-content-end">
                 <button class="mt-4 button-main" type="submit">Submit</button>
             </div>
@@ -196,6 +203,7 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
         crossOrigin="anonymous"></script>
+<script th:src="@{/js/mapbox-geocoder-utils.js}"></script>
 <script th:inline="javascript">
 
     //FILESTACK ---------------------------------------------------
@@ -206,9 +214,9 @@
     const client = filestack.init(filestackapi);
     const options = {
         onUploadDone:
-    function(res) {
-        $("#stashFilestackURL").val(res.filesUploaded[0].url);
-    }
+            function (res) {
+                $("#stashFilestackURL").val(res.filesUploaded[0].url);
+            }
     }
     //MAPBOX ---------------------------------------------------
     var mapboxApiKey = [[${mapboxapi}]]
@@ -220,14 +228,15 @@
         zoom: 12 // Starting zoom level
     });
     //MAP MARKER INFO
-    const marker = new mapboxgl.Marker ({ // Initialize a new marker
+    const marker = new mapboxgl.Marker({ // Initialize a new marker
         draggable: true
     })
         .setLngLat([-98.491142, 29.424349])// Marker [lng, lat] coordinates
         .addTo(map); // Add the marker to the map
 
-    marker.on('dragend', function(e) {
+    marker.on('dragend', function (e) {
         let longlat = e.target._lngLat;
+        console.log(longlat)
         $("#lastSeen").val(`${longlat.lng},${longlat.lat}`)
     });
     map.on('load', () => {
@@ -238,72 +247,20 @@
                 'features': []
             }
         });
-    //MAP SEARCH INFO
-    function mapboxSearch(searchString){
-        geocode(searchString, mapboxApiKey).then(
-        function (results){
-        // FLIES TO SEARCHED LOCATION
-        let markerFlyTo = {center: results, zoom: 12}
-        map.flyTo(markerFlyTo);
-        marker.setLngLat(results)
-            $("#lastSeen").val(`${results[0]},${results[1]}`)
-        }
-    );
-        map.addLayer({
-            'id': 'point',
-            'source': 'single-point',
-            'type': 'circle',
-            'paint': {
-                'circle-radius': 10,
-                'circle-color': '#d641ff'
-            }
-        });
-    }
-        $("#locationSearch").on("click", function (e) {
-            e.preventDefault();
-            mapboxSearch($("#searchInput").val());
-        })
-    });
-//MAP LOGIC FOR REGULAR POST FORM
-    var mapboxApiKey = [[${mapboxapi}]]
-    mapboxgl.accessToken = mapboxApiKey;
-    const map2 = new mapboxgl.Map({
-        container: 'map2', // Container ID
-        style: 'mapbox://styles/mapbox/streets-v12', // Map style to use
-        center: [-98.4946, 29.4252], // Starting position [lng, lat]
-        zoom: 12 // Starting zoom level
-    });
-    //MAP MARKER INFO
-    const marker2 = new mapboxgl.Marker ({ // Initialize a new marker
-        draggable: true
-    })
-        .setLngLat([-98.491142, 29.424349])// Marker [lng, lat] coordinates
-        .addTo(map2); // Add the marker to the map
 
-    marker2.on('dragend', function(e) {
-        let longlat = e.target._lngLat;
-        $("#lastSeen2").val(`${longlat.lng},${longlat.lat}`)
-    });
-    map2.on('load', () => {
-        map2.addSource('single-point', {
-            'type': 'geojson',
-            'data': {
-                'type': 'FeatureCollection',
-                'features': []
-            }
-        });
         //MAP SEARCH INFO
-        function mapboxSearch2(searchString){
+        function mapboxSearch(searchString) {
             geocode(searchString, mapboxApiKey).then(
-                function (results){
+                function (results) {
                     // FLIES TO SEARCHED LOCATION
+                    console.log(results)
                     let markerFlyTo = {center: results, zoom: 12}
-                    map2.flyTo(markerFlyTo);
-                    marker2.setLngLat(results)
-                    $("#lastSeen2").val(`${results[0]},${results[1]}`)
+                    map.flyTo(markerFlyTo);
+                    marker.setLngLat(results)
+                    $("#lastSeen").val(`${results[0]},${results[1]}`)
                 }
             );
-            map2.addLayer({
+            map.addLayer({
                 'id': 'point',
                 'source': 'single-point',
                 'type': 'circle',
@@ -313,11 +270,74 @@
                 }
             });
         }
-        $("#locationSearch2").on("click", function (e) {
+
+        $("#locationSearch").on("click", function (e) {
             e.preventDefault();
-            mapboxSearch2($("#searchInput2").val());
+            mapboxSearch($("#searchInput").val());
         })
+
+        mapboxSearch([[${#authentication.principal.zipCode}]]);
     });
+//MAP LOGIC FOR REGULAR POST FORM
+        var mapboxApiKey = [[${mapboxapi}]]
+        mapboxgl.accessToken = mapboxApiKey;
+        const map2 = new mapboxgl.Map({
+            container: 'map2', // Container ID
+            style: 'mapbox://styles/mapbox/streets-v12', // Map style to use
+            center: [-98.4946, 29.4252], // Starting position [lng, lat]
+            zoom: 12 // Starting zoom level
+        });
+        //MAP MARKER INFO
+        const marker2 = new mapboxgl.Marker({ // Initialize a new marker
+            draggable: true
+        })
+            .setLngLat([-98.491142, 29.424349])// Marker [lng, lat] coordinates
+            .addTo(map2); // Add the marker to the map
+
+        marker2.on('dragend', function (e) {
+            let longlat = e.target._lngLat;
+            $("#lastSeen2").val(`${longlat.lng},${longlat.lat}`)
+        });
+        map2.on('load', () => {
+            map2.addSource('single-point', {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': []
+                }
+            });
+
+            //MAP SEARCH INFO
+            function mapboxSearch2(searchString) {
+                geocode(searchString, mapboxApiKey).then(
+                    function (results) {
+                        // FLIES TO SEARCHED LOCATION
+                        let markerFlyTo = {center: results, zoom: 12}
+                        map2.flyTo(markerFlyTo);
+                        marker2.setLngLat(results)
+                        $("#lastSeen2").val(`${results[0]},${results[1]}`)
+                    }
+                );
+                map2.addLayer({
+                    'id': 'point',
+                    'source': 'single-point',
+                    'type': 'circle',
+                    'paint': {
+                        'circle-radius': 10,
+                        'circle-color': '#d641ff'
+                    }
+                });
+            }
+
+            $("#locationSearch2").on("click", function (e) {
+                e.preventDefault();
+                mapboxSearch2($("#searchInput2").val());
+            })
+            mapboxSearch2([[${#authentication.principal.zipCode}]]);
+        });
+
+
+
 </script>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{js/mapbox-geocoder-utils.js}"></script>
