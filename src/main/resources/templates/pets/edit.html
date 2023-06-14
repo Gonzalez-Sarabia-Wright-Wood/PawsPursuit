@@ -19,7 +19,7 @@
         <input type="hidden" id="post_id"  name="post_id" th:value="${post.id}">
         <input type="hidden" id="pet_id" name="pet_id" th:value="${pet.id}">
         <div class="mt-1 d-flex">
-            <div class="col-6">
+            <div class="px-1 col-6">
                 <div class="label-holder">
                     <span class="label">Title:</span>
                 </div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="px-1 col-6">
                 <div class="label-holder">
                     <span class="label">Location:</span>
                 </div>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="mt-1 d-flex">
-            <div class="col-6">
+            <div class="px-1 col-6">
                 <div class="label-holder">
                     <span class="label">Name:</span>
                 </div>
@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="mt-1 d-flex">
-            <div class="col-6">
+            <div class="px-1 col-6">
                 <div class="label-holder">
                     <span class="label">Species:</span>
                 </div>
@@ -85,13 +85,13 @@
             </div>
         </div>
         <div class="mt-1 d-flex">
-            <div class="col-6">
+            <div class="px-1 col-6">
                 <div class="ta-holder">
                     <span class="ta">Post-Body:</span>
                 </div>
                 <div>
                     <div class="input">
-                        <textarea class="text-area" name="body" th:value="${post.body}"></textarea>
+                        <textarea rows="4" class="text-area" name="body" th:value="${post.body}"></textarea>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                 </div>
                 <div>
                     <div class="input">
-                        <textarea class="text-area" name="description" th:value="${pet.description}"></textarea>
+                        <textarea row="4" class="text-area" name="description" th:value="${pet.description}"></textarea>
                     </div>
                 </div>
             </div>
