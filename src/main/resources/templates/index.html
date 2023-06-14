@@ -4,22 +4,25 @@
 <link rel="stylesheet" th:href="@{/css/index.css}">
 <body>
 <nav th:replace="partials/fragment.html :: nav"></nav>
-
-<div class="flex-container">
-    <div class="col-12 col-sm-4">
-        <h1>Help Reunite Best Friends</h1>
-        <p>We're dedicated to helping reunite Pets and their families. A website where we help to reunite you with your
-            furry, feathery or scaly loved one. We allow users to post about lost and found pets with the last location
-            they were seen and the ability to contact between users to establish the next clue to where your pet is.
-            Connecting with each other to reconnect you with your beloved pet, that’s PawsPursuit!</p>
-    </div>
-    <div class="col-12 col-sm-8">
-        <img th:src="@{/images/DogPic.png}" class="resizable-image-1">
+<div class="p-2">
+    <div class="form-box d-flex container-fluid justify-content-space-around align-items-center flex-wrap">
+        <div class=" p-1 m-2 col-12 col-sm-4">
+            <h1>Help Reunite Best Friends</h1>
+            <p>We're dedicated to helping reunite Pets and their families. A website where we help to reunite you with
+                your
+                furry, feathery or scaly loved one. We allow users to post about lost and found pets with the last
+                location
+                they were seen and the ability to contact between users to establish the next clue to where your pet is.
+                Connecting with each other to reconnect you with your beloved pet, that’s PawsPursuit!</p>
+        </div>
+        <div class="col-12 col-sm-8">
+            <img th:src="@{/images/DogPic.png}" class="resizable-image-1">
+        </div>
     </div>
 </div>
 
-<input type="button" value="View all pet posts">
-<input type="button" value="Sign up">
+<a class="a-null button-secondary" th:href="@{/pets}">View all pet posts</a>
+<a class="a-null button-main" th:href="@{/register}">Sign up</a>
 
 <div th:each="pet: ${post}">
     <div class="card" style="width: 18rem;">
