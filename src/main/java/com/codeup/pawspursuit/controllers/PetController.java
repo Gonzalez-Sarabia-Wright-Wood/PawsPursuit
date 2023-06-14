@@ -119,6 +119,7 @@ public class PetController {
             model.addAttribute("pet", pet);
             model.addAttribute("post", post);
             model.addAttribute("filestackapi", filestackapi);
+            model.addAttribute("mapboxapi", mapboxapikey);
             return "/pets/edit";
         }else{
             return "redirect:/pets";
@@ -126,7 +127,7 @@ public class PetController {
     }
 
     @PostMapping("/pets/{id}/edit")
-    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id, @RequestParam String stashFilestackURL) {
+    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id, @RequestParam String stashFilestackURL, @RequestParam String lastSeen) {
         Pet pet = petDao.findById(pet_id).get();
         pet.setName(name);
         pet.setSpecies(species);
@@ -140,6 +141,9 @@ public class PetController {
         Post post = postDao.findById(post_id).get();
         post.setTitle(title);
         post.setBody(body);
+        if(!lastSeen.equals("replaceme")) {
+            post.setLocation(lastSeen);
+        }
         postDao.save(post);
         return "redirect:/pets";
     }
