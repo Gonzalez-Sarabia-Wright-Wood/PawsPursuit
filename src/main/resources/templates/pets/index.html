@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{partials/fragment.html :: head('Pets')}"></head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 This is the index for pets
+<span hidden sec:authorize="isAuthenticated()">
+    <span id="usr" th:text="${#authentication.principal.id}"></span>
+</span>
 
 <section class="container-fluid d-flex flex-wrap">
-    <div class="m-2 col-12 col-sm-3" th:each="pet: ${pets}">
+    <div class="p-1 col-12 col-sm-3" th:each="pet: ${pets}">
+
 
         <div class="p-1 container d-flex flex-row card">
             <span class="col-1 dropdown">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
-                    <li><a th:href="@{/profile/{id} (id=${pet.user.id})}" class="dropdown-item">Profile</a></li>
-                    <li><form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}" th:method="post">
+                    <li class="profile">
+                        <span class="prf-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <a th:href="@{/profile/{id} (id=${pet.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
+
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}" th:method="post">
                         <input class="dropdown-item" type="hidden" name="id" th:value="${pet.id}">
                         <button class=" dropdown-item " type="submit">DELETE</button>
                     </form></li>
@@ -45,6 +57,7 @@ This is the index for pets
             </a>
         </div>
     </div>
+
 </section>
 </body>
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>

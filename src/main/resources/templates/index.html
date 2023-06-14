@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{partials/fragment.html :: head('Index')}"></head>
-<head>
-    <script src="https://kit.fontawesome.com/94186186be.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" th:href="@{/css/index.css}">
-</head>
+<link rel="stylesheet" th:href="@{/css/index.css}">
 <body>
 <nav th:replace="partials/fragment.html :: nav"></nav>
 
-<div class="flex-container1">
-
-    <img th:src="@{/images/DogPic.png}" class="resizable-image1">
-
+<div class="flex-container">
+    <div class="col-12 col-sm-4">
+        <h1>Help Reunite Best Friends</h1>
+        <p>We're dedicated to helping reunite Pets and their families. A website where we help to reunite you with your
+            furry, feathery or scaly loved one. We allow users to post about lost and found pets with the last location
+            they were seen and the ability to contact between users to establish the next clue to where your pet is.
+            Connecting with each other to reconnect you with your beloved pet, that’s PawsPursuit!</p>
+    </div>
+    <div class="col-12 col-sm-8">
+        <img th:src="@{/images/DogPic.png}" class="resizable-image-1">
+    </div>
 </div>
 
-<h1>Help Reunite Best Friends</h1>
-
-<p>We're dedicated to helping reunite Pets and Their families </p>
-
+>>>>>>> 51d3ea1e66b35bdb111a1185aacbbb47cf385a2b
 <input type="button" value="View all pet posts">
 <input type="button" value="Sign up">
 
@@ -49,7 +50,6 @@
 
 <div class="d-flex justify-content-evenly">
 <h2>Ready to get started?</h2>
-<!--<h3>Sign up or contact us</h3>-->
 </div>
 <div class="d-flex justify-content-center my-3">
     <a th:href="@{/register}" class="btn button-main fs-3">Sign Up Today!</a>
@@ -117,7 +117,6 @@
         </div>
     </div>
 </section>
-
 <footer th:replace="partials/fragment.html :: footer"></footer>
 </body>
 </html>
