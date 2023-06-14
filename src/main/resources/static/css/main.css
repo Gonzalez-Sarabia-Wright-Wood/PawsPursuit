@@ -138,6 +138,13 @@ input, textarea {
     border-radius: 30px !important;
 }
 
+.card > img {
+    border-top-left-radius: 27px !important;
+    border-top-right-radius: 27px !important;
+    border-bottom: #170309 solid 3px !important;
+    height: 285px !important;
+}
+
 .a-null {
     text-decoration: none;
     text-underline: none;
