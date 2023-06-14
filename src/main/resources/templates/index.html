@@ -27,31 +27,32 @@
 <a class="a-null button-secondary" th:href="@{/pets}">View all pet posts</a>
 <a class="a-null button-main" th:href="@{/register}">Sign up</a>
 
-<div th:each="pet: ${post}">
-    <div class="card" style="width: 18rem;">
-        <img th:src="${pet.photo}" class="card-img-top" alt="...">
-        <div class="card-body ">
-            <h5 th:text="${pet.isLost()}" class="card-title"></h5>
+<div class="d-flex justify-content-evenly my-4">
+    <div th:each="pet: ${pets}">
+        <div class="card" style="width: 18rem;">
+            <img th:src="${pet.photo}" class="card-img-top" alt="...">
+            <div class="card-body ">
+                <h5 th:text="${pet.isLost()}" class="card-title lost"></h5>
 
-            <img class="card-img" src="..." alt="Card image cap">
+                <img class="card-img" src="..." alt="Card image cap">
 
-            <div>
-                <h6 class="card-subtitle d-inline-block">Species : </h6>
-                <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+                <div>
+                    <h6 class="card-subtitle d-inline-block">Species : </h6>
+                    <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <div>
+                    <h6 class="card-subtitle d-inline-block">Name : </h6>
+                    <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <div>
+                    <h6 class="card-subtitle d-inline-block">Size : </h6>
+                    <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <p class="card-text" th:text="${pet.getId()}"></p>
             </div>
-            <div>
-                <h6 class="card-subtitle d-inline-block">Name : </h6>
-                <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
-            </div>
-            <div>
-                <h6 class="card-subtitle d-inline-block">Size : </h6>
-                <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
-            </div>
-            <p class="card-text" th:text="${pet.getId()}"></p>
         </div>
     </div>
 </div>
-
 
 <div class="d-flex justify-content-evenly">
     <h2>Ready to get started?</h2>
@@ -124,5 +125,6 @@
     </div>
 </section>
 <footer th:replace="partials/fragment.html :: footer"></footer>
+<script th:src="@{/js/index.js}"></script>
 </body>
 </html>
