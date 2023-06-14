@@ -4,66 +4,12 @@ body{
 }
 
 .resizable-image1 {
-    width: 300px;
-    height: 200px;
+    width: 200px;
+    height: auto;
 }
-
-.resizable-image2 {
-    width: 90px;
-    height: 90px;
-}
-
-.resizable-image3 {
-    width: 90px;
-    height: 90px;
-}
-
-.resizable-image4 {
-    width: 90px;
-    height: 90px;
-}
-
-.resizable-image5 {
-    width: 90px;
-    height: 90px;
-}
-
-.flex-container1 {
+.flex-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
+    height: 100vh;
+    flex-wrap: wrap;
 }
 
-.flex-item{
-    max-width: 110%;
-    max-height: 110%;
-}
-
-.resizable-image2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-}
-
-.resizable-image3 {
-    display: flex;
-    justify-content: center;
-    align-items: right;
-    height: 100px;
-}
-
-.resizable-image4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-}
-
-.resizable-image5 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-}

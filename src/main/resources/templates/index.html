@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="~{partials/fragment.html :: head('Index')}"></head>
-<link rel="stylesheet"  th:href="@{/css/index.css}">
+<head th:replace="~{partials/fragment.html :: head('Index')}">
+</head>
+<head>
+    <script src="https://kit.fontawesome.com/24c078a617.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"  th:href="@{/css/index.css}">
+</head>
 <body>
 <nav th:replace="partials/fragment.html :: nav"></nav>
 
@@ -16,7 +20,9 @@
 <p>We're dedicated to helping reunite Pets and Their families  </p>
 
 <input type="button" value="View all pet posts">
-<input type="button" value="Sign up">
+<button type="button" value="Sign up">
+<a th:href="@{/register}" class="signup-button">Sign Up</a>
+</button>
 
 <div th:each="pet: ${post}">
 <div class="card" style="width: 18rem;">
@@ -48,28 +54,60 @@
 
 <input type="button" value="Sign Up?">
 <input type="button" value="Contact Us">
-
-
-<div class="flex-container2">
-
-<img th:src="@{/images/Ciera_Romero_headShot.png}" class="resizable-image2">
-    <p> Ciera Romero-Wright</p>
-    <a th:href="@{https://github.com/cieraromerowright}">Visit my GitHub</a>
-
-<img th:src="@{/images/Genesis_Headshot.png}" class="resizable-image3">
-    <p>Genesis Sarabia </p>
-    <a th:href="@{https://github.com/genesissarabia}">Visit my GitHub</a>
-
-<img th:src="@{/images/Riley_Wood_Headshot.png}" class="resizable-image4">
-    <p>Riley Wood</p>
-    <a th:href="@{https://github.com/RileyWood9984}">Visit my GitHub</a>
-
-<img th:src="@{/images/Luis_Headshot.png}" class="resizable-image5">
-    <p>Luis Gonzalez</p>
-    <a th:href="@{https://github.com/zluigon}">Visit my GitHub</a>
-
+<div class="flex-container">
+        <div class="card"  style="width: 18rem;">>
+            <img th:src="@{/images/Ciera_Romero_headShot.png}" class="card-img-top" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Ciera Romero-Wright</h5>
+                <p>Software Developer</p>
+                <a th:href="@{https://github.com/cieraromerowright}">
+                    <i class="fab fa-github"></i>
+                    <a th:href="@{https://www.linkedin.com/in/ciera-romero-wright-164765230/}">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </a>
+            </div>
+        </div>
+         <div class="card" style="width: 18rem;">
+                <img th:src="@{/images/Genesis_Headshot.png}" class="card-img-top" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Genesis Sarabia</h5>
+                    <p>Software Developer</p>
+                    <a th:href="@{https://github.com/genesissarabia}">
+                        <i class="fab fa-github"></i>
+                        <a th:href="@{https://www.linkedin.com/in/genesis-sarabia/}">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </a>
+                </div>
+            </div>
+        <div class="card" style="width: 18rem;">>
+           <img th:src="@{/images/Riley_Wood_Headshot.png}" class="card-img-top" alt="Card image cap">
+           <div class="card-body">
+               <h5 class="card-title">Riley Wood</h5>
+               <p>Software Developer</p>
+              <a th:href="@{https://github.com/RileyWood9984}">
+               <i class="fab fa-github"></i>
+                  <a th:href="@{https://www.linkedin.com/in/riley-j-wood/}">
+                      <i class="fab fa-linkedin"></i>
+                  </a>
+              </a>
+           </div>
+        </div>
+        <div class="card" style="width: 18rem;">>
+            <img th:src="@{/images/Luis_Headshot.png}" class="card-img-top" alt="Card image cap">
+            <div class="card-body">
+               <h5 class="card-title">Luis Gonzalez</h5>
+               <p>Description</p>
+               <a th:href="@{https://github.com/zluigon}">
+                  <i class="fab fa-github"></i>
+                 <a th:href="@{https://www.linkedin.com/in/zluigon/}">
+                     <i class="fab fa-linkedin"></i>
+                 </a>
+               </a>
+           </div>
+         </div>
 </div>
-
 <footer th:replace="partials/fragment.html :: footer"></footer>
 </body>
 </html>
