@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{partials/fragment.html :: head('Index')}"></head>
+
 <link rel="stylesheet" th:href="@{/css/index.css}">
 <body>
 <nav th:replace="partials/fragment.html :: nav"></nav>
-
-<div class="flex-container">
-    <div class="col-12 col-sm-4">
-        <h1>Help Reunite Best Friends</h1>
-        <p>We're dedicated to helping reunite Pets and their families. A website where we help to reunite you with your
-            furry, feathery or scaly loved one. We allow users to post about lost and found pets with the last location
-            they were seen and the ability to contact between users to establish the next clue to where your pet is.
-            Connecting with each other to reconnect you with your beloved pet, that’s PawsPursuit!</p>
-    </div>
-    <div class="col-12 col-sm-8">
-        <img th:src="@{/images/DogPic.png}" class="resizable-image-1">
+<div class="p-2">
+    <div class="form-box d-flex container-fluid justify-content-space-around align-items-center flex-wrap">
+        <div class=" p-1 m-2 col-12 col-sm-4">
+            <h1>Help Reunite Best Friends</h1>
+            <p>We're dedicated to helping reunite Pets and their families. A website where we help to reunite you with
+                your
+                furry, feathery or scaly loved one. We allow users to post about lost and found pets with the last
+                location
+                they were seen and the ability to contact between users to establish the next clue to where your pet is.
+                Connecting with each other to reconnect you with your beloved pet, that’s PawsPursuit!</p>
+        </div>
+        <div class="col-12 col-sm-8">
+            <img th:src="@{/images/DogPic.png}" class="resizable-image-1">
+        </div>
     </div>
 </div>
 
-<input type="button" value="View all pet posts">
-<input type="button" value="Sign up">
+<a class="a-null button-secondary" th:href="@{/pets}">View all pet posts</a>
+<a class="a-null button-main" th:href="@{/register}">Sign up</a>
 
 <div th:each="pet: ${post}">
     <div class="card" style="width: 18rem;">
@@ -46,32 +50,77 @@
     </div>
 </div>
 
+
+<div class="d-flex justify-content-evenly">
 <h2>Ready to get started?</h2>
-<h3>Sign up or contact us</h3>
-
-<input type="button" value="Sign Up?">
-<input type="button" value="Contact Us">
-
-
-<div class="flex-container2">
-
-    <img th:src="@{/images/Ciera_Romero_headShot.png}" class="resizable-image2">
-    <p> Ciera Romero-Wright</p>
-    <a th:href="@{https://github.com/cieraromerowright}">Visit my GitHub</a>
-
-    <img th:src="@{/images/Genesis_Headshot.png}" class="resizable-image3">
-    <p>Genesis Sarabia </p>
-    <a th:href="@{https://github.com/genesissarabia}">Visit my GitHub</a>
-
-    <img th:src="@{/images/Riley_Wood_Headshot.png}" class="resizable-image4">
-    <p>Riley Wood</p>
-    <a th:href="@{https://github.com/RileyWood9984}">Visit my GitHub</a>
-
-    <img th:src="@{/images/Luis_Headshot.png}" class="resizable-image5">
-    <p>Luis Gonzalez</p>
-    <a th:href="@{https://github.com/zluigon}">Visit my GitHub</a>
-
+<!--<h3>Sign up or contact us</h3>-->
 </div>
+<div class="d-flex justify-content-center my-3">
+    <a th:href="@{/register}" class="btn button-main fs-3">Sign Up Today!</a>
+</div>
+
+<section class="devs row">
+    <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
+        <div class="card text-center" style="width: 18rem;">
+            <img th:src="@{/images/luis_gonzalez_headshot_copy.jpeg}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Luis Gonzalez</h5>
+                <p class="card-text">Full Stack Software Developer</p>
+                <div class="d-flex justify-content-evenly">
+                    <a th:href="@{https://github.com/zluigon}"><i class="fa-brands fa-square-github fa-2xl"
+                                                                  style="color: #170309;"></i></a>
+                    <a th:href="@{https://www.linkedin.com/in/zluigon/}"><i class="fa-brands fa-linkedin fa-2xl"
+                                                                            style="color: #170309;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
+        <div class="card text-center" style="width: 18rem;">
+            <img th:src="@{/images/Genesis_Headshot.png}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Genesis Sarabia</h5>
+                <p class="card-text">Full Stack Software Developer</p>
+                <div class="d-flex justify-content-evenly">
+                    <a th:href="@{https://github.com/genesissarabia}"><i class="fa-brands fa-square-github fa-2xl"
+                                                                         style="color: #170309;"></i></a>
+                    <a th:href="@{https://www.linkedin.com/in/genesis-sarabia/}"><i class="fa-brands fa-linkedin fa-2xl"
+                                                                                    style="color: #170309;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
+        <div class="card text-center" style="width: 18rem;">
+            <img th:src="@{/images/Riley_Wood_HeadShot.png}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Riley Wood</h5>
+                <p class="card-text">Full Stack Software Developer</p>
+                <div class="d-flex justify-content-evenly">
+                    <a th:href="@{https://github.com/RileyWood9984}"><i class="fa-brands fa-square-github fa-2xl"
+                                                                        style="color: #170309;"></i></a>
+                    <a th:href="@{https://www.linkedin.com/in/riley-j-wood/}"><i class="fa-brands fa-linkedin fa-2xl"
+                                                                                 style="color: #170309;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 my-3 d-flex justify-content-center">
+        <div class="card text-center" style="width: 18rem;">
+            <img th:src="@{/images/ciera_romero_wright_headshsot.jpeg}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Ciera Romero-Wright</h5>
+                <p class="card-text">Full Stack Software Developer</p>
+                <div class="d-flex justify-content-evenly">
+                    <a th:href="@{https://github.com/cieraromerowright}"><i class="fa-brands fa-square-github fa-2xl"
+                                                                  style="color: #170309;"></i></a>
+                    <a th:href="@{https://www.linkedin.com/in/ciera-romero-wright/}"><i class="fa-brands fa-linkedin fa-2xl"
+                                                                            style="color: #170309;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer th:replace="partials/fragment.html :: footer"></footer>
 </body>
