@@ -14,12 +14,12 @@
 </div>
 
 <section class="d-flex">
-<div class="mt-4 mb-4 p-4 container form-box col-12" id="pet">
+<div class="mt-4 mb-4 p-4 container form-box col-12 col-lg-8" id="pet">
     <form th:action="@{/pets/${pet.id}/edit}" th:method="post" id="postForm">
         <input type="hidden" id="post_id"  name="post_id" th:value="${post.id}">
         <input type="hidden" id="pet_id" name="pet_id" th:value="${pet.id}">
-        <div class="mt-1 d-flex">
-            <div class="px-1 col-6">
+        <div class="mt-1 d-flex flex-wrap">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Title:</span>
                 </div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="px-1 col-6">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Location:</span>
                 </div>
@@ -40,8 +40,8 @@
                 </div>
             </div>
         </div>
-        <div class="mt-1 d-flex">
-            <div class="px-1 col-6">
+        <div class="mt-1 d-flex flex-wrap">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Name:</span>
                 </div>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Size:</span>
                 </div>
@@ -62,8 +62,8 @@
                 </div>
             </div>
         </div>
-        <div class="mt-1 d-flex">
-            <div class="px-1 col-6">
+        <div class="mt-1 d-flex flex-wrap">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Species:</span>
                 </div>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="label-holder">
                     <span class="label">Breed:</span>
                 </div>
@@ -84,24 +84,24 @@
                 </div>
             </div>
         </div>
-        <div class="mt-1 d-flex">
-            <div class="px-1 col-6">
+        <div class="mt-1 d-flex flex-wrap">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="ta-holder">
                     <span class="ta">Post-Body:</span>
                 </div>
                 <div>
                     <div class="input">
-                        <textarea rows="4" class="text-area" name="body" th:value="${post.body}"></textarea>
+                        <textarea rows="4" class="text-area" name="body" th:text="${post.body}"></textarea>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="px-1 col-12 col-sm-6">
                 <div class="ta-holder">
                     <span class="ta">Description:</span>
                 </div>
                 <div>
                     <div class="input">
-                        <textarea row="4" class="text-area" name="description" th:value="${pet.description}"></textarea>
+                        <textarea rows="4" class="text-area" name="description" th:text="${pet.description}"></textarea>
                     </div>
                 </div>
             </div>
