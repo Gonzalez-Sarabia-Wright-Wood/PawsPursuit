@@ -14,9 +14,9 @@
                 <div th:if="${#authentication.principal.id == user.id}"
                      class="row justify-content-between align-items-center">
                     <div class="col-md-4 mb-sm-3">
-                        <h2>Welcome, <span th:text="${#authentication.principal.username}"></span></h2>
+                        <h2>Welcome, <span th:text="${user.username}"></span></h2>
                         <h4><span
-                                th:text="${#authentication.principal.firstName + ' ' + #authentication.principal.lastName}"></span>
+                                th:text="${user.firstName + ' ' + user.lastName}"></span>
                         </h4>
                     </div>
 
