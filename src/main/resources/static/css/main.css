@@ -133,6 +133,7 @@ input, textarea {
     border: solid #170309 ;
     background-color: #e9b035;
     border-radius: 30px !important;
+    width: 100%;
 }
 
 .card > img {
@@ -534,4 +535,7 @@ animation-name: eyeroll;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+.w-pets{
+    width: 90%;
 }
