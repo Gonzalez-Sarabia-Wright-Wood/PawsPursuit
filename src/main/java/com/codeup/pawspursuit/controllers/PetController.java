@@ -139,6 +139,8 @@ public class PetController {
         pet.setDescription(description);
         if(status.equals("true")){
             pet.setLost(true);
+        } else {
+            pet.setLost(false);
         }
 
         if(!stashFilestackURL.equals("replaceme")){
