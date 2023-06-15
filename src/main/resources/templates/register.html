@@ -47,6 +47,15 @@
                     <small>Password must be at least 8 characters long and contain at least one letter and one number.</small>
                 </div>
             </div>
+            <div>
+                <div class="label-holder">
+                    <label class="label" for="zipCode">Zip Code&ast;</label>
+                </div>
+                <div>
+                    <input class="text-input" id="zipCode" type="text" th:field="*{zipCode}" >
+
+                </div>
+            </div>
             <div th:if="${error}" style="color: red;">
                 <p th:text="${error}"></p>
             </div>
