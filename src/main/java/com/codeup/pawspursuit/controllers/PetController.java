@@ -102,6 +102,7 @@ public class PetController {
     @GetMapping("/pets/{id}/delete")
     public String deletePetGet() {
         return "redirect:/profile";
+
     }
 
     @PostMapping("/pets/{id}/delete")

@@ -46,7 +46,7 @@ public class CommentController {
         Long postId = postDao.findById(commentDao.findById(id).get().getPost().getId()).get().getId();
         commentDao.deleteById(id);
         if (postDao.findById(postId).get().getPet() != null) {
-            return "redirect:pets/" + postDao.findById(postId).get().getPet().getId();
+            return "redirect:/pets/" + postDao.findById(postId).get().getPet().getId();
         }
         return "redirect:/posts/" + postId;
     }
@@ -57,7 +57,7 @@ public class CommentController {
         comment.setBody(body);
         commentDao.save(comment);
         if (postDao.findById(comment.getPost().getId()).get().getPet() != null) {
-            return "redirect:pets/" + postDao.findById(comment.getPost().getId()).get().getPet().getId();
+            return "redirect:/pets/" + postDao.findById(comment.getPost().getId()).get().getPet().getId();
         }
         return "redirect:/posts/" + comment.getPost().getId();
     }
