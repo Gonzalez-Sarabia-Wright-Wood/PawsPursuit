@@ -25,16 +25,16 @@ import static org.springframework.security.core.context.SecurityContextHolder.ge
 @Controller
 public class PetController {
 
-    private PetRepository petDao;
-    private PostRepository postDao;
-    private UserRepository userDao;
-    private CommentRepository commentDao;
+    private final PetRepository petDao;
+    private final PostRepository postDao;
+    private final UserRepository userDao;
+    private final CommentRepository commentDao;
     @Value("${filestack.api.key}")
     private String filestackapi;
     @Value("${mapbox.api.key}")
     private String mapboxapikey;
 
-    private CategoryRepository categoryDao;
+    private final CategoryRepository categoryDao;
 
     public PetController(PetRepository petDao, PostRepository postDao,
                          UserRepository userDao, CommentRepository commentDao, CategoryRepository categoryDao) {
@@ -79,13 +79,12 @@ public class PetController {
     }
 
     @PostMapping("/pets/create")
-    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam String stashFilestackURL, @RequestParam String lastSeen, @RequestParam Category category){
+    public String savePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam String stashFilestackURL, @RequestParam String lastSeen, @RequestParam Category category){
         Post post = new Post();
         Pet pet = new Pet();
         pet.setUser((User) getContext().getAuthentication().getPrincipal());
         post.setUser((User) getContext().getAuthentication().getPrincipal());
         pet.setName(name);
-        pet.setSpecies(species);
         pet.setBreed(breed);
         pet.setSize(size);
         pet.setDescription(description);
@@ -115,10 +114,14 @@ public class PetController {
     public String editPet(Model model, @PathVariable Long id) {
         Pet pet = petDao.findById(id).get();
         Post post = postDao.findByPetId(id);
+        List<Category> categories = categoryDao.findAll();
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (post.getUser().getId().equals(user.getId())) {
             model.addAttribute("pet", pet);
             model.addAttribute("post", post);
+            model.addAttribute("categories", categories);
+            model.addAttribute("filestackapi", filestackapi);
+            model.addAttribute("mapboxapi", mapboxapikey);
             return "/pets/edit";
         }else{
             return "redirect:pets";
@@ -126,17 +129,24 @@ public class PetController {
     }
 
     @PostMapping("/pets/{id}/edit")
-    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam String species, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id) {
+    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam Category category, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id, @RequestParam String stashFilestackURL, @RequestParam String lastSeen) {
         Pet pet = petDao.findById(pet_id).get();
         pet.setName(name);
-        pet.setSpecies(species);
+        pet.setSpecies(String.valueOf(category));
         pet.setBreed(breed);
         pet.setSize(size);
         pet.setDescription(description);
+        if(!stashFilestackURL.equals("replaceme")){
+            pet.setPhoto(stashFilestackURL);
+        }
         petDao.save(pet);
         Post post = postDao.findById(post_id).get();
         post.setTitle(title);
         post.setBody(body);
+        post.getCategories().add(category);
+        if(!lastSeen.equals("replaceme")) {
+            post.setLocation(lastSeen);
+        }
         postDao.save(post);
         return "redirect:pets";
     }

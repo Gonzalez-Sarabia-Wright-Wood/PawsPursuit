@@ -531,7 +531,7 @@ div.penguin-eye-left:hover {
     margin-left: 10px;
 }
 
-#map {
+#map, #map2 {
     border: 3px solid #170309;
     border-radius: 30px;
     height: 40vh;
@@ -543,4 +543,13 @@ div.penguin-eye-left:hover {
 }
 .w-pets {
     width: 90%;
+}
+
+.pet-show{
+   height: 80%;
+    width: auto;
+}
+
+.pet-show-holder{
+    overflow: hidden;
 }
