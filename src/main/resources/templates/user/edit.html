@@ -6,7 +6,7 @@
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 
 <section class="d-flex">
-    <div class="mt-4 mb-4 p-4 container col-6 form-box">
+    <div class="mt-4 mb-4 p-4 container col-12 col-sm-10 col-md-6 form-box">
         <form th:method="post" th:action="@{/profile/edit}" th:object="${user}">
             <input type="hidden" th:field="*{id}">
             <div class="mt-1 col-12">
@@ -47,6 +47,8 @@
                 </div>
                 <div>
                     <input class="text-input" id="zipCode" type="text" th:field="*{zipCode}">
+                </div>
+                <div class="label-holder">
                     <label class="label" for="password">Current Password</label>
                 </div>
                 <div>

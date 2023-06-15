@@ -81,7 +81,7 @@ public class UserController {
             return "register";
         }
         userDao.save(user);
-        return "redirect:login";
+        return "redirect:/login";
     }
 
     @GetMapping("/profile")
@@ -133,13 +133,13 @@ public class UserController {
         userFromDb.setZipCode(user.getZipCode());
         userFromDb.setUsername(user.getUsername());
         userDao.save(userFromDb);
-        return "redirect:profile";
+        return "redirect:/profile";
     }
 
     @PostMapping("/profile/delete")
     public String deleteUserPost(@RequestParam Long id) {
         userDao.deleteById(id);
-        return "redirect:login";
+        return "redirect:/login";
     }
 
 

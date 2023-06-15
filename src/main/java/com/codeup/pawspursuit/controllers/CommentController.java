@@ -30,7 +30,7 @@ public class CommentController {
         comment.setPost(postDao.findById(comment.getPost().getId()).get());
         comment.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         commentDao.save(comment);
-        return "redirect:posts/" + comment.getPost().getId();
+        return "redirect:/posts/" + comment.getPost().getId();
     }
 
     @PostMapping("/comment/pet")
@@ -38,7 +38,7 @@ public class CommentController {
         comment.setPost(postDao.findById(comment.getPost().getId()).get());
         comment.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         commentDao.save(comment);
-        return "redirect:pets/" + comment.getPost().getPet().getId();
+        return "redirect:/pets/" + comment.getPost().getPet().getId();
     }
 
     @PostMapping("/comment/delete")
@@ -48,7 +48,7 @@ public class CommentController {
         if (postDao.findById(postId).get().getPet() != null) {
             return "redirect:pets/" + postDao.findById(postId).get().getPet().getId();
         }
-        return "redirect:posts/" + postId;
+        return "redirect:/posts/" + postId;
     }
 
     @PostMapping("/comment/edit")
@@ -59,6 +59,6 @@ public class CommentController {
         if (postDao.findById(comment.getPost().getId()).get().getPet() != null) {
             return "redirect:pets/" + postDao.findById(comment.getPost().getId()).get().getPet().getId();
         }
-        return "redirect:posts/" + comment.getPost().getId();
+        return "redirect:/posts/" + comment.getPost().getId();
     }
 }

@@ -96,18 +96,18 @@ public class PetController {
         post.setLocation(lastSeen);
         post.getCategories().add(category);
         postDao.save(post);
-        return "redirect:profile";
+        return "redirect:/profile";
     }
 
     @GetMapping("/pets/{id}/delete")
     public String deletePetGet() {
-        return "redirect:/Users/profile";
+        return "redirect:/profile";
     }
 
     @PostMapping("/pets/{id}/delete")
     public String deletePetPost(@RequestParam Long id) {
         petDao.deleteById(id);
-        return "redirect:pets";
+        return "redirect:/pets";
     }
 
     @GetMapping("/pets/{id}/edit")
@@ -122,9 +122,9 @@ public class PetController {
             model.addAttribute("categories", categories);
             model.addAttribute("filestackapi", filestackapi);
             model.addAttribute("mapboxapi", mapboxapikey);
-            return "/pets/edit";
+            return "pets/edit";
         }else{
-            return "redirect:pets";
+            return "redirect:/pets";
         }
     }
 
@@ -132,7 +132,7 @@ public class PetController {
     public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam Category category, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id, @RequestParam String stashFilestackURL, @RequestParam String lastSeen) {
         Pet pet = petDao.findById(pet_id).get();
         pet.setName(name);
-        pet.setSpecies(String.valueOf(category));
+        pet.setSpecies(category.getName());
         pet.setBreed(breed);
         pet.setSize(size);
         pet.setDescription(description);
@@ -148,7 +148,7 @@ public class PetController {
             post.setLocation(lastSeen);
         }
         postDao.save(post);
-        return "redirect:pets";
+        return "redirect:/pets";
     }
 
 }
