@@ -43,8 +43,16 @@
                     <label class="label" for="password">Password&ast;</label>
                 </div>
                 <div>
-                    <input class="text-input" id="password" type="password" th:field="*{password}" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
-                    <small>Password must be at least 8 characters long and contain at least one letter and one number.</small>
+                    <input class="text-input" id="password" type="password" th:field="*{password}" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$" required>
+                    <small>
+                        Password must meet the following criteria:
+                        <ul>
+                            <li>At least 8 characters long</li>
+                            <li>Contain at least one letter (uppercase or lowercase)</li>
+                            <li>Contain at least one digit</li>
+                            <li>Contain at least one special character (!, @, #, $, %, ^, &, *)</li>
+                        </ul>
+                    </small>
                 </div>
             </div>
             <div>

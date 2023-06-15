@@ -26,7 +26,8 @@
 
                     <li class="dd-hidden">
                         <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
-                        <form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}" th:method="post">
+                        <form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}"
+                              th:method="post">
                         <input class="dropdown-item" type="hidden" name="id" th:value="${pet.id}">
                         <button class=" dropdown-item " type="submit">DELETE</button>
                     </form></li>
@@ -35,10 +36,11 @@
             <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
                 <div class="card-body ">
 
-                    <h5 th:text="${pet.isLost()}" class="card-title lost"></h5>
+                    <h5 th:text="${pet.isLost()}" class="card-title lost text-center"></h5>
 
 
-<div class="pet-show-holder">
+
+<div class="pet-card">
                     <img class="card-img" th:src="${pet.photo}" alt="pet photo">
                 </div>
                     <div>

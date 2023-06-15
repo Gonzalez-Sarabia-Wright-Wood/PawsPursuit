@@ -545,11 +545,10 @@ div.penguin-eye-left:hover {
     width: 90%;
 }
 
-.pet-show{
-   height: 80%;
-    width: auto;
-}
-
-.pet-show-holder{
+.pet-card{
     overflow: hidden;
+}
+.pet-show{
+    overflow: hidden;
+    height: 250px;
 }
