@@ -4,7 +4,7 @@
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 <section class="d-flex">
-    <div class="mt-4 mb-4 p-4 container col-6 form-box">
+    <div class="mt-4 mb-4 p-4 container col-12 col-sm-8 col-md-6 form-box">
         <form th:method="post" th:action="@{/register}" th:object="${user}">
             <div class="mt-1 col-12">
                 <div class="label-holder">
