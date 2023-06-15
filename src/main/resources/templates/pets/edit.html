@@ -222,7 +222,7 @@
             e.preventDefault();
             mapboxSearch($("#searchInput").val());
         })
-        mapboxSearch([[${#authentication.principal.zipCode}]]);
+        mapboxSearch(([[${post.location}]]).replace(" ", ","));
 
     });
 </script>
