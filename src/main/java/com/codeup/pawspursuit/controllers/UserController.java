@@ -45,24 +45,24 @@ public class UserController {
         model.addAttribute("pets", pets);
         return "index";
     }
+//
+//    @GetMapping("/login")
+//    public String userLoginGet() {
+//        return "login";
+//    }
 
-    @GetMapping("/login")
-    public String userLoginGet() {
-        return "login";
-    }
-
-    @PostMapping("/login")
-    public String userLoginPost(@RequestParam String username, @RequestParam String password, Model model) {
-        User user = userDao.findByUsername(username);
-        if (user == null) {
-            return "redirect:/login";
-        } else if (user.getPassword().equals(password)) {
-//            model.addAttribute("user", user);
-            return "redirect:/profile";
-        }
-        model.addAttribute("error", "Invalid username or password");
-        return "login";
-    }
+//    @PostMapping("/login")
+//    public String userLoginPost(@RequestParam String username, @RequestParam String password, Model model) {
+//        User user = userDao.findByUsername(username);
+//        if (user == null) {
+//            return "redirect:/login";
+//        } else if (user.getPassword().equals(password)) {
+////            model.addAttribute("user", user);
+//            return "redirect:profile";
+//        }
+//        model.addAttribute("error", "Invalid username or password");
+//        return "login";
+//    }
 
 
     @GetMapping("/register")
@@ -81,7 +81,7 @@ public class UserController {
             return "register";
         }
         userDao.save(user);
-        return "redirect:/login";
+        return "redirect:login";
     }
 
     @GetMapping("/profile")
@@ -133,13 +133,13 @@ public class UserController {
         userFromDb.setZipCode(user.getZipCode());
         userFromDb.setUsername(user.getUsername());
         userDao.save(userFromDb);
-        return "redirect:/profile";
+        return "redirect:profile";
     }
 
     @PostMapping("/profile/delete")
     public String deleteUserPost(@RequestParam Long id) {
         userDao.deleteById(id);
-        return "redirect:/login";
+        return "redirect:login";
     }
 
 

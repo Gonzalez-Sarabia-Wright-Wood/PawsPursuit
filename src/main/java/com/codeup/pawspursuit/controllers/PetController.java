@@ -49,7 +49,7 @@ public class PetController {
     public String petsIndex(Model model) {
         model.addAttribute("pets", petDao.findAll());
         model.addAttribute("post", postDao);
-        return "/pets/index";
+        return "pets/index";
     }
 
     @GetMapping(path = "/pets/{id}")
@@ -64,7 +64,7 @@ public class PetController {
         model.addAttribute("commentList", commentList);
         model.addAttribute("mapboxapi", mapboxapikey);
         model.addAttribute("petLocation", onePost.getLocation());
-        return "/pets/show";
+        return "pets/show";
     }
 
     @GetMapping("/create")
@@ -75,7 +75,7 @@ public class PetController {
         model.addAttribute("filestackapi", filestackapi);
         model.addAttribute("mapboxapi", mapboxapikey);
         model.addAttribute("categories", Categories);
-        return "/pets/create";
+        return "pets/create";
     }
 
     @PostMapping("/pets/create")
@@ -96,7 +96,7 @@ public class PetController {
         post.setLocation(lastSeen);
         post.getCategories().add(category);
         postDao.save(post);
-        return "redirect:/profile";
+        return "redirect:profile";
     }
 
     @GetMapping("/pets/{id}/delete")
@@ -107,7 +107,7 @@ public class PetController {
     @PostMapping("/pets/{id}/delete")
     public String deletePetPost(@RequestParam Long id) {
         petDao.deleteById(id);
-        return "redirect:/pets";
+        return "redirect:pets";
     }
 
     @GetMapping("/pets/{id}/edit")
@@ -124,7 +124,7 @@ public class PetController {
             model.addAttribute("mapboxapi", mapboxapikey);
             return "/pets/edit";
         }else{
-            return "redirect:/pets";
+            return "redirect:pets";
         }
     }
 
@@ -148,7 +148,7 @@ public class PetController {
             post.setLocation(lastSeen);
         }
         postDao.save(post);
-        return "redirect:/pets";
+        return "redirect:pets";
     }
 
 }

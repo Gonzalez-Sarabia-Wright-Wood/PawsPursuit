@@ -71,7 +71,7 @@ public class PostController {
         post.setUser(user);
         post.setLocation(lastSeen2);
         postDao.save(post);
-        return "redirect:/posts";
+        return "redirect:posts";
     }
 
     @GetMapping("/posts/{id}/edit")
@@ -94,7 +94,7 @@ public class PostController {
     @PostMapping("/posts/{id}/delete")
     public String deletePost(@RequestParam Long id) {
         postDao.deleteById(id);
-        return "redirect:/posts";
+        return "redirect:posts";
     }
 
     @GetMapping("/aboutUs")

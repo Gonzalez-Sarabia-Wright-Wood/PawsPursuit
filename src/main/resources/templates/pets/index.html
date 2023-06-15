@@ -4,7 +4,6 @@
 <head th:replace="~{partials/fragment.html :: head('Pets')}"></head>
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
-This is the index for pets
 <span hidden sec:authorize="isAuthenticated()">
     <span id="usr" th:text="${#authentication.principal.id}"></span>
 </span>

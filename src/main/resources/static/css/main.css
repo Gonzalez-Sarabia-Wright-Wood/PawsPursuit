@@ -544,3 +544,12 @@ div.penguin-eye-left:hover {
 .w-pets {
     width: 90%;
 }
+
+.pet-show{
+   height: 80%;
+    width: auto;
+}
+
+.pet-show-holder{
+    overflow: hidden;
+}
