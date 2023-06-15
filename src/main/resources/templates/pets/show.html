@@ -82,6 +82,7 @@
         <div class="container" th:each="comment : ${commentList}">
             <div class="m-1 d-flex py-1 px-4 col-12 justify-content-between form-box-2">
                 <h2 class="m-0" th:text="${comment.getBody()}"></h2>
+
                 <span class="col-1 dropdown">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 </button>
@@ -93,8 +94,7 @@
                         <span class="usr-hddn" hidden="hidden" th:text="${comment.user.id}"></span>
                         <span hidden="hidden" th:text="${comment.id}" class="hiddenModal"></span>
                         <button data-bs-target="#m" class="tooMuchModal button dropdown-item" type="button"
-                                data-bs-toggle="modal"
-                        >
+                                data-bs-toggle="modal">
                             Edit
                         </button>
                     </li>
@@ -133,7 +133,10 @@
             </div>
             </span>
             </div>
+            <h4 class="ms-4">—<span th:text="${comment.user.username}"></span></h4>
+
         </div>
+
     </div>
 </div>
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
