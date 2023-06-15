@@ -13,7 +13,7 @@
 
 
         <div class="p-1 container d-flex flex-row card">
-            <span class="col-1 dropdown">
+            <span class="dropdown">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 </button>
                 <ul class="dropdown-menu">
@@ -37,8 +37,10 @@
 
                     <h5 th:text="${pet.isLost()}" class="card-title lost"></h5>
 
-                    <img class="card-img" th:src="${pet.photo}" alt="pet photo">
 
+<div class="pet-show-holder">
+                    <img class="card-img pet-show" th:src="${pet.photo}" alt="pet photo">
+                </div>
                     <div>
                         <h6 class="card-subtitle d-inline-block">Species : </h6>
                         <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>

@@ -534,7 +534,7 @@ div.penguin-eye-left:hover {
 #map, #map2 {
     border: 3px solid #170309;
     border-radius: 30px;
-    height: 40vh;
+    height: 50vh;
 }
 
 .mapboxgl-canvas{

@@ -23,12 +23,12 @@
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 <section class="d-flex">
-    <div class="mt-4 mb-4 p-4 container form-box col-12 col-lg-8" id="pet">
+    <div class="mt-4 mb-4 p-4 container form-box col-12 col-md-8 col-lg-6" id="pet">
         <form th:action="@{/posts/create}" th:method="post" id="postForm" th:object="${post}">
             <input type="hidden" id="id" th:field="*{id}">
             <input type="hidden" name="category" id="category" th:value="${category.id}">
-            <div class="mt-1 d-flex flex-wrap">
-                <div class="m-2 px-1 col-12 col-sm-6">
+            <div class="mt-1 d-flex flex-wrap justify-content-center">
+                <div class="m-2 px-1 col-12">
                     <div class="label-holder">
                         <span class="label">Title:</span>
                     </div>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="m-2 px-1 col-12 col-sm-6">
+                <div class="m-2 px-1 col-12">
                     <div class="label-holder">
                         <span class="label">Species:</span>
                     </div>
@@ -52,7 +52,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="m-2 px-1 col-12 col-sm-6">
+                <div class="m-2 px-1 col-12">
                     <div class="ta-holder">
                         <span class="ta">Post-Body:</span>
                     </div>
@@ -71,7 +71,7 @@
                     <input type="search" placeholder="Search" id="searchInput">
                     <button id="locationSearch" class="btn button-secondary" type="button">Search</button>
                 </div>
-                <div id="map" style='width: 400px; height: 300px;'>
+                <div id="map" class="col-12">
                 </div>
             </div>
             <div class="d-flex justify-content-end">
