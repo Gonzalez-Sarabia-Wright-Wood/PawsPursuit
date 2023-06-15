@@ -23,13 +23,18 @@ let profile = document.getElementsByClassName("profile")
 let profileToMatch = document.getElementsByClassName("prf-hddn")
 let usr = document.querySelector("#usr");
 for (let i = 0; i < profile.length; i++) {
-    if (usr.innerHTML === profileToMatch[i].innerHTML) {
+    if (usr === null) {
+    } else if (usr.innerHTML === profileToMatch[i].innerHTML) {
         profile[i].setAttribute('hidden', 'hidden');
     }
 }
 for (let i = 0; i < userToMatch.length; i++) {
-    if (usr.innerHTML !== userToMatch[i].innerHTML) {
+    if (usr === null) {
+        dropDownShow[i].setAttribute('hidden', 'hidden');
+        userToMatch[i].setAttribute('hidden', 'hidden');
+    } else if (usr.innerHTML !== userToMatch[i].innerHTML ) {
         dropDownShow[i].setAttribute('hidden', 'hidden');
         userToMatch[i].setAttribute('hidden', 'hidden');
     }
+
 }
