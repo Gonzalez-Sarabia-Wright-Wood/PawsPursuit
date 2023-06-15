@@ -130,13 +130,17 @@ public class PetController {
     }
 
     @PostMapping("/pets/{id}/edit")
-    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam Category category, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id, @RequestParam String stashFilestackURL, @RequestParam String lastSeen) {
+    public String updatePet(@RequestParam String title, @RequestParam String body, @RequestParam String name, @RequestParam Category category, @RequestParam String breed, @RequestParam String size, @RequestParam String description, @RequestParam Long pet_id, @RequestParam Long post_id, @RequestParam String stashFilestackURL, @RequestParam String lastSeen, @RequestParam String status) {
         Pet pet = petDao.findById(pet_id).get();
         pet.setName(name);
         pet.setSpecies(category.getName());
         pet.setBreed(breed);
         pet.setSize(size);
         pet.setDescription(description);
+        if(status.equals("true")){
+            pet.setLost(true);
+        }
+
         if(!stashFilestackURL.equals("replaceme")){
             pet.setPhoto(stashFilestackURL);
         }
