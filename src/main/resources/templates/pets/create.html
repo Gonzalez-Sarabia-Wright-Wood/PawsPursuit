@@ -87,8 +87,12 @@
                         </button>
                     </div>
                 </div>
-                <div id="map2" class="col-12">
-                </div>
+                <section class="container-fluid col-12">
+                    <div style="height: 420px">
+                        <div id="map2">
+                        </div>
+                    </div>
+                </section>
             </div>
             <div class="d-flex justify-content-end">
                 <button class="mt-4 button-main" type="submit">Submit</button>
@@ -174,16 +178,16 @@
                         </div>
                     </div>
                 </div>
-            <div class="my-1 px-1 col-12 col-sm-6">
-                <div class="ta-holder">
-                    <span class="ta">Description:</span>
-                </div>
-                <div>
-                    <div class="input">
-                        <textarea rows="4" class="text-area" name="description"></textarea>
+                <div class="my-1 px-1 col-12 col-sm-6">
+                    <div class="ta-holder">
+                        <span class="ta">Description:</span>
+                    </div>
+                    <div>
+                        <div class="input">
+                            <textarea rows="4" class="text-area" name="description"></textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
             <div>
                 <input id="stashFilestackURL" th:name="stashFilestackURL" th:value="replaceme"
@@ -208,9 +212,12 @@
                             </button>
                         </div>
                     </div>
-                    <div id="map" class="col-12">
-                    </div>
-
+                    <section class="container-fluid col-12">
+                        <div style="height: 420px">
+                            <div id="map">
+                            </div>
+                        </div>
+                    </section>
                 </div>
 
             </div>
@@ -261,6 +268,9 @@
         console.log(longlat)
         $("#lastSeen").val(`${longlat.lng},${longlat.lat}`)
     });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
     map.on('load', () => {
         map.addSource('single-point', {
             'type': 'geojson',
@@ -270,6 +280,7 @@
             }
         });
 
+
         //MAP SEARCH INFO
         function mapboxSearch(searchString) {
             geocode(searchString, mapboxApiKey).then(
@@ -277,6 +288,7 @@
                     // FLIES TO SEARCHED LOCATION
                     let markerFlyTo = {center: results, zoom: 12}
                     map.flyTo(markerFlyTo);
+                    map.resize();
                     marker.setLngLat(results)
                     $("#lastSeen").val(`${results[0]},${results[1]}`)
                 }
@@ -306,8 +318,16 @@
         container: 'map2', // Container ID
         style: 'mapbox://styles/mapbox/streets-v12', // Map style to use
         center: [-98.4946, 29.4252], // Starting position [lng, lat]
-        zoom: 12 // Starting zoom level
+        zoom: 12, // Starting zoom level
     });
+
+    map2.on("idle", function () {
+        map.resize();
+    });
+
+
+    map2.addControl(new mapboxgl.NavigationControl());
+
     //MAP MARKER INFO
     const marker2 = new mapboxgl.Marker({ // Initialize a new marker
         draggable: true
@@ -319,7 +339,10 @@
         let longlat = e.target._lngLat;
         $("#lastSeen2").val(`${longlat.lng},${longlat.lat}`)
     });
+
+
     map2.on('load', () => {
+        map2.resize();
         map2.addSource('single-point', {
             'type': 'geojson',
             'data': {
@@ -327,6 +350,7 @@
                 'features': []
             }
         });
+
 
         //MAP SEARCH INFO
         function mapboxSearch2(searchString) {

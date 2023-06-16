@@ -71,8 +71,12 @@
                     <input type="search" placeholder="Search" id="searchInput">
                     <button id="locationSearch" class="btn button-secondary" type="button">Search</button>
                 </div>
-                <div id="map" class="col-12">
-                </div>
+                <section class="container-fluid col-12">
+                    <div style="height: 420px">
+                        <div id="map">
+                        </div>
+                    </div>
+                </section>
             </div>
             <div class="d-flex justify-content-end">
                 <a class="btn button-secondary mt-4 mb-4 me-3" onclick="history.back()">Go Back</a>
@@ -109,7 +113,9 @@
         let longlat = e.target._lngLat;
         $("#lastSeen2").val(`${longlat.lng},${longlat.lat}`)
     });
+    map.addControl(new mapboxgl.NavigationControl());
     map.on('load', () => {
+        map.resize();
         map.addSource('single-point', {
             'type': 'geojson',
             'data': {
