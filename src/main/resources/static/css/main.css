@@ -552,3 +552,9 @@ div.penguin-eye-left:hover {
     overflow: hidden;
     height: 250px;
 }
+.dropdown-toggle::after{
+    border: none!important;
+}
+.dropdown-toggle{
+    border: none!important;
+}

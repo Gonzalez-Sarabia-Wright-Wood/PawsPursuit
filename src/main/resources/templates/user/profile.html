@@ -5,6 +5,9 @@
 
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
+<span hidden sec:authorize="isAuthenticated()">
+    <span id="usr" th:text="${#authentication.principal.id}"></span>
+</span>
 
 <section class="container">
 
@@ -71,9 +74,15 @@
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
-                    <li><a th:href="@{/profile/{id} (id=${pet.user.id})}" class="dropdown-item">Profile</a></li>
-                    <li><form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}"
+                    <li class="profile">
+                        <span class="prf-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <a th:href="@{/profile/{id} (id=${pet.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}"
                               th:method="post">
                         <input class="dropdown-item" type="hidden" name="id" th:value="${pet.id}">
                         <button class=" dropdown-item " type="submit">DELETE</button>
@@ -117,9 +126,15 @@
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a th:href="@{/posts/{id}/edit (id=${post.id})}" class="dropdown-item">Edit</a></li>
-                    <li><a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
-                    <li><form class="p-0 dropdown-item" th:action="@{/posts/{id}/delete (id=${post.id})}"
+                    <li class="profile">
+                        <span class="prf-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <a th:href="@{/posts/{id}/edit (id=${post.id})}" class="dropdown-item">Edit</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
+                        <form class="p-0 dropdown-item" th:action="@{/posts/{id}/delete (id=${post.id})}"
                               th:method="post">
                         <input class="dropdown-item" type="hidden" name="id" th:value="${post.id}">
                         <button class=" dropdown-item " type="submit">DELETE</button>
