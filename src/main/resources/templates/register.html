@@ -5,13 +5,17 @@
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
 <section class="d-flex">
     <div class="mt-4 mb-4 p-4 container col-12 col-sm-8 col-md-6 form-box">
+        <div>
+            <h1>Register With Us!</h1>
+            <small>&ast;All fields required</small>
+        </div>
         <form th:method="post" th:action="@{/register}" th:object="${user}">
             <div class="mt-1 col-12">
                 <div class="label-holder">
                     <label class="label" for="firstName">First Name</label>
                 </div>
                 <div>
-                    <input class="text-input" id="firstName" type="text" th:field="*{firstName}">
+                    <input class="text-input" id="firstName" type="text" th:field="*{firstName}" required>
                 </div>
             </div>
             <div class="mt-1 col-12">
@@ -19,12 +23,12 @@
                     <label class="label" for="lastName">Last Name</label>
                 </div>
                 <div>
-                    <input class="text-input" id="lastName" type="text" th:field="*{lastName}">
+                    <input class="text-input" id="lastName" type="text" th:field="*{lastName}" required>
                 </div>
             </div>
             <div class="mt-1 col-12">
                 <div class="label-holder">
-                    <label class="label" for="username">Username&ast;</label>
+                    <label class="label" for="username">Username</label>
                 </div>
                 <div>
                     <input class="text-input" id="username" type="text" th:field="*{username}" required>
@@ -35,12 +39,12 @@
                     <label class="label" for="email">Email</label>
                 </div>
                 <div>
-                    <input class="text-input" id="email" type="email" th:field="*{email}">
+                    <input class="text-input" id="email" type="email" th:field="*{email}" required>
                 </div>
             </div>
             <div class="mt-1 col-12">
                 <div class="label-holder">
-                    <label class="label" for="password">Password&ast;</label>
+                    <label class="label" for="password">Password</label>
                 </div>
                 <div>
                     <input class="text-input" id="password" type="password" th:field="*{password}" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$" required>
@@ -57,10 +61,10 @@
             </div>
             <div>
                 <div class="label-holder">
-                    <label class="label" for="zipCode">Zip Code&ast;</label>
+                    <label class="label" for="zipCode">Zip Code</label>
                 </div>
                 <div>
-                    <input class="text-input" id="zipCode" type="text" th:field="*{zipCode}" >
+                    <input class="text-input" id="zipCode" type="text" th:field="*{zipCode}" required>
 
                 </div>
             </div>
