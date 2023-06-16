@@ -5,13 +5,11 @@
 
 <body>
 <nav th:replace="~{partials/fragment.html :: nav}"></nav>
-<span hidden sec:authorize="isAuthenticated()">
-    <span id="usr" th:text="${#authentication.principal.id}"></span>
-</span>
+
 
 <section class="container">
 
-    <div class="profile mt-5 mb-3">
+    <div class="mt-5 mb-3">
         <div>
             <th:block sec:authorize="isAuthenticated()">
                 <div th:if="${#authentication.principal.id == user.id}"
@@ -155,6 +153,9 @@
 
         </div>
     </div>
+    <span hidden sec:authorize="isAuthenticated()">
+    <span id="usr" th:text="${#authentication.principal.id}"></span>
+</span>
 </section>
 
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
