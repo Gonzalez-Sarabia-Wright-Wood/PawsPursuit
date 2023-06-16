@@ -68,10 +68,32 @@
 
     <h3>Pets:</h3>
     <section class="container-fluid d-flex flex-wrap">
-        <div class="p-1 col-12 col-sm-3" th:each="pet: ${pets}">
-            <div class="p-1 container d-flex flex-row card">
-            <span class="col-1 dropdown">
-                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="p-1 col-12 col-sm-3 text-nowrap" th:each="pet: ${pets}">
+            <div class="p-1 container d-flex flex-row card justify-content-end">
+                <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
+                    <div class="card-body ">
+
+                        <h5 th:text="${pet.isLost()}" class="card-title lost"></h5>
+
+                        <img class="card-img" th:src="${pet.photo}" alt="pet photo">
+                        <div>
+                            <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
+                        </div>
+                        <div>
+                            <h6 class="card-subtitle d-inline-block">Species : </h6>
+                            <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+                        </div>
+                        <div>
+                            <h6 class="card-subtitle d-inline-block">Size : </h6>
+                            <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
+                        </div>
+                        <p hidden="hidden" class="card-text" th:text="${pet.getId()}"></p>
+                    </div>
+                </a>
+                <span class="dropdown dd">
+
+                <button class="dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                        class="fa-solid fa-ellipsis-vertical fa-lg" style="color: #170309;"></i>
                 </button>
                 <ul class="dropdown-menu">
                     <li class="profile">
@@ -80,6 +102,7 @@
                     <li class="dd-hidden">
                         <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
                         <a th:href="@{/pets/{id}/edit (id=${pet.id})}" class="dropdown-item">Edit</a></li>
+
                     <li class="dd-hidden">
                         <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
                         <form class="p-0 dropdown-item" th:action="@{/pets/{id}/delete (id=${pet.id})}"
@@ -89,28 +112,7 @@
                     </form></li>
                 </ul>
             </span>
-                <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
-                    <div class="card-body ">
 
-                        <h5 th:text="${pet.isLost()}" class="card-title lost"></h5>
-
-                        <img class="card-img" th:src="${pet.photo}" alt="pet photo">
-
-                        <div>
-                            <h6 class="card-subtitle d-inline-block">Species : </h6>
-                            <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
-                        </div>
-                        <div>
-                            <h6 class="card-subtitle d-inline-block">Name : </h6>
-                            <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
-                        </div>
-                        <div>
-                            <h6 class="card-subtitle d-inline-block">Size : </h6>
-                            <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
-                        </div>
-                        <p hidden="hidden" class="card-text" th:text="${pet.getId()}"></p>
-                    </div>
-                </a>
             </div>
         </div>
     </section>
@@ -122,25 +124,6 @@
     <h3>Posts:</h3>
     <div class="p-1" th:each="post: ${posts}">
         <div class="p-1 container d-flex flex-row card">
-                    <span class="col-1 dropdown">
-                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                </button>
-                <ul class="dropdown-menu">
-                    <li class="profile">
-                        <span class="prf-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
-                        <a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
-                    <li class="dd-hidden">
-                        <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
-                        <a th:href="@{/posts/{id}/edit (id=${post.id})}" class="dropdown-item">Edit</a></li>
-                    <li class="dd-hidden">
-                        <span class="usr-hddn" hidden="hidden" th:text="${pet.user.id}"></span>
-                        <form class="p-0 dropdown-item" th:action="@{/posts/{id}/delete (id=${post.id})}"
-                              th:method="post">
-                        <input class="dropdown-item" type="hidden" name="id" th:value="${post.id}">
-                        <button class=" dropdown-item " type="submit">DELETE</button>
-                    </form></li>
-                </ul>
-            </span>
             <a class="col-11 a-null" th:href="@{/posts/{id} (id=${post.id})}">
                 <div class="card-body">
                     <h4 th:text="${post.title}" class="card-title"></h4>
@@ -149,6 +132,27 @@
                                                th:text="${post.categories.get(0).name}"></span></span>
                 </div>
             </a>
+            <span class="dropdown">
+                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                        class="fa-solid fa-ellipsis-vertical fa-lg" style="color: #170309;"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="profile">
+                        <span class="prf-hddn" hidden="hidden" th:text="${post.user.id}"></span>
+                        <a th:href="@{/profile/{id} (id=${post.user.id})}" class="dropdown-item">Profile</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${post.user.id}"></span>
+                        <a th:href="@{/posts/{id}/edit (id=${post.id})}" class="dropdown-item">Edit</a></li>
+                    <li class="dd-hidden">
+                        <span class="usr-hddn" hidden="hidden" th:text="${post.user.id}"></span>
+                        <form class="p-0 dropdown-item" th:action="@{/posts/{id}/delete (id=${post.id})}"
+                              th:method="post">
+                        <input class="dropdown-item" type="hidden" name="id" th:value="${post.id}">
+                        <button class=" dropdown-item " type="submit">DELETE</button>
+                    </form></li>
+                </ul>
+            </span>
+
         </div>
     </div>
 </section>
