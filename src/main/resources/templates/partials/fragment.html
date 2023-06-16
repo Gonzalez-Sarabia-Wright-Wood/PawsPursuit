@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title th:text="${title}"></title>
-    <link rel="icon" type="image/x-icon" th:href="@{../static/favicon.ico}">
+    <link rel="icon" type="image/x-icon" th:href="@{../../static/images/favicon.ico}">
 
     <script src="https://kit.fontawesome.com/94186186be.js" crossorigin="anonymous"></script>
 
@@ -19,7 +19,8 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <link th:href="@{/css/main.css}" rel="stylesheet"/>
-
+    <link rel="icon" href="/images/favicon-32x32.png" type="image/x-icon">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <nav th:fragment="~{partials/fragment.html :: nav}" class="navbar navbar-expand-lg sticky-top">
