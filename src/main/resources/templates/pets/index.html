@@ -14,7 +14,8 @@
 
         <div class="p-1 container d-flex flex-row card">
             <span class="dropdown">
-                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                        class="fa-solid fa-ellipsis-vertical fa-lg" style="color: #170309;"></i>
                 </button>
                 <ul class="dropdown-menu">
                     <li class="profile">
@@ -33,16 +34,16 @@
                     </form></li>
                 </ul>
             </span>
-            <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
                 <div class="card-body ">
 
                     <h5 th:text="${pet.isLost()}" class="card-title lost text-center"></h5>
 
 
-
-<div class="pet-card">
-                    <img class="card-img" th:src="${pet.photo}" alt="pet photo">
-                </div>
+                    <div class="pet-card">
+            <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
+                        <img class="card-img" th:src="${pet.photo}" alt="pet photo">
+            </a>
+                    </div>
                     <div>
                         <h6 class="card-subtitle d-inline-block">Species : </h6>
                         <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
@@ -57,7 +58,6 @@
                     </div>
                     <p hidden="hidden" class="card-text" th:text="${pet.getId()}"></p>
                 </div>
-            </a>
         </div>
     </div>
 
