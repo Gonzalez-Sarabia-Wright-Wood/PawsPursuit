@@ -80,6 +80,15 @@
     <hr>
     <div class="p-2 container">
         <div class="container" th:each="comment : ${commentList}">
+            <div>
+            <div class="label-holder">
+            <span class="label">
+                <a th:href="@{/profile/{id} (id=${pet.user.id})}">
+                <p class="pt-2 mb-0" style="font-weight: bold" th:text="${comment.user.username}"></p>
+                </a>
+            </span>
+            </div>
+            </div>
             <div class="m-1 d-flex py-1 px-4 col-12 justify-content-between form-box-2">
                 <h2 class="m-0" th:text="${comment.getBody()}"></h2>
 
@@ -133,10 +142,7 @@
             </div>
             </span>
             </div>
-            <h4 class="ms-4">—<span th:text="${comment.user.username}"></span></h4>
-
         </div>
-
     </div>
 </div>
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
