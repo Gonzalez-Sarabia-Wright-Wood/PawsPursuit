@@ -9,8 +9,7 @@
 </span>
 
 <section class="w-pets container-fluid d-flex flex-wrap">
-    <div class="p-1 col-12 col-sm-3" th:each="pet: ${pets}">
-
+    <div class="p-1 col-12 col-sm-3 text-nowrap" th:each="pet: ${pets}">
         <div class="label-holder">
             <span class="label">
                 <div>
@@ -20,8 +19,32 @@
                 </div>
             </span>
         </div>
-        <div class="p-1 container d-flex flex-row card">
-            <span class="dropdown">
+        <div class="p-1 container d-flex flex-row card justify-content-end">
+            <div class="card-body ">
+
+                <h5 th:text="${pet.isLost()}" class="card-title lost text-center"></h5>
+
+
+                <div class="pet-card">
+                    <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
+                        <img class="card-img" th:src="${pet.photo}" alt="pet photo">
+                    </a>
+                </div>
+                <div>
+                    <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <div>
+                    <h6 class="card-subtitle d-inline-block">Species : </h6>
+                    <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <div>
+                    <h6 class="card-subtitle d-inline-block">Size : </h6>
+                    <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
+                </div>
+                <p hidden="hidden" class="card-text" th:text="${pet.getId()}"></p>
+            </div>
+            <span class="dropdown dd">
+
                 <button class="dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
                         class="fa-solid fa-ellipsis-vertical fa-lg" style="color: #170309;"></i>
                 </button>
@@ -42,28 +65,6 @@
                     </form></li>
                 </ul>
             </span>
-                <div class="card-body ">
-                    <h5 th:text="${pet.isLost()}" class="card-title lost text-center"></h5>
-
-                    <div class="pet-card">
-            <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">
-                        <img class="card-img" th:src="${pet.photo}" alt="pet photo">
-            </a>
-                    </div>
-                    <div>
-                        <h6 class="card-subtitle d-inline-block">Species : </h6>
-                        <h6 th:text="${pet.getSpecies()}" class="card-subtitle d-inline-block"></h6>
-                    </div>
-                    <div>
-                        <h6 class="card-subtitle d-inline-block">Name : </h6>
-                        <h6 th:text="${pet.getName()}" class="card-subtitle d-inline-block"></h6>
-                    </div>
-                    <div>
-                        <h6 class="card-subtitle d-inline-block">Size : </h6>
-                        <h6 th:text="${pet.getSize()}" class="card-subtitle d-inline-block"></h6>
-                    </div>
-                    <p hidden="hidden" class="card-text" th:text="${pet.getId()}"></p>
-                </div>
         </div>
     </div>
 
