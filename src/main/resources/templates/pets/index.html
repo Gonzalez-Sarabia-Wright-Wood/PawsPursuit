@@ -11,7 +11,15 @@
 <section class="w-pets container-fluid d-flex flex-wrap">
     <div class="p-1 col-12 col-sm-3" th:each="pet: ${pets}">
 
-
+        <div class="label-holder">
+            <span class="label">
+                <div>
+                <a th:href="@{/profile/{id} (id=${pet.user.id})}">
+                <p class="pt-2 mb-0" style="font-weight: bold" th:text="${pet.user.username}"></p>
+                </a>
+                </div>
+            </span>
+        </div>
         <div class="p-1 container d-flex flex-row card">
             <span class="dropdown">
                 <button class="dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
@@ -35,9 +43,7 @@
                 </ul>
             </span>
                 <div class="card-body ">
-
                     <h5 th:text="${pet.isLost()}" class="card-title lost text-center"></h5>
-
 
                     <div class="pet-card">
             <a th:href="@{/pets/{id} (id=${pet.id})}" class=" col-11 a-null">

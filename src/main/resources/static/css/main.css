@@ -124,7 +124,7 @@ div.label {
     background-color: #e9b035;
     border-radius: 30px;
     border: solid #170309;
-
+    position: relative;
 }
 
 .card {

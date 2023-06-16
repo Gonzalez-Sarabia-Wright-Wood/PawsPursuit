@@ -8,6 +8,16 @@
 </span>
 
 <div class="container-fluid p-2" th:each="post: ${posts}">
+    <div>
+    <div class="label-holder">
+            <span class="label">
+                <div>
+                <a th:href="@{/profile/{id} (id=${post.user.id})}">
+                <p class="pt-2 mb-0" style="font-weight: bold" th:text="${post.user.username}"></p>
+                </a>
+                </div>
+            </span>
+    </div>
     <div class="p-1 container d-flex flex-row card">
                     <span class="dropdown">
                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -36,6 +46,7 @@
             </div>
         </a>
     </div>
+</div>
 </div>
 <footer th:replace="~{partials/fragment.html :: footer}"></footer>
 <script th:src="@{/js/index.js}"></script>

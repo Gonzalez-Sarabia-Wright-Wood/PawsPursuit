@@ -40,6 +40,7 @@
     <hr class="my-5">
     <h3 class="text-center">Pet Was Last Seen At:</h3>
     <!--MAP-->
+
     <section class="container-fluid col-12">
         <div style="height: 420px">
             <div id="map">
@@ -69,6 +70,15 @@
     <hr>
     <div class="p-2 container ">
         <div class="container" th:each="comment : ${commentList}">
+            <div>
+                <div class="label-holder">
+            <span class="label">
+                <a th:href="@{/profile/{id} (id=${comment.user.id})}">
+                <p class="pt-2 mb-0" style="font-weight: bold" th:text="${comment.user.username}"></p>
+                </a>
+            </span>
+                </div>
+            </div>
             <div class="m-1 d-flex py-1 px-4 col-12 justify-content-between form-box-2">
                 <h2 class="m-0" th:text="${comment.getBody()}"></h2>
                 <span class="col-1 dropdown">
