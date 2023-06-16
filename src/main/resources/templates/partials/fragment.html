@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title th:text="${title}"></title>
+    <script src="https://kit.fontawesome.com/94186186be.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,6 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <link th:href="@{/css/main.css}" rel="stylesheet"/>
-    <!--        <link th:rel="stylesheet" th:href="@{/css/profile.css}">-->
 
 </head>
 
@@ -126,7 +126,7 @@
                             <form style="display: none" th:action="@{/logout}" th:method="post">
                                 <button type="submit" id="button_to_link"></button>
                             </form>
-                            <label class="nav-link" for="button_to_link">Logout</label>
+                            <label class="nav-link" for="button_to_link">Logout <i class="fa-solid fa-right-from-bracket" style="color: #170309;"></i></label>
                         </li>
                     </th:block>
 

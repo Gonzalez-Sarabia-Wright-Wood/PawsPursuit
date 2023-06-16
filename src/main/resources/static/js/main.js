@@ -21,5 +21,6 @@ toggle.addEventListener("click", function () {
     } else {
         pet.removeAttribute("hidden")
         post.setAttribute("hidden","hiddenPost")
+        map.resize();
     }
 })
