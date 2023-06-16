@@ -7,7 +7,7 @@
     <span id="usr" th:text="${#authentication.principal.id}"></span>
 </span>
 
-<div class="container-fluid p-2" th:each="post: ${posts}">
+<div class="container p-2" th:each="post: ${posts}">
     <div>
     <div class="label-holder">
             <span class="label">
@@ -19,8 +19,16 @@
             </span>
     </div>
     <div class="p-1 container d-flex flex-row card">
-                    <span class="dropdown">
-                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="col-11 a-null" th:href="@{/posts/{id} (id=${post.id})}">
+            <div class="card-body">
+                <h4 th:text="${post.title}" class="card-title"></h4>
+                <p class="card-text" th:text="${post.body}"></p>
+                <span>Category:&nbsp;<span class="card-text" th:text="${post.categories.get(0).name}"></span></span>
+            </div>
+        </a>
+        <span class="dropdown">
+                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+                        class="fa-solid fa-ellipsis-vertical fa-lg" style="color: #170309;"></i>
                 </button>
                 <ul class="dropdown-menu">
                     <li class="profile">
@@ -38,13 +46,6 @@
                     </form></li>
                 </ul>
             </span>
-        <a class="col-11 a-null" th:href="@{/posts/{id} (id=${post.id})}">
-            <div class="card-body">
-                <h4 th:text="${post.title}" class="card-title"></h4>
-                <p class="card-text" th:text="${post.body}"></p>
-                <span>Category:&nbsp;<span class="card-text" th:text="${post.categories.get(0).name}"></span></span>
-            </div>
-        </a>
     </div>
 </div>
 </div>
