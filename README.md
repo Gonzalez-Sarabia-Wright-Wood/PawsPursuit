@@ -2,7 +2,7 @@
 
 ## Overview
 
-PawsPursuit is a dedicated online platform aimed at reuniting pet owners with their beloved companions. As the lead developer, I have meticulously crafted this platform to provide a seamless experience for users, incorporating advanced technologies to enhance security, usability, and communication.
+PawsPursuit is a dedicated online platform aimed at reuniting pet owners with their beloved companions.
 
 ## Features
 
