@@ -1,4 +1,4 @@
-# PawsPursuit Repository
+# PawsPursuit
 
 ## Overview
 
